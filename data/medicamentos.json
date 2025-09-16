@@ -1,0 +1,101 @@
+{
+  "paracetamol_200": {
+    "nome": "Paracetamol 200mg/ml — 01 frasco",
+    "faixa_mgkg": [
+      10,
+      15
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 750,
+    "concentracao": 200,
+    "frequencia": "de 6 em 6 horas",
+    "observacao": "se febre ou dor"
+  },
+  "dipirona_500": {
+    "nome": "Dipirona 500mg/ml — 01 frasco",
+    "faixa_mgkg": [
+      10,
+      20
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 1000,
+    "concentracao": 500,
+    "frequencia": "de 6 em 6 horas",
+    "observacao": "se febre ou dor"
+  },
+  "ibuprofeno_100": {
+    "nome": "Ibuprofeno 100mg/ml — 01 frasco",
+    "faixa_mgkg": [
+      5,
+      10
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 400,
+    "concentracao": 100,
+    "frequencia": "de 8 em 8 horas",
+    "observacao": "se febre ou dor"
+  },
+  "amoxicilina_250": {
+    "nome": "Amoxicilina 250mg/5ml — 01 frasco",
+    "faixa_mgkg": [
+      50,
+      50
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 500,
+    "concentracao": 50,
+    "frequencia": "de 8 em 8 horas",
+    "duracao": "por 7 dias"
+  },
+  "azitromicina_oral": {
+    "nome": "Azitromicina 200mg/5ml — suspensão oral",
+    "faixa_mgkg": [
+      10,
+      10
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 500,
+    "concentracao": 40,
+    "frequencia": "1 vez ao dia",
+    "duracao": "por 5 dias",
+    "observacao": "Agitar bem o frasco antes de usar. Não interromper antes do tempo prescrito."
+  },
+  "soro_fisiologico": {
+    "nome": "Soro fisiológico 0,9% — 01 frasco",
+    "faixa_mgkg": null,
+    "concentracao": null,
+    "frequencia": "5ml em cada narina, várias vezes ao dia",
+    "observacao": "se congestão nasal"
+  },
+  "mel_frasco": {
+    "nome": "Mel — 01 frasco",
+    "faixa_mgkg": null,
+    "idade_minima_anos": 1,
+    "frequencia": "5 ml antes de dormir",
+    "observacao": "não usar em menores de 1 ano"
+  },
+  "ondansetrona_4": {
+    "nome": "Ondansetrona 4mg/5ml — 01 frasco",
+    "faixa_mgkg": [
+      0.2,
+      0.2
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 8,
+    "concentracao": 0.8,
+    "frequencia": "de 8 em 8 horas",
+    "observacao": "se vômitos"
+  },
+  "loratadina_1": {
+    "nome": "Loratadina 1mg/ml — 01 frasco",
+    "faixa_mgkg": [
+      0.2,
+      0.2
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 10,
+    "concentracao": 1,
+    "frequencia": "1 vez ao dia",
+    "duracao": "por 5 dias"
+  }
+}

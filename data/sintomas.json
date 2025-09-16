@@ -1,0 +1,34 @@
+{
+  "1": {
+    "nome": "Febre / Dor",
+    "medicamentos_ids": ["paracetamol_200", "dipirona_500", "ibuprofeno_100"]
+  },
+  "2": {
+    "nome": "Tosse seca",
+    "medicamentos_ids": ["mel_frasco"]
+  },
+  "3": {
+    "nome": "Congestão nasal",
+    "medicamentos_ids": ["soro_fisiologico"]
+  },
+  "4": {
+    "nome": "Faringite bacteriana",
+    "medicamentos_ids": ["ibuprofeno_100", "paracetamol_200", "amoxicilina_250"]
+  },
+  "5": {
+    "nome": "Vômitos",
+    "medicamentos_ids": ["ondansetrona_4"]
+  },
+  "6": {
+    "nome": "Alergia / Urticária",
+    "medicamentos_ids": ["loratadina_1"]
+  },
+  "7": {
+    "nome": "Otite média aguda (OMA)",
+    "medicamentos_ids": ["amoxicilina_250", "paracetamol_200", "ibuprofeno_100"]
+  },
+  "8": {
+    "nome": "Pneumonia comunitária",
+    "medicamentos_ids": ["azitromicina_oral", "paracetamol_200", "dipirona_500"]
+  }
+}
