@@ -27,17 +27,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     passo1.classList.add("hidden");
     passo2.classList.remove("hidden");
 
-    // Renderizar lista de sintomas
+    // Renderizar lista de sintomas em ordem numérica
     listaSintomas.innerHTML = "";
-    Object.entries(sintomas).forEach(([id, sint]) => {
-      const label = document.createElement("label");
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.value = id;
-      label.appendChild(checkbox);
-      label.append(" " + sint.nome);
-      listaSintomas.appendChild(label);
-    });
+    Object.entries(sintomas)
+      .sort(([a], [b]) => parseFloat(a) - parseFloat(b))
+      .forEach(([id, sint]) => {
+        const label = document.createElement("label");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = id;
+        label.appendChild(checkbox);
+        label.append(" " + sint.nome);
+        listaSintomas.appendChild(label);
+      });
   });
 
   // Gerar prescrição
@@ -48,43 +50,115 @@ document.addEventListener("DOMContentLoaded", async () => {
     const selecionados = [...listaSintomas.querySelectorAll("input:checked")].map(c => c.value);
     if (selecionados.length === 0) return alert("Selecione ao menos 1 sintoma.");
 
-    let resultado = `Paciente ${idade} anos, ${peso} kg\n\n`;
+    let resultado = `-----------------------------------\n`;
+    resultado += `Paciente: ${idade} anos, ${peso} kg\n`;
+    resultado += `Prescrição:\n`;
+    resultado += `-----------------------------------\n\n`;
+
+    // controle de medicamentos já prescritos
+    const prescritos = new Set();
 
     selecionados.forEach(idSintoma => {
       const sint = sintomas[idSintoma];
-      resultado += ``;
+      resultado += ` `;
+
       sint.medicamentos_ids.forEach(idMed => {
+        if (prescritos.has(idMed)) return; // já adicionado antes, pula
+        prescritos.add(idMed);
+
         const med = medicamentos[idMed];
         if (!med) return;
 
-        // Idade mínima
-        if (med.idade_minima_anos && idade < med.idade_minima_anos) {
-          resultado += `⚠️ ${med.nome}: Não recomendado para menores de ${med.idade_minima_anos} anos.\n\n`;
-          return;
-        }
+        // Verificar se tem regras complexas
+        if (med.regras) {
+          const regra = med.regras.find(r =>
+            idade >= (r.idade_min ?? 0) &&
+            idade <= (r.idade_max ?? 200) &&
+            (!r.peso_min || peso >= r.peso_min) &&
+            (!r.peso_max || peso <= r.peso_max)
+          );
 
-        // Cálculo dose mg/kg
-        if (med.faixa_mgkg) {
-          const media = (med.faixa_mgkg[0] + med.faixa_mgkg[1]) / 2;
-          let mgDia = media * peso;
-          let mgDose = med.tipo_faixa_mgkg === "dia"
-            ? mgDia / extrairNumDoses(med.frequencia)
-            : mgDia;
+          if (regra) {
+            if (regra.faixa_mgkg) {
+              const media = (regra.faixa_mgkg[0] + regra.faixa_mgkg[1]) / 2;
+              let mgDia = media * peso;
+              let mgDose = regra.tipo_faixa_mgkg === "dia"
+                ? mgDia / extrairNumDoses(regra.frequencia)
+                : mgDia;
 
-          if (med.dose_max_mg_dose) {
-            mgDose = Math.min(mgDose, med.dose_max_mg_dose);
+              if (regra.dose_max_mg_dose) {
+                mgDose = Math.min(mgDose, regra.dose_max_mg_dose);
+              }
+
+              let mlDoseFinal = "";
+              let gotas = "";
+              if (regra.concentracao) {
+                const mlCalc = mgDose / regra.concentracao;
+                const mlRounded = Math.round(mlCalc * 2) / 2; // arredonda para múltiplos de 0,5
+                mlDoseFinal = mlRounded.toFixed(1);
+                gotas = Math.round(mlRounded * 20);
+              }
+
+              resultado += `${med.nome}\n`;
+              if (mlDoseFinal) {
+                resultado += `   Uso: Administrar ${mlDoseFinal} mL (${gotas} gotas) via oral ${regra.frequencia},`;
+              } else {
+                resultado += `   Uso: Administrar ${mgDose.toFixed(0)} mg via oral ${regra.frequencia},`;
+              }
+              if (regra.duracao) resultado += ` durante ${regra.duracao}.`;
+              resultado += `\n`;
+            } else {
+              resultado += `${med.nome}\n   Uso: ${regra.observacao || "Ver bula"}\n`;
+            }
+
+            if (regra.condicao) resultado += `    Condição: ${regra.condicao}\n`;
+            if (med.observacao) resultado += `    Obs: ${med.observacao}\n`;
+            resultado += `\n`;
           }
 
-          const mlDose = med.concentracao ? (mgDose / med.concentracao).toFixed(1) : "";
-          resultado += `${med.nome}\n  ${mgDose.toFixed(0)} mg (${mlDose} ml) ${med.frequencia}`;
         } else {
-          resultado += `${med.nome}\n  ${med.frequencia || ""}`;
-        }
+          // Modelo simples (antigo)
+          if (med.idade_minima_anos && idade < med.idade_minima_anos) {
+            resultado += ` ${med.nome}: Não recomendado para menores de ${med.idade_minima_anos} anos.\n\n`;
+            return;
+          }
 
-        if (med.duracao) resultado += `, ${med.duracao}`;
-        if (med.observacao) resultado += `\n   Obs: ${med.observacao}`;
-        resultado += "\n\n";
+          if (med.faixa_mgkg) {
+            const media = (med.faixa_mgkg[0] + med.faixa_mgkg[1]) / 2;
+            let mgDia = media * peso;
+            let mgDose = med.tipo_faixa_mgkg === "dia"
+              ? mgDia / extrairNumDoses(med.frequencia)
+              : mgDia;
+
+            if (med.dose_max_mg_dose) {
+              mgDose = Math.min(mgDose, med.dose_max_mg_dose);
+            }
+
+            let mlDoseFinal = "";
+            let gotas = "";
+            if (med.concentracao) {
+              const mlCalc = mgDose / med.concentracao;
+              const mlRounded = Math.round(mlCalc * 2) / 2; // arredonda para múltiplos de 0,5
+              mlDoseFinal = mlRounded.toFixed(1);
+              gotas = Math.round(mlRounded * 20);
+            }
+
+            resultado += `${med.nome}\n`;
+            if (mlDoseFinal) {
+              resultado += `   Uso: Administrar ${mlDoseFinal} mL (${gotas} gotas) via oral ${med.frequencia},`;
+            } else {
+              resultado += `   Uso: Administrar ${mgDose.toFixed(0)} mg via oral ${med.frequencia},`;
+            }
+            if (med.duracao) resultado += ` durante ${med.duracao}.`;
+            if (med.observacao) resultado += ` \n    Obs: ${med.observacao}`;
+            resultado += `\n\n`;
+          } else {
+            resultado += `${med.nome}\n   Uso: ${med.frequencia || ""}\n\n`;
+          }
+        }
       });
+
+      resultado += ``;
     });
 
     saida.value = resultado;

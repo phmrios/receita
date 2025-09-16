@@ -5,7 +5,11 @@
   },
   "2": {
     "nome": "Tosse seca",
-    "medicamentos_ids": ["mel_frasco"]
+    "medicamentos_ids": ["mel_frasco", "prednisolona_3", "dexclorfeniramina_0_4"]
+  },
+  "2.8": {
+    "nome": "Tosse com catarro",
+    "medicamentos_ids": ["amoxicilina_250_5", "prednisolona_3", "ambroxol_15_5"]
   },
   "3": {
     "nome": "Congestão nasal",
@@ -18,6 +22,14 @@
   "5": {
     "nome": "Vômitos",
     "medicamentos_ids": ["ondansetrona_4"]
+  },
+  "5.8": {
+    "nome": "Diarreia Viral",
+    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml"]
+  },
+  "5.C": {
+    "nome": "GECA",
+    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml"]
   },
   "6": {
     "nome": "Alergia / Urticária",
