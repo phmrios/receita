@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     selecionados.forEach(idSintoma => {
       const sint = sintomas[idSintoma];
-      resultado += `### ${sint.nome} ###\n`;
+      resultado += ``;
       sint.medicamentos_ids.forEach(idMed => {
         const med = medicamentos[idMed];
         if (!med) return;

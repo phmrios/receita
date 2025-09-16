@@ -97,5 +97,112 @@
     "concentracao": 1,
     "frequencia": "1 vez ao dia",
     "duracao": "por 5 dias"
+  },
+  "amoxicilina_clav_250_625": {
+    "nome": "Amoxicilina + Clavulanato 250mg/62,5mg por 5ml — 01 frasco",
+    "faixa_mgkg": [
+      45,
+      45
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 875,
+    "concentracao": 50,
+    "frequencia": "de 12 em 12 horas",
+    "duracao": "por 7 a 10 dias",
+    "observacao": "dose expressa em mg/kg/dia do componente amoxicilina"
+  },
+  "cefalexina_250": {
+    "nome": "Cefalexina 250mg/5ml — 01 frasco",
+    "faixa_mgkg": [
+      50,
+      50
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 500,
+    "concentracao": 50,
+    "frequencia": "de 6 em 6 horas",
+    "duracao": "por 7 a 10 dias"
+  },
+  "salbutamol_mdi_100": {
+    "nome": "Salbutamol spray 100mcg/jato (MDI) — 01 frasco + espaçador",
+    "faixa_mgkg": null,
+    "concentracao": 100,
+    "frequencia": "2 jatos a cada 6 horas (pode usar a cada 4–6h conforme necessidade)",
+    "observacao": "usar com espaçador e máscara conforme idade; reforçar técnica inalatória"
+  },
+  "prednisolona_3": {
+    "nome": "Prednisolona 3mg/ml — 01 frasco",
+    "faixa_mgkg": [
+      1,
+      2
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 40,
+    "concentracao": 3,
+    "frequencia": "1 a 2 vezes ao dia",
+    "duracao": "por 3 a 5 dias",
+    "observacao": "usar menor tempo eficaz; preferir pela manhã em dose única quando possível"
+  },
+  "dexclorfeniramina_0_4": {
+    "nome": "Dexclorfeniramina 0,4mg/ml — xarope",
+    "faixa_mgkg": [
+      0.3,
+      0.35
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 2,
+    "concentracao": 0.4,
+    "frequencia": "de 8 em 8 horas",
+    "duracao": "por 3 a 5 dias",
+    "observacao": "pode causar sonolência; evitar em menores de 2 anos sem orientação"
+  },
+  "prometazina_1": {
+    "nome": "Prometazina 1mg/ml — xarope",
+    "faixa_mgkg": [
+      0.25,
+      0.5
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 25,
+    "concentracao": 1,
+    "frequencia": "de 12 em 12 horas",
+    "duracao": "por 3 a 5 dias",
+    "observacao": "sedativa; evitar em <2 anos; cautela em asmáticos"
+  },
+  "lactulose_xarope": {
+    "nome": "Lactulose xarope 667mg/ml — 01 frasco",
+    "faixa_mgkg": null,
+    "concentracao": 667,
+    "frequencia": "1 a 3 ml/kg/dia divididos em 2 doses",
+    "observacao": "ajustar para 1–2 evacuações/dia; pode causar flatulência"
+  },
+  "zinco_10mg_5ml": {
+    "nome": "Zinco 10mg/5ml — solução oral",
+    "faixa_mgkg": null,
+    "concentracao": 2,
+    "frequencia": "10 mg/dia se <6 meses; 20 mg/dia se ≥6 meses",
+    "duracao": "por 10 a 14 dias",
+    "observacao": "adjuvante na diarreia aguda; administrar longe de leite se possível"
+  },
+  "hidrocortisona_topica_1": {
+    "nome": "Hidrocortisona 1% — creme/loção",
+    "faixa_mgkg": null,
+    "concentracao": 10,
+    "frequencia": "aplicar fina camada 2 vezes ao dia",
+    "duracao": "por 3 a 5 dias",
+    "observacao": "evitar uso em áreas extensas, face e dobras por tempo prolongado"
+  },
+  "ambroxol_15_5": {
+    "nome": "Ambroxol 15mg/5ml — 01 frasco",
+    "faixa_mgkg": [
+      0.5,
+      0.5
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 30,
+    "concentracao": 3,
+    "frequencia": "de 8 em 8 horas",
+    "duracao": "por 5 a 7 dias",
+    "observacao": "Mucolítico. Usar em <2 anos apenas com orientação. Agitar antes de usar."
   }
 }
