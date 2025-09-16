@@ -87,5 +87,8 @@
     "medicamentos_ids": [
       "amoxi_clav_400"
     ]
-  }
+  },
+  "10": {
+    "nome": "Suplementação de Vitamina D / Quando o paciente pede uma 'vitamina'",
+    "medicamentos_ids": [ "vitamina_d_200ui" ]
 }

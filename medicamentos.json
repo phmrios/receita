@@ -216,6 +216,21 @@
     "duracao": "por 5 a 7 dias",
     "observacao": "em menores de 2 anos: 1 sachê 2x/dia; acima de 2 anos: 1 sachê 2x/dia"
   },
+  // ... (bloco anterior, ex: "zinco": { ... }),
+  "vitamina_d_200ui": {
+    "nome": "Vitamina D3 (Colecalciferol) 200 UI/gota ----------------- 01 frasco",
+    "calculo_especial": "calculo_vitd_idade",
+    "concentracao": 200,
+    "frequencia": "1 vez ao dia",
+    "duracao": "Uso contínuo (manutenção)",
+    "observacao": "Manutenção/profilaxia da deficiência. Tratamento de deficiência requer avaliação individual.",
+    "dosagem_por_idade_ui": {
+      "1":   { "dose": 400, "texto": "400 UI/dia (Lactentes 0-12m)" },
+      "18":  { "dose": 600, "texto": "600 UI/dia (Crianças e Adolescentes 1-18a)" },
+      "70":  { "dose": 800, "texto": "600-800 UI/dia (Adultos 19-70a)" },
+      "999": { "dose": 1000, "texto": "800-1000 UI/dia (Acima de 71a)" }
+    }
+  },
   "zinco": {
     "nome": "Sulfato de Zinco ----------------- comprimido ou solução",
     "faixa_mgkg": null,

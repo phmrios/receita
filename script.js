@@ -58,6 +58,37 @@ document.addEventListener("DOMContentLoaded", async function() {
      * --- NOVA FUNÇÃO (Estratégia 1) ---
      * Calcula a dose para SRO (Terapia de Reidratação Oral).
      */
+  function calcularDoseVitDIdade(med, peso, idade) {
+    // Pega as chaves do objeto (as idades máximas: "1", "18", "70", "999")
+    const limitesIdade = Object.keys(med.dosagem_por_idade_ui).sort((a, b) => a - b);
+    
+    let doseUI = 0;
+    let doseTexto = "";
+
+    // Itera pelas idades limite
+    for (const limite of limitesIdade) {
+        if (idade <= parseFloat(limite)) {
+            // Encontrou a faixa etária correta
+            doseUI = med.dosagem_por_idade_ui[limite].dose;
+            doseTexto = med.dosagem_por_idade_ui[limite].texto;
+            break; // Para o loop
+        }
+    }
+
+    if (doseUI === 0) {
+        // Se não encontrou (idade > 999), usa o último
+        const ultimoLimite = limitesIdade[limitesIdade.length - 1];
+        doseUI = med.dosagem_por_idade_ui[ultimoLimite].dose;
+        doseTexto = med.dosagem_por_idade_ui[ultimoLimite].texto;
+    }
+
+    const concentracao = med.concentracao; // 200 UI/gota
+    // Arredonda as gotas para o número inteiro mais próximo
+    const doseGotas = Math.round(doseUI / concentracao); 
+
+    // Retorna a orientação final
+    return `tomar ${doseGotas} gotas (${doseUI} UI), via oral, ${med.frequencia}.\n   Indicação: ${doseTexto}`;
+}
     function calcularDoseSRO(med, peso, idade) {
         const minMl = med.sro_reidratacao_mlkg[0] * peso;
         const maxMl = med.sro_reidratacao_mlkg[1] * peso;
@@ -114,6 +145,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const CALCULOS_ESPECIAIS = {
         "sro": calcularDoseSRO,
         "ambroxol_idade": calcularDoseAmbroxol
+      "calculo_vitd_idade": calcularDoseVitDIdade
         // O próximo cálculo especial que criares,
         // basta adicionar a função e mapeá-la aqui!
     };
