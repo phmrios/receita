@@ -1,88 +1,38 @@
 // Espera o DOM (a página) carregar
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", async function() {
 
     // ==============================================================================
-    // === BLOCO DE CARREGAMENTO DE DADOS (V4) ======================================
+    // === BLOCO DE CARREGAMENTO DE DADOS (OTIMIZADO) ===============================
     // ==============================================================================
-    
-    const MEDICAMENTOS = {
-      "paracetamol_200": { "nome": "Paracetamol 200mg/ml ----------------- 01 frasco", "faixa_mgkg": [ 10, 15 ], "tipo_faixa_mgkg": "dose", "dose_max_mg_dose": 750, "concentracao": 200, "frequencia": "de 6 em 6 horas", "observacao": "se febre ou dor" },
-      "dipirona_500": { "nome": "Dipirona 500mg/ml ----------------- 01 frasco", "faixa_mgkg": [ 10, 20 ], "tipo_faixa_mgkg": "dose", "dose_max_mg_dose": 1000, "concentracao": 500, "frequencia": "de 6 em 6 horas", "observacao": "se febre ou dor" },
-      "ibuprofeno_100": { "nome": "Ibuprofeno 100mg/ml ----------------- 01 frasco", "faixa_mgkg": [ 5, 10 ], "tipo_faixa_mgkg": "dose", "dose_max_mg_dose": 400, "concentracao": 100, "frequencia": "de 8 em 8 horas", "observacao": "se febre ou dor" },
-      "amoxicilina_250": { "nome": "Amoxicilina 250mg/5ml ----------------- 01 frasco", "faixa_mgkg": [ 50, 50 ], "tipo_faixa_mgkg": "dia", "dose_max_mg_dose": 500, "concentracao": 50, "frequencia": "de 8 em 8 horas", "duracao": "por 7 dias" },
-      "amoxi_clav_400": { "nome": "Amoxicilina-clavulanato 400mg/5ml ----------------- 01 frasco", "faixa_mgkg": [ 40, 40 ], "tipo_faixa_mgkg": "dia", "dose_max_mg_dose": 875, "concentracao": 80, "frequencia": "de 8 em 8 horas", "duracao": "por 7 dias" },
-      "cefalexina_250": { "nome": "Cefalexina 250mg/5ml ----------------- 01 frasco", "faixa_mgkg": [ 50, 50 ], "tipo_faixa_mgkg": "dia", "dose_max_mg_dose": 1000, "concentracao": 50, "frequencia": "de 6 em 6 horas", "duracao": "por 7 dias" },
-      "azitromicina_oral": { "nome": "Azitromicina 200mg/5ml ----------------- suspensão oral", "faixa_mgkg": [ 10, 10 ], "tipo_faixa_mgkg": "dia", "dose_max_mg_dose": 500, "concentracao": 40, "frequencia": "1 vez ao dia", "duracao": "por 5 dias", "observacao": "Dar a quantidade indicada, sempre no mesmo horário, 1 vez por dia. Agitar bem o frasco antes de usar. Oferecer com um pouco de água após a dose. Não interromper antes do tempo prescrito, mesmo que a criança melhore." },
-      "ciprofloxacino": { "nome": "Ciprofloxacino 250mg/5ml ----------------- suspensão oral", "faixa_mgkg": [ 15, 15 ], "tipo_faixa_mgkg": "dose", "dose_max_mg_dose": 500, "concentracao": 50, "frequencia": "de 12 em 12 horas", "duracao": "por 5 dias", "observacao": "Dar a quantidade indicada, sempre no mesmo horário, 1 vez por dia. Agitar bem o frasco antes de usar. Oferecer com um pouco de água após a dose. Não interromper antes do tempo prescrito, mesmo que a criança melhore." },
-      "mel_frasco": { "nome": "Mel ----------------- 01 frasco", "faixa_mgkg": null, "idade_minima_anos": 1, "concentracao": null, "frequencia": "5 ml antes de dormir", "observacao": "(não usar em menores de 1 ano)" },
-      "soro_fisiologico": { "nome": "Soro fisiológico 0,9% ----------------- 01 frasco", "faixa_mgkg": null, "concentracao": null, "frequencia": "5ml em cada narina, várias vezes ao dia", "observacao": "se congestão nasal" },
-      "ondansetrona_4": { "nome": "Ondansetrona 4mg/5ml ----------------- 01 frasco", "faixa_mgkg": [ 0.2, 0.2 ], "tipo_faixa_mgkg": "dose", "dose_max_mg_dose": 8, "concentracao": 0.8, "frequencia": "de 8 em 8 horas", "observacao": "se vômitos" },
-      "loratadina_1": { "nome": "Loratadina 1mg/ml ----------------- 01 frasco", "faixa_mgkg": [ 0.2, 0.2 ], "tipo_faixa_mgkg": "dose", "dose_max_mg_dose": 10, "concentracao": 1, "frequencia": "1 vez ao dia", "duracao": "por 5 dias" },
-      "prednisolona": { "nome": "Prednisolona 3mg/ml ----------------- xarope", "faixa_mgkg": [ 2, 2 ], "tipo_faixa_mgkg": "dia", "dose_max_mg_dose": 40, "concentracao": 3, "frequencia": "1 vez ao dia", "duracao": "por 5 dias" },
-      "hidroxizina": { "nome": "Hidroxizina 2mg/ml ----------------- xarope", "faixa_mgkg": [ 0.7, 0.7 ], "tipo_faixa_mgkg": "dose", "dose_max_mg_dose": 25, "concentracao": 2, "frequencia": "de 8 em 8 horas", "duracao": "por 5 dias" },
-      
-      // --- MUDANÇA V4 ---
-      // A lógica do Ambroxol foi atualizada para ser mais inteligente,
-      // incluindo dose E frequência variáveis por idade.
-      "ambroxol": {
-        "nome": "Ambroxol 15mg/5ml ----------------- xarope",
-        "faixa_mgkg": null,
-        "calculo_especial": "ambroxol_idade", // <-- GATILHO PARA A NOVA LÓGICA
-        "calculo_idade_detalhado": {
-           "2": { "dose_ml": 2.5, "frequencia": "2 vezes ao dia" },
-           "5": { "dose_ml": 2.5, "frequencia": "3 vezes ao dia" },
-           "12": { "dose_ml": 5, "frequencia": "3 vezes ao dia" }
-        },
-        "duracao": "por 5 dias"
-      },
-      // --- FIM DA MUDANÇA V4 ---
 
-      "sro_sache": {
-        "nome": "Solução de Reidratação Oral (SRO) ----------------- 01 caixa",
-        "calculo_especial": "sro", 
-        "frequencia": "Conforme fases abaixo:",
-        "observacao": "Reconstituição: Dissolver 1 envelope em 1 litro de água potável (não variar o volume). Agitar bem até dissolução completa. Desprezar o conteúdo após 24 horas, mesmo que haja sobra.",
-        "sro_reidratacao_mlkg": [75, 100], 
-        "sro_manutencao_idade": {
-          "1": "50-100 mL", 
-          "10": "100-200 mL", 
-          "99": "À vontade (geralmente até 400 mL)" 
+    let MEDICAMENTOS = {};
+    let SINTOMAS = {};
+
+    async function carregarDados() {
+        try {
+            const [respMedicamentos, respSintomas] = await Promise.all([
+                fetch('medicamentos.json'),
+                fetch('sintomas.json')
+            ]);
+
+            if (!respMedicamentos.ok || !respSintomas.ok) {
+                throw new Error('Falha ao carregar os ficheiros de dados JSON.');
+            }
+
+            MEDICAMENTOS = await respMedicamentos.json();
+            SINTOMAS = await respSintomas.json();
+            
+            console.log("Dados de medicamentos e sintomas carregados com sucesso!");
+
+        } catch (error) {
+            console.error("Erro ao carregar dados:", error);
+            alert("ERRO FATAL: Não foi possível carregar a base de dados de medicamentos. A aplicação não pode continuar. Tente recarregar a página.");
         }
-      },
-      "bromoprida_gotas_4mg": {
-        "nome": "Bromoprida 4mg/mL ----------------- Gotas",
-        "faixa_mgkg": [ 0.5, 1 ],
-        "tipo_faixa_mgkg": "dose", 
-        "dose_max_gotas_dose": 58, 
-        "concentracao": 4,
-        "frequencia": "de 8 em 8 horas",
-        "observacao": "Administrar preferencialmente 30 minutos antes das refeições.",
-        "idade_minima_anos": 1
-      },
-      "probiotico": { "nome": "Probiótico (Saccharomyces boulardii) 200mg ----------------- sachê/cápsula", "faixa_mgkg": null, "concentracao": 200, "frequencia": "2 vezes ao dia", "duracao": "por 5 a 7 dias", "observacao": "em menores de 2 anos: 1 sachê 2x/dia; acima de 2 anos: 1 sachê 2x/dia" },
-      "zinco": { "nome": "Sulfato de Zinco ----------------- comprimido ou solução", "faixa_mgkg": null, "concentracao": 4, "frequencia": "1 vez ao dia", "duracao": "por 10 a 14 dias", "observacao": "crianças menores de 6 meses: 10 mg/dia; a partir de 6 meses: 20 mg/dia" }
-    };
+    }
 
-    // --- MUDANÇA V4 ---
-    // Sintoma "Vômitos" (5) foi atualizado (já estava na V3 que eu te mandei).
-    // O Sintoma "Tosse Com Catarro" (28) JÁ INCLUÍA Ambroxol.
-    const SINTOMAS = {
-      "1": { "nome": "Febre / Dor", "medicamentos_ids": [ "paracetamol_200", "dipirona_500", "ibuprofeno_100" ] },
-      "2": { "nome": "Tosse Seca", "medicamentos_ids": [ "mel_frasco", "hidroxizina" ] },
-      "2.8": { "nome": "Tosse Com Catarro", "medicamentos_ids": [ "mel_frasco", "hidroxizina", "ambroxol" ] },
-      "3": { "nome": "Congestão nasal", "medicamentos_ids": [ "soro_fisiologico" ] },
-      "4": { "nome": "Faringite Bacteriana", "medicamentos_ids": [ "ibuprofeno_100", "paracetamol_200", "amoxicilina_250", "amoxi_clav_400" ] },
-      "5": { "nome": "Vômitos", "medicamentos_ids": [ "ondansetrona_4", "bromoprida_gotas_4mg" ] },
-      "5.8": { "nome": "Diarreia", "medicamentos_ids": [ "sro_sache", "probiotico", "zinco" ] },
-      "5.C": { "nome": "Diarreia + ATB (azitro)", "medicamentos_ids": [ "sro_sache", "probiotico", "zinco", "azitromicina_oral" ] },
-      "6": { "nome": "Alergia / Urticária", "medicamentos_ids": [ "loratadina_1", "prednisolona" ] },
-      "7": { "nome": "Otite Média Aguda (OMA)", "medicamentos_ids": [ "amoxicilina_250", "paracetamol_200", "ibuprofeno_100" ] },
-      "8": { "nome": "Infecção de Pele", "medicamentos_ids": [ "cefalexina_250" ] },
-      "9": { "nome": "Infecção Urinária / Sinusite", "medicamentos_ids": [ "amoxi_clav_400" ] }
-    };
 
     // ==============================================================================
-    // === BLOCO DE FUNÇÕES "TRADUZIDAS" DO PYTHON (V4) =============================
+    // === BLOCO DE FUNÇÕES DE CÁLCULO (OTIMIZADO V5) ===============================
     // ==============================================================================
 
     function arredondamentoPersonalizado(numero) {
@@ -105,67 +55,94 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     /**
-     * --- MUDANÇA V4 ---
-     * A lógica "calculo_por_idade_ml" foi REMOVIDA e substituída por
-     * "calculo_especial: ambroxol_idade", que é mais inteligente.
+     * --- NOVA FUNÇÃO (Estratégia 1) ---
+     * Calcula a dose para SRO (Terapia de Reidratação Oral).
+     */
+    function calcularDoseSRO(med, peso, idade) {
+        const minMl = med.sro_reidratacao_mlkg[0] * peso;
+        const maxMl = med.sro_reidratacao_mlkg[1] * peso;
+        let reidratacaoTexto = `Fase de Reidratação (primeiras 4-6h): ${minMl.toFixed(0)} a ${maxMl.toFixed(0)} mL.`;
+        if (idade > 10) {
+            reidratacaoTexto = "Fase de Reidratação (primeiras 4-6h): 2 a 3 Litros, conforme aceitação.";
+        }
+
+        let manutencaoTexto = "";
+        const limitesIdadeManutencao = Object.keys(med.sro_manutencao_idade).sort((a, b) => a - b);
+        for (const limite of limitesIdadeManutencao) {
+            if (idade <= limite) {
+                manutencaoTexto = `Fase de Manutenção: ${med.sro_manutencao_idade[limite]} após cada evacuação líquida.`;
+                break;
+            }
+        }
+        // Retorna a string de orientação base
+        return `${med.frequencia}\n     - ${reidratacaoTexto}\n     - ${manutencaoTexto}`;
+    }
+
+    /**
+     * --- NOVA FUNÇÃO (Estratégia 2) ---
+     * Calcula a dose para Ambroxol com base na idade.
+     */
+    function calcularDoseAmbroxol(med, peso, idade) {
+        let doseMl = null;
+        let freq = "";
+        const limitesIdade = Object.keys(med.calculo_idade_detalhado).sort((a, b) => a - b);
+        
+        for (const limite of limitesIdade) {
+            if (idade <= limite) {
+                const doseInfo = med.calculo_idade_detalhado[limite];
+                doseMl = doseInfo.dose_ml;
+                freq = doseInfo.frequencia; 
+                break;
+            }
+        }
+
+        if (doseMl) {
+            const doseTexto = `tomar ${doseMl.toFixed(1)} ml`;
+            // Retorna a string de orientação base
+            return `${doseTexto}, via oral, ${freq}`;
+        } else {
+            // Caso para > 12 anos
+            return "Dose adulto (conforme bula) ou conforme orientação médica.";
+        }
+    }
+
+    /**
+     * --- NOVO "REGISTO DE ESTRATÉGIAS" ---
+     * Este objeto mapeia a string 'calculo_especial' (do JSON)
+     * para a função de cálculo correspondente.
+     */
+    const CALCULOS_ESPECIAIS = {
+        "sro": calcularDoseSRO,
+        "ambroxol_idade": calcularDoseAmbroxol
+        // O próximo cálculo especial que criares,
+        // basta adicionar a função e mapeá-la aqui!
+    };
+
+    /**
+     * Função Principal de Cálculo de Dose (REFATORADA)
      */
     function calcularDose(med, peso, idade) {
         let orientacaoBase = "";
         let alerta = "";
 
+        // 1. Alerta de idade
         const idadeMinima = med.idade_minima_anos;
         if (idadeMinima != null && idade < idadeMinima) {
             alerta = `   >> ALERTA: Medicamento não recomendado para menores de ${Math.floor(idadeMinima)} ano(s). <<\n`;
         }
 
-        // --- LÓGICA ESPECIAL SRO (Mantida) ---
-        if (med.calculo_especial === "sro") {
-            const minMl = med.sro_reidratacao_mlkg[0] * peso;
-            const maxMl = med.sro_reidratacao_mlkg[1] * peso;
-            let reidratacaoTexto = `Fase de Reidratação (primeiras 4-6h): ${minMl.toFixed(0)} a ${maxMl.toFixed(0)} mL.`;
-            if (idade > 10) {
-                 reidratacaoTexto = "Fase de Reidratação (primeiras 4-6h): 2 a 3 Litros, conforme aceitação.";
-            }
-
-            let manutencaoTexto = "";
-            const limitesIdadeManutencao = Object.keys(med.sro_manutencao_idade).sort((a, b) => a - b);
-            for (const limite of limitesIdadeManutencao) {
-                if (idade <= limite) {
-                    manutencaoTexto = `Fase de Manutenção: ${med.sro_manutencao_idade[limite]} após cada evacuação líquida.`;
-                    break;
-                }
-            }
-            orientacaoBase = `${med.frequencia}\n     - ${reidratacaoTexto}\n     - ${manutencaoTexto}`;
-            
-        // --- NOVIDADE V4: LÓGICA ESPECIAL AMBROXOL ---
-        } else if (med.calculo_especial === "ambroxol_idade") {
-            let doseMl = null;
-            let freq = "";
-            const limitesIdade = Object.keys(med.calculo_idade_detalhado).sort((a, b) => a - b);
-            
-            for (const limite of limitesIdade) {
-                if (idade <= limite) {
-                    // Pega o objeto inteiro da dose (ex: { dose_ml: 2.5, frequencia: "2 vezes ao dia" })
-                    const doseInfo = med.calculo_idade_detalhado[limite];
-                    doseMl = doseInfo.dose_ml;
-                    freq = doseInfo.frequencia; // Pega a frequência específica!
-                    break;
-                }
-            }
-
-            if (doseMl) {
-                const doseTexto = `tomar ${doseMl.toFixed(1)} ml`;
-                orientacaoBase = `${doseTexto}, via oral, ${freq}`; // Usa a frequência correta
-            } else {
-                // Caso para > 12 anos (que não definimos, usa padrão se houver)
-                orientacaoBase = "Dose adulto (conforme bula) ou conforme orientação médica.";
-            }
-
-        // --- CÁLCULO MG/KG (Atualizado na V3) ---
+        // 2. Lógica de Cálculo
+        
+        // --- NOVO: LÓGICA DE CÁLCULO ESPECIAL (Strategy) ---
+        if (med.calculo_especial && CALCULOS_ESPECIAIS[med.calculo_especial]) {
+            orientacaoBase = CALCULOS_ESPECIAIS[med.calculo_especial](med, peso, idade);
+        
+        // --- CÁLCULO PADRÃO MG/KG ---
         } else if (med.faixa_mgkg) { 
             const doseMedia = (med.faixa_mgkg[0] + med.faixa_mgkg[1]) / 2;
             let doseMgDose = 0; 
             
+            // (Pequena correção aqui: a tua v4 original tinha 'tipo_faixa_mgkg')
             if (med.tipo_faixa_mgkg === "dia") {
                 const doseMgDia = doseMedia * peso;
                 const numDoses = getNumDoses(med.frequencia);
@@ -197,12 +174,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 orientacaoBase = `${doseTexto}, via oral, ${med.frequencia || ''}`;
             }
         
-        // --- CÁLCULO SIMPLES (Mantido) ---
+        // --- CÁLCULO SIMPLES ---
         } else { 
             orientacaoBase = `${med.frequencia || 'Conforme orientação médica'}`;
         }
 
-        // --- Montagem final (igual para todos) ---
+        // 3. Montagem final
         let orientacaoFinal = orientacaoBase;
         if (med.duracao) {
             orientacaoFinal += `, ${med.duracao}`;
@@ -258,8 +235,6 @@ Peso: ${peso} kg
     // === BLOCO DE CONTROLO DA INTERFACE (UI) ======================================
     // ==============================================================================
 
-    // --- (Toda esta seção é IDÊNTICA à V3/V2. Sem alterações) ---
-
     function popularListaSintomas() {
         const container = document.getElementById('sintomas-lista');
         
@@ -285,8 +260,20 @@ Peso: ${peso} kg
         }
     }
     
+    // --- INICIALIZAÇÃO DA APLICAÇÃO ---
+
+    // 1. Espera os dados carregarem
+    await carregarDados();
+
+    // 2. Se SINTOMAS não foi carregado (deu erro), não faz mais nada.
+    if (Object.keys(SINTOMAS).length === 0) {
+        return;
+    }
+
+    // 3. AGORA, com os dados prontos, popula a lista de sintomas na tela.
     popularListaSintomas();
 
+    // 4. AGORA, anexa os 'escutadores' de eventos (event listeners)
     document.getElementById('btn-goto-step-2').addEventListener('click', function() {
         const idade = document.getElementById('idade').value;
         const peso = document.getElementById('peso').value;
@@ -327,8 +314,17 @@ Peso: ${peso} kg
     document.getElementById('copy-button').addEventListener('click', function() {
         const resultadoTexto = document.getElementById('resultado-texto');
         resultadoTexto.select();
-        document.execCommand('copy');
-        alert('Texto copiado para a área de transferência!');
+        navigator.clipboard.writeText(resultadoTexto.value).then(() => {
+            alert('Texto copiado para a área de transferência!');
+        }).catch(err => {
+            console.warn("Falha ao copiar (moderno), tentando método antigo...", err);
+            try {
+                document.execCommand('copy');
+                alert('Texto copiado para a área de transferência! (fallback)');
+            } catch (e) {
+                alert('Falha ao copiar o texto.');
+            }
+        });
     });
 
     document.getElementById('restart-button').addEventListener('click', function() {

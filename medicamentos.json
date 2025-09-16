@@ -1,0 +1,227 @@
+{
+  "paracetamol_200": {
+    "nome": "Paracetamol 200mg/ml ----------------- 01 frasco",
+    "faixa_mgkg": [
+      10,
+      15
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 750,
+    "concentracao": 200,
+    "frequencia": "de 6 em 6 horas",
+    "observacao": "se febre ou dor"
+  },
+  "dipirona_500": {
+    "nome": "Dipirona 500mg/ml ----------------- 01 frasco",
+    "faixa_mgkg": [
+      10,
+      20
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 1000,
+    "concentracao": 500,
+    "frequencia": "de 6 em 6 horas",
+    "observacao": "se febre ou dor"
+  },
+  "ibuprofeno_100": {
+    "nome": "Ibuprofeno 100mg/ml ----------------- 01 frasco",
+    "faixa_mgkg": [
+      5,
+      10
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 400,
+    "concentracao": 100,
+    "frequencia": "de 8 em 8 horas",
+    "observacao": "se febre ou dor"
+  },
+  "amoxicilina_250": {
+    "nome": "Amoxicilina 250mg/5ml ----------------- 01 frasco",
+    "faixa_mgkg": [
+      50,
+      50
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 500,
+    "concentracao": 50,
+    "frequencia": "de 8 em 8 horas",
+    "duracao": "por 7 dias"
+  },
+  "amoxi_clav_400": {
+    "nome": "Amoxicilina-clavulanato 400mg/5ml ----------------- 01 frasco",
+    "faixa_mgkg": [
+      40,
+      40
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 875,
+    "concentracao": 80,
+    "frequencia": "de 8 em 8 horas",
+    "duracao": "por 7 dias"
+  },
+  "cefalexina_250": {
+    "nome": "Cefalexina 250mg/5ml ----------------- 01 frasco",
+    "faixa_mgkg": [
+      50,
+      50
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 1000,
+    "concentracao": 50,
+    "frequencia": "de 6 em 6 horas",
+    "duracao": "por 7 dias"
+  },
+  "azitromicina_oral": {
+    "nome": "Azitromicina 200mg/5ml ----------------- suspensão oral",
+    "faixa_mgkg": [
+      10,
+      10
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 500,
+    "concentracao": 40,
+    "frequencia": "1 vez ao dia",
+    "duracao": "por 5 dias",
+    "observacao": "Dar a quantidade indicada, sempre no mesmo horário, 1 vez por dia. Agitar bem o frasco antes de usar. Oferecer com um pouco de água após a dose. Não interromper antes do tempo prescrito, mesmo que a criança melhore."
+  },
+  "ciprofloxacino": {
+    "nome": "Ciprofloxacino 250mg/5ml ----------------- suspensão oral",
+    "faixa_mgkg": [
+      15,
+      15
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 500,
+    "concentracao": 50,
+    "frequencia": "de 12 em 12 horas",
+    "duracao": "por 5 dias",
+    "observacao": "Dar a quantidade indicada, sempre no mesmo horário, 1 vez por dia. Agitar bem o frasco antes de usar. Oferecer com um pouco de água após a dose. Não interromper antes do tempo prescrito, mesmo que a criança melhore."
+  },
+  "mel_frasco": {
+    "nome": "Mel ----------------- 01 frasco",
+    "faixa_mgkg": null,
+    "idade_minima_anos": 1,
+    "concentracao": null,
+    "frequencia": "5 ml antes de dormir",
+    "observacao": "(não usar em menores de 1 ano)"
+  },
+  "soro_fisiologico": {
+    "nome": "Soro fisiológico 0,9% ----------------- 01 frasco",
+    "faixa_mgkg": null,
+    "concentracao": null,
+    "frequencia": "5ml em cada narina, várias vezes ao dia",
+    "observacao": "se congestão nasal"
+  },
+  "ondansetrona_4": {
+    "nome": "Ondansetrona 4mg/5ml ----------------- 01 frasco",
+    "faixa_mgkg": [
+      0.2,
+      0.2
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 8,
+    "concentracao": 0.8,
+    "frequencia": "de 8 em 8 horas",
+    "observacao": "se vômitos"
+  },
+  "loratadina_1": {
+    "nome": "Loratadina 1mg/ml ----------------- 01 frasco",
+    "faixa_mgkg": [
+      0.2,
+      0.2
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 10,
+    "concentracao": 1,
+    "frequencia": "1 vez ao dia",
+    "duracao": "por 5 dias"
+  },
+  "prednisolona": {
+    "nome": "Prednisolona 3mg/ml ----------------- xarope",
+    "faixa_mgkg": [
+      2,
+      2
+    ],
+    "tipo_faixa_mgkg": "dia",
+    "dose_max_mg_dose": 40,
+    "concentracao": 3,
+    "frequencia": "1 vez ao dia",
+    "duracao": "por 5 dias"
+  },
+  "hidroxizina": {
+    "nome": "Hidroxizina 2mg/ml ----------------- xarope",
+    "faixa_mgkg": [
+      0.7,
+      0.7
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_mg_dose": 25,
+    "concentracao": 2,
+    "frequencia": "de 8 em 8 horas",
+    "duracao": "por 5 dias"
+  },
+  "ambroxol": {
+    "nome": "Ambroxol 15mg/5ml ----------------- xarope",
+    "faixa_mgkg": null,
+    "calculo_especial": "ambroxol_idade",
+    "calculo_idade_detalhado": {
+      "2": {
+        "dose_ml": 2.5,
+        "frequencia": "2 vezes ao dia"
+      },
+      "5": {
+        "dose_ml": 2.5,
+        "frequencia": "3 vezes ao dia"
+      },
+      "12": {
+        "dose_ml": 5,
+        "frequencia": "3 vezes ao dia"
+      }
+    },
+    "duracao": "por 5 dias"
+  },
+  "sro_sache": {
+    "nome": "Solução de Reidratação Oral (SRO) ----------------- 01 caixa",
+    "calculo_especial": "sro",
+    "frequencia": "Conforme fases abaixo:",
+    "observacao": "Reconstituição: Dissolver 1 envelope em 1 litro de água potável (não variar o volume). Agitar bem até dissolução completa. Desprezar o conteúdo após 24 horas, mesmo que haja sobra.",
+    "sro_reidratacao_mlkg": [
+      75,
+      100
+    ],
+    "sro_manutencao_idade": {
+      "1": "50-100 mL",
+      "10": "100-200 mL",
+      "99": "À vontade (geralmente até 400 mL)"
+    }
+  },
+  "bromoprida_gotas_4mg": {
+    "nome": "Bromoprida 4mg/mL ----------------- Gotas",
+    "faixa_mgkg": [
+      0.5,
+      1
+    ],
+    "tipo_faixa_mgkg": "dose",
+    "dose_max_gotas_dose": 58,
+    "concentracao": 4,
+    "frequencia": "de 8 em 8 horas",
+    "observacao": "Administrar preferencialmente 30 minutos antes das refeições.",
+    "idade_minima_anos": 1
+  },
+  "probiotico": {
+    "nome": "Probiótico (Saccharomyces boulardii) 200mg ----------------- sachê/cápsula",
+    "faixa_mgkg": null,
+    "concentracao": 200,
+    "frequencia": "2 vezes ao dia",
+    "duracao": "por 5 a 7 dias",
+    "observacao": "em menores de 2 anos: 1 sachê 2x/dia; acima de 2 anos: 1 sachê 2x/dia"
+  },
+  "zinco": {
+    "nome": "Sulfato de Zinco ----------------- comprimido ou solução",
+    "faixa_mgkg": null,
+    "concentracao": 4,
+    "frequencia": "1 vez ao dia",
+    "duracao": "por 10 a 14 dias",
+    "observacao": "crianças menores de 6 meses: 10 mg/dia; a partir de 6 meses: 20 mg/dia"
+  }
+}
