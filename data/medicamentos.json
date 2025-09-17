@@ -1,42 +1,83 @@
 {
   "paracetamol_200": {
-    "nome": "Paracetamol 200mg/ml — 01 frasco",
-    "faixa_mgkg": [
-      10,
-      15
+    "nome": "Paracetamol",
+    "forma": "Gotas",
+    "apresentacao": "200 mg/mL",
+    "regras": [
+      {
+        "idade_min": 0.25,
+        "idade_max": 12,
+        "faixa_mgkg": [10, 15],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mgkg_dia": 60,
+        "dose_max_mg_dia": 4000,
+        "concentracao": 200,
+        "frequencia": "a cada 6 horas",
+        "duracao": "por 5 dias se dor ou febre > 37,5",
+        "observacao": ""
+      }
     ],
-    "tipo_faixa_mgkg": "dose",
-    "dose_max_mg_dose": 750,
-    "concentracao": 200,
-    "frequencia": "de 6 em 6 horas",
-    "observacao": "se febre ou dor"
+    "observacao": ""
   },
   "dipirona_500": {
-    "nome": "Dipirona 500mg/ml — 01 frasco",
-    "faixa_mgkg": [
-      10,
-      20
+    "nome": "Dipirona",
+    "forma": "Gotas",
+    "apresentacao": "500mg/mL",
+    "regras": [
+      {
+        "idade_min": 0,
+        "idade_max": 12,
+        "faixa_mgkg": [10, 20],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 1000,
+        "concentracao": 500,
+        "frequencia": "a cada 6 horas",
+        "duracao": "por 5 dias se dor ou febre > 37,5",
+        "observacao": ""
+      }
     ],
-    "tipo_faixa_mgkg": "dose",
-    "dose_max_mg_dose": 1000,
-    "concentracao": 500,
-    "frequencia": "de 6 em 6 horas",
-    "observacao": "se febre ou dor"
+    "observacao": ""
   },
-  "ibuprofeno_100": {
-    "nome": "Ibuprofeno 100mg/ml — 01 frasco",
-    "faixa_mgkg": [
-      5,
-      10
+  "ibuprofeno_100_gotas": {
+    "nome": "Ibuprofeno",
+    "forma": "Gotas",
+    "apresentacao": "100 mg/mL",
+    "regras": [
+      {
+        "idade_min": 0.5,
+        "faixa_mgkg": [5, 10],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mgkg_dia": 40,
+        "concentracao": 100,
+        "frequencia": "a cada 6 ou 8 horas",
+        "duracao": "por 5 dias se dor ou febre > 37,5",
+        "observacao": ""
+      }
     ],
-    "tipo_faixa_mgkg": "dose",
-    "dose_max_mg_dose": 400,
-    "concentracao": 100,
-    "frequencia": "de 8 em 8 horas",
-    "observacao": "se febre ou dor"
+    "observacao": ""
   },
-  "amoxicilina_250_5": {
-    "nome": "Amoxicilina 250mg/5ml — suspensão oral",
+  "ibuprofeno_100_susp": {
+    "nome": "Ibuprofeno",
+    "forma": "Suspensão",
+    "apresentacao": "100 mg/5 mL",
+    "regras": [
+      {
+        "idade_min": 0.5,
+        "faixa_mgkg": [5, 10],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mgkg_dia": 40,
+        "concentracao": 20,
+        "frequencia": "a cada 6 ou 8 horas",
+        "duracao": "por 5 dias se dor ou febre > 37,5",
+        "observacao": ""
+      }
+    ],
+    "observacao": ""
+  },
+  "amoxicilina_250_5_dose_baixa": {
+    "nome": "Amoxicilina (Dose Padrão)",
+    "forma": "Suspensão",
+    "apresentacao": "250mg/5ml",
     "regras": [
       {
         "idade_min": 0,
@@ -45,234 +86,474 @@
         "faixa_mgkg": [50, 50],
         "tipo_faixa_mgkg": "dia",
         "concentracao": 50,
-        "frequencia": "de 8 em 8 horas",
-        "duracao": "por 7 a 10 dias",
-        "observacao": "Dose habitual pediátrica: 50 mg/kg/dia divididos a cada 8 ou 12h"
-      },
-      {
-        "idade_min": 0,
-        "idade_max": 18,
-        "peso_min": 40,
-        "faixa_mgkg": null,
-        "concentracao": 50,
-        "observacao": "Peso ≥ 40 kg: seguir posologia de adulto"
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias",
+        "observacao": ""
       }
     ],
-    "observacao": "Forma líquida recomendada: suspensão oral ou gotas. Utilizar seringa dosadora. Reconstituir conforme fabricante e agitar bem antes de cada uso."
+    "observacao": "Reconstituir conforme fabricante e agitar antes de usar. Usar seringa dosadora."
+  },
+  "amoxicilina_250_5_dose_alta": {
+    "nome": "Amoxicilina (Dose Alta)",
+    "forma": "Suspensão",
+    "apresentacao": "250mg/5ml",
+    "regras": [
+      {
+        "idade_min": 0,
+        "idade_max": 12,
+        "peso_max": 39.9,
+        "faixa_mgkg": [80, 90],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 50,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 10 dias",
+        "observacao": ""
+      }
+    ],
+    "observacao": "Reconstituir conforme fabricante e agitar antes de usar. Usar seringa dosadora."
+  },
+  "amoxicilina_250_5_adulto": {
+    "nome": "Amoxicilina (Dose Adulto)",
+    "forma": "Suspensão",
+    "apresentacao": "250mg/5ml",
+    "regras": [
+      {
+        "idade_min": 13,
+        "idade_max": 18,
+        "peso_min": 40,
+        "observacao": ""
+      }
+    ],
+    "observacao": "Reconstituir conforme fabricante e agitar antes de usar. Usar seringa dosadora."
   },
   "azitromicina_oral": {
-    "nome": "Azitromicina 200mg/5ml — suspensão oral",
-    "faixa_mgkg": [
-      10,
-      10
+    "nome": "Azitromicina",
+    "forma": "Suspensão",
+    "apresentacao": "200mg/5ml",
+    "regras": [
+      {
+        "idade_min": 0,
+        "idade_max": 12,
+        "faixa_mgkg": [10, 10],
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 500,
+        "concentracao": 40,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 5 dias",
+        "observacao": "Agitar bem o frasco antes de usar. Não interromper antes do tempo prescrito."
+      }
     ],
-    "tipo_faixa_mgkg": "dia",
-    "dose_max_mg_dose": 500,
-    "concentracao": 40,
-    "frequencia": "1 vez ao dia",
-    "duracao": "por 5 dias",
-    "observacao": "Agitar bem o frasco antes de usar. Não interromper antes do tempo prescrito."
+    "observacao": "Seguir esquema completo."
   },
   "soro_fisiologico": {
-    "nome": "Soro fisiológico 0,9% — 01 frasco",
-    "faixa_mgkg": null,
-    "concentracao": null,
-    "frequencia": "5ml em cada narina, várias vezes ao dia",
-    "observacao": "se congestão nasal"
+    "nome": "Soro fisiológico 0,9%",
+    "forma": "Solução",
+    "apresentacao": "0,9%",
+    "regras": [
+      {
+        "observacao": "Instilar 5 mL em cada narina, várias vezes ao dia."
+      }
+    ],
+    "observacao": "Uso em congestão nasal."
   },
   "mel_frasco": {
-    "nome": "Mel — 01 frasco",
-    "faixa_mgkg": null,
-    "idade_minima_anos": 1,
-    "frequencia": "5 ml antes de dormir",
-    "observacao": "não usar em menores de 1 ano"
+    "nome": "Mel",
+    "forma": "Xarope",
+    "apresentacao": null,
+    "regras": [
+      {
+        "idade_min": 1,
+        "observacao": "Dar 5 mL antes de dormir."
+      }
+    ],
+    "observacao": "Não usar em menores de 1 ano (risco de botulismo)."
   },
   "ondansetrona_4": {
-    "nome": "Ondansetrona 4mg/5ml — 01 frasco",
-    "faixa_mgkg": [
-      0.2,
-      0.2
+    "nome": "Ondansetrona",
+    "forma": "Solução",
+    "apresentacao": "4mg/5ml",
+    "regras": [
+      {
+        "faixa_mgkg": [0.2, 0.2],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 8,
+        "concentracao": 0.8,
+        "frequencia": "a cada 8 horas",
+        "observacao": "Usar em vômitos intensos."
+      }
     ],
-    "tipo_faixa_mgkg": "dose",
-    "dose_max_mg_dose": 8,
-    "concentracao": 0.8,
-    "frequencia": "de 8 em 8 horas",
-    "observacao": "se vômitos"
+    "observacao": "."
   },
   "loratadina_1": {
-    "nome": "Loratadina 1mg/ml — 01 frasco",
-    "faixa_mgkg": [
-      0.2,
-      0.2
-    ],
-    "tipo_faixa_mgkg": "dose",
-    "dose_max_mg_dose": 10,
-    "concentracao": 1,
-    "frequencia": "1 vez ao dia",
-    "duracao": "por 5 dias"
+    "nome": "Loratadina",
+    "forma": "Solução",
+    "apresentacao": "1mg/ml",
+    "regras": [
+      {
+        "faixa_mgkg": [0.2, 0.2],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 10,
+        "concentracao": 1,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 5 dias",
+        "observacao": ""
+      }
+    ]
   },
-  "amoxicilina_clav_250_625": {
-    "nome": "Amoxicilina + Clavulanato 250mg/62,5mg por 5ml — 01 frasco",
-    "faixa_mgkg": [
-      45,
-      45
-    ],
-    "tipo_faixa_mgkg": "dia",
-    "dose_max_mg_dose": 875,
-    "concentracao": 50,
-    "frequencia": "de 12 em 12 horas",
-    "duracao": "por 7 a 10 dias",
-    "observacao": "dose expressa em mg/kg/dia do componente amoxicilina"
+  "amoxicilina_clav_400_57_leve": {
+    "nome": "Amoxicilina + Clavulanato (Leve)",
+    "forma": "Suspensão",
+    "apresentacao": "400mg/57mg por 5ml",
+    "observacao": "",
+    "regras": [
+      {
+        "idade_min": 0.25,
+        "faixa_mgkg": [20, 40],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 80,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias"
+      }
+    ]
   },
-  "cefalexina_250": {
-    "nome": "Cefalexina 250mg/5ml — 01 frasco",
-    "faixa_mgkg": [
-      50,
-      50
-    ],
-    "tipo_faixa_mgkg": "dia",
-    "dose_max_mg_dose": 500,
-    "concentracao": 50,
-    "frequencia": "de 6 em 6 horas",
-    "duracao": "por 7 a 10 dias"
+  "amoxicilina_clav_400_57_grave": {
+    "nome": "Amoxicilina + Clavulanato (Otite)",
+    "forma": "Suspensão",
+    "apresentacao": "400mg/57mg por 5ml",
+    "observacao": "OMA",
+    "regras": [
+      {
+        "idade_min": 0.25,
+        "faixa_mgkg": [40, 90],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 80,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 14 dias"
+      }
+    ]
+  },
+  "cefalexina_125_leve": {
+    "nome": "Cefalexina (Dose Padrão)",
+    "forma": "Suspensão",
+    "apresentacao": "125mg/5mL",
+    "regras": [
+      {
+        "idade_min": 1,
+        "faixa_mgkg": [25, 50],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 25,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias",
+        "observacao": ""
+      }
+    ]
+  },
+  "cefalexina_125_grave": {
+    "nome": "Cefalexina (Dose Alta)",
+    "forma": "Suspensão",
+    "apresentacao": "125mg/5mL",
+    "regras": [
+      {
+        "idade_min": 1,
+        "faixa_mgkg": [50, 100],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 25,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 14 dias",
+        "observacao": ""
+      }
+    ]
+  },
+  "cefalexina_250_leve": {
+    "nome": "Cefalexina (Dose Padrão)",
+    "forma": "Suspensão",
+    "apresentacao": "250mg/5ml",
+    "regras": [
+      {
+        "idade_min": 1,
+        "faixa_mgkg": [25, 50],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 50,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias",
+        "observacao": ""
+      }
+    ]
+  },
+  "cefalexina_250_grave": {
+    "nome": "Cefalexina (Dose Alta)",
+    "forma": "Suspensão",
+    "apresentacao": "250mg/5ml",
+    "regras": [
+      {
+        "idade_min": 1,
+        "faixa_mgkg": [50, 100],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 50,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias",
+        "observacao": ""
+      }
+    ]
   },
   "salbutamol_mdi_100": {
-    "nome": "Salbutamol spray 100mcg/jato (MDI) — 01 frasco + espaçador",
-    "faixa_mgkg": null,
-    "concentracao": 100,
-    "frequencia": "2 jatos a cada 6 horas (pode usar a cada 4–6h conforme necessidade)",
-    "observacao": "usar com espaçador e máscara conforme idade; reforçar técnica inalatória"
+    "nome": "Salbutamol spray (MDI)",
+    "forma": "Inalador",
+    "apresentacao": "100mcg/jato",
+    "regras": [
+      {
+        "observacao": "2 jatos a cada 6h (pode usar a cada 4–6h se necessário). Usar com espaçador/máscara conforme idade."
+      }
+    ]
   },
   "prednisolona_3": {
-    "nome": "Prednisolona 3mg/ml — 01 frasco",
-    "faixa_mgkg": [
-      1,
-      2
-    ],
-    "tipo_faixa_mgkg": "dia",
-    "dose_max_mg_dose": 40,
-    "concentracao": 3,
-    "frequencia": "1 a 2 vezes ao dia",
-    "duracao": "por 3 a 5 dias",
-    "observacao": "usar menor tempo eficaz; preferir pela manhã em dose única quando possível"
+    "nome": "Prednisolona",
+    "forma": "Solução",
+    "apresentacao": "3mg/ml",
+    "regras": [
+      {
+        "faixa_mgkg": [1, 2],
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dia": 40,
+        "concentracao": 3,
+        "frequencia": "2 vezes ao dia",
+        "duracao": "por 5 dias",
+        "observacao": "Preferir pela manhã em dose única quando possível."
+      }
+    ]
   },
   "dexclorfeniramina_0_4": {
-    "nome": "Dexclorfeniramina 0,4mg/ml — xarope",
-    "faixa_mgkg": [
-      0.3,
-      0.35
-    ],
-    "tipo_faixa_mgkg": "dia",
-    "dose_max_mg_dose": 2,
-    "concentracao": 0.4,
-    "frequencia": "de 8 em 8 horas",
-    "duracao": "por 3 a 5 dias",
-    "observacao": "pode causar sonolência; evitar em menores de 2 anos sem orientação"
+    "nome": "Dexclorfeniramina",
+    "forma": "Xarope",
+    "apresentacao": "0,4mg/ml",
+    "regras": [
+      {
+        "faixa_mgkg": [0.3, 0.35],
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 2,
+        "concentracao": 0.4,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 5 dias",
+        "observacao": ""
+      }
+    ]
   },
   "prometazina_1": {
-    "nome": "Prometazina 1mg/ml — xarope",
-    "faixa_mgkg": [
-      0.25,
-      0.5
-    ],
-    "tipo_faixa_mgkg": "dose",
-    "dose_max_mg_dose": 25,
-    "concentracao": 1,
-    "frequencia": "de 12 em 12 horas",
-    "duracao": "por 3 a 5 dias",
-    "observacao": "sedativa; evitar em <2 anos; cautela em asmáticos"
+    "nome": "Prometazina",
+    "forma": "Xarope",
+    "apresentacao": "1mg/ml",
+    "regras": [
+      {
+        "faixa_mgkg": [0.25, 0.5],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 25,
+        "concentracao": 1,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 5 dias",
+        "observacao": ""
+      }
+    ]
   },
   "lactulose_xarope": {
-    "nome": "Lactulose xarope 667mg/ml — 01 frasco",
-    "faixa_mgkg": null,
-    "concentracao": 667,
-    "frequencia": "1 a 3 ml/kg/dia divididos em 2 doses",
-    "observacao": "ajustar para 1–2 evacuações/dia; pode causar flatulência"
+    "nome": "Lactulose",
+    "forma": "Xarope",
+    "apresentacao": "667mg/ml",
+    "regras": [
+      {
+        "observacao": "3 ml/kg/dia em 2 doses. Ajustar para 2 evacuações/dia. Pode causar flatulência."
+      }
+    ]
   },
- "zinco_10mg_5ml": {
-  "nome": "Zinco 10mg/5ml — solução oral",
-  "regras": [
-    {
-      "idade_min": 0,
-      "idade_max": 0.49,
-      "faixa_mgkg": null,
-      "concentracao": 2,
-      "frequencia": "1 vez ao dia",
-      "duracao": "por 10 a 14 dias",
-      "observacao": "Administrar 2,5 mL (10 mg) 1 vez ao dia"
-    },
-    {
-      "idade_min": 0.5,
-      "idade_max": 18,
-      "faixa_mgkg": null,
-      "concentracao": 2,
-      "frequencia": "1 vez ao dia",
-      "duracao": "por 10 a 14 dias",
-      "observacao": "Administrar 5 mL (20 mg) 1 vez ao dia"
-    }
-  ],
-  "observacao": "Adjuvante no tratamento da diarreia aguda. Administrar longe de leite se possível."
-},
+  "zinco_10mg_5ml": {
+    "nome": "Zinco",
+    "forma": "Solução",
+    "apresentacao": "10mg/5ml",
+    "regras": [
+      {
+        "idade_min": 0,
+        "idade_max": 0.49,
+        "concentracao": 2,
+        "observacao": "Administrar 2,5 mL (10 mg) 1 vez ao dia por 10–14 dias."
+      },
+      {
+        "idade_min": 0.5,
+        "idade_max": 18,
+        "concentracao": 2,
+        "observacao": "Administrar 5 mL (20 mg) 1 vez ao dia por 10–14 dias."
+      }
+    ]
+  },
   "hidrocortisona_topica_1": {
-    "nome": "Hidrocortisona 1% — creme/loção",
-    "faixa_mgkg": null,
-    "concentracao": 10,
-    "frequencia": "aplicar fina camada 2 vezes ao dia",
-    "duracao": "por 3 a 5 dias",
-    "observacao": "evitar uso em áreas extensas, face e dobras por tempo prolongado"
+    "nome": "Hidrocortisona 1%",
+    "forma": "Creme",
+    "apresentacao": "1%",
+    "regras": [
+      {
+        "observacao": "Aplicar fina camada 2x/dia por 5 dias. Evitar áreas extensas, face e dobras."
+      }
+    ]
   },
   "ambroxol_15_5": {
-  "nome": "Ambroxol 15mg/5ml — 01 frasco",
-  "regras": [
-    {
-      "idade_min": 0,
-      "idade_max": 1,
-      "faixa_mgkg": null,
-      "concentracao": 3,
-      "frequencia": "2 vezes ao dia",
-      "duracao": "por 5 a 7 dias",
-      "observacao": "Administrar 2,5 mL (7,5 mg) 2 vezes ao dia"
-    },
-    {
-      "idade_min": 2,
-      "idade_max": 5,
-      "faixa_mgkg": null,
-      "concentracao": 3,
-      "frequencia": "3 vezes ao dia",
-      "duracao": "por 5 a 7 dias",
-      "observacao": "Administrar 2,5 mL (7,5 mg) 3 vezes ao dia"
-    },
-    {
-      "idade_min": 6,
-      "idade_max": 12,
-      "faixa_mgkg": null,
-      "concentracao": 3,
-      "frequencia": "3 vezes ao dia",
-      "duracao": "por 5 a 7 dias",
-      "observacao": "Administrar 5 mL (15 mg) 3 vezes ao dia"
-    }
-  ],
-  "observacao": "Agitar antes de usar. Usar até melhora dos sintomas."
- },
- "sro_envelope": {
-  "nome": "Soro de Reidratação Oral — envelope em pó",
-  "regras": [
-    {
-      "idade_min": 0,
-      "idade_max": 0.99,
-      "observacao": "Reidratação: 75–100 mL/kg em 4–6 horas.\nManutenção: após cada evacuação líquida oferecer 50–100 mL."
-    },
-    {
-      "idade_min": 1,
-      "idade_max": 10,
-      "observacao": "Reidratação: 75–100 mL/kg em 4–6 horas.\nManutenção: após cada evacuação líquida oferecer 100–200 mL."
-    },
-    {
-      "idade_min": 11,
-      "idade_max": 200,
-      "observacao": "Reidratação: 2–3 L em 4–6 horas, conforme aceitação.\nManutenção: após cada evacuação líquida oferecer até 400 mL ou à vontade."
-    }
-  ],
-  "observacao": "Dissolver 1 envelope em 1 litro de água potável. Utilizar em até 24h após preparo. Contraindicado em desidratação grave ou íleo paralítico."
- }
+    "nome": "Ambroxol",
+    "forma": "Xarope",
+    "apresentacao": "15mg/5ml",
+    "regras": [
+      {
+        "idade_min": 0,
+        "idade_max": 1.99,
+        "concentracao": 3,
+        "observacao": "Administrar 2,5 mL (7,5 mg) 2 vezes ao dia, por 5–7 dias."
+      },
+      {
+        "idade_min": 2,
+        "idade_max": 5.99,
+        "concentracao": 3,
+        "observacao": "Administrar 2,5 mL (7,5 mg) 3 vezes ao dia, por 5–7 dias."
+      },
+      {
+        "idade_min": 6,
+        "idade_max": 12,
+        "concentracao": 3,
+        "observacao": "Administrar 5 mL (15 mg) 3 vezes ao dia, por 5–7 dias."
+      }
+    ]
+  },
+  "sro_envelope": {
+    "nome": "Soro de Reidratação Oral",
+    "forma": "Envelope",
+    "apresentacao": "Pó",
+    "regras": [
+      {
+        "idade_min": 0,
+        "idade_max": 0.99,
+        "observacao": "Reidratação: 75–100 mL/kg em 4–6h. Manutenção: 50–100 mL após cada evacuação."
+      },
+      {
+        "idade_min": 1,
+        "idade_max": 10.99,
+        "observacao": "Reidratação: 75–100 mL/kg em 4–6h. Manutenção: 100–200 mL após cada evacuação."
+      },
+      {
+        "idade_min": 11,
+        "idade_max": 200,
+        "observacao": "Reidratação: 2–3 L em 4–6h. Manutenção: até 400 mL ou à vontade após cada evacuação."
+      }
+    ],
+    "observacao": "Dissolver 1 envelope em 1 litro de água potável. Usar em até 24h após preparo."
+  },
+  "aciclovir_oral": {
+    "nome": "Aciclovir",
+    "forma": "Suspensão",
+    "apresentacao": "Suspensão Oral",
+    "regras": [
+      {
+        "faixa_mgkg": [20, 20],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 800,
+        "concentracao": null,
+        "frequencia": "5 vezes ao dia",
+        "duracao": "por 7 dias",
+        "observacao": ""
+      }
+    ]
+  },
+  "itraconazol_oral": {
+    "nome": "Itraconazol",
+    "forma": "Suspensão",
+    "apresentacao": "Suspensão Oral",
+    "regras": [
+      {
+        "faixa_mgkg": [5, 10],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": null,
+        "frequencia": "1 vez ao dia",
+        "observacao": ""
+      }
+    ]
+  },
+  "cefuroxima_250": {
+    "nome": "Cefuroxima",
+    "forma": "Suspensão",
+    "apresentacao": "250mg/5ml",
+    "regras": [
+      {
+        "faixa_mgkg": [30, 30],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 50,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 14 dias",
+        "observacao": ""
+      }
+    ]
+  },
+  "sulfametoxazol_trimetoprima_200_40": {
+    "nome": "Sulfametoxazol + Trimetoprima",
+    "forma": "Suspensão",
+    "apresentacao": "200mg/40mg por 5ml",
+    "regras": [
+      {
+        "faixa_mgkg": [40, 40],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 40,
+        "frequencia": "a cada 12 horas",
+        "observacao": ""
+      }
+    ]
+  },
+  "cefaclor_250": {
+    "nome": "Cefaclor",
+    "forma": "Suspensão",
+    "apresentacao": "250mg/5ml",
+    "regras": [
+      {
+        "faixa_mgkg": [40, 40],
+        "tipo_faixa_mgkg": "dia",
+        "concentracao": 50,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias",
+        "observacao": ""
+      }
+    ]
+  },
+  "gentamicina_colirio": {
+    "nome": "Gentamicina",
+    "forma": "Colírio",
+    "apresentacao": "5 mg/mL",
+    "regras": [
+      {
+        "concentracao": 5,
+        "observacao": "Instilar 2 gotas em cada olho 4x/dia por 7 dias."
+      }
+    ]
+  },
+  "gentamicina_pomada": {
+    "nome": "Gentamicina",
+    "forma": "Pomada Oftálmica",
+    "apresentacao": "5 mg/g",
+    "regras": [
+      {
+        "observacao": "Aplicar 1,5 cm na conjuntiva inferior 4x/dia por 7 dias."
+      }
+    ]
+  },
+  "tetraciclina_pomada": {
+    "nome": "Tetraciclina",
+    "forma": "Pomada Oftálmica",
+    "apresentacao": "5 mg/g (0,5%)",
+    "regras": [
+      {
+        "observacao": "Aplicar 1 cm na conjuntiva inferior 4x/dia por 7 dias."
+      }
+    ]
+  },
+  "hipromelose_colirio": {
+    "nome": "Hipromelose",
+    "forma": "Colírio",
+    "apresentacao": "0,3–0,5%",
+    "regras": [
+      {
+        "observacao": "Instilar 2 gotas em cada olho várias vezes ao dia conforme sintomas."
+      }
+    ]
+  }
 }

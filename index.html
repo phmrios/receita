@@ -10,36 +10,32 @@
   <div class="container">
     <h1>Assistente de Prescrição Pediátrica</h1>
 
-    <form id="formulario">
-      <!-- Passo 1 -->
-      <section id="passo1">
-        <h2>1. Dados do Paciente</h2>
-        <label>Idade (anos):</label>
-        <input type="number" id="idade" min="0" step="1" required>
+    <!-- Dados do paciente -->
+    <section>
+      <h2>1. Dados do Paciente</h2>
+      <label for="idade">Idade (anos):</label>
+      <input type="number" id="idade" min="0" step="0.1" placeholder="Ex: 3.5">
 
-        <label>Peso (kg):</label>
-        <input type="number" id="peso" min="0" step="0.1" required>
+      <label for="peso">Peso (kg):</label>
+      <input type="number" id="peso" min="1" step="0.1" placeholder="Ex: 14.2">
+    </section>
 
-        <button type="button" id="paraPasso2">Próximo</button>
-      </section>
+    <!-- Sintomas -->
+    <section>
+      <h2>2. Sintomas</h2>
+      <label for="sintomas">Selecione um ou mais sintomas:</label>
+      <select id="sintomas" multiple size="10"></select>
+    </section>
 
-      <!-- Passo 2 -->
-      <section id="passo2" class="hidden">
-        <h2>2. Sintomas</h2>
-        <p>Selecione um ou mais sintomas:</p>
-        <div id="lista-sintomas"></div>
-        <button type="button" id="gerar">Gerar Prescrição</button>
-      </section>
-    </form>
+    <!-- Botão -->
+    <section>
+      <button id="gerar">Gerar Prescrição</button>
+    </section>
 
-    <!-- Passo 3 -->
-    <section id="passo3" class="hidden">
-      <h2>Prescrição</h2>
-      <textarea id="saida" rows="15" readonly></textarea>
-      <div class="botoes">
-        <button type="button" id="copiar">Copiar</button>
-        <button type="button" id="reiniciar">Reiniciar</button>
-      </div>
+    <!-- Resultado -->
+    <section>
+      <h2>📋 Prescrição</h2>
+      <pre id="resultado" class="resultado"></pre>
     </section>
   </div>
 
