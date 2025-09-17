@@ -77,10 +77,16 @@ function calcularPrescricao(medicamento, idadeAnos, pesoKg) {
     let gotas = null;
 
     if (doseMg && regra.concentracao) {
-      ml = arredondar(doseMg / regra.concentracao * 10) / 10;
+      // 1. Calcula o ml "puro", sem arredondar
+      let ml_puro = doseMg / regra.concentracao; 
+
+      // 2. Calcula as gotas a partir do ml "puro" (máxima precisão)
       if (medicamento.forma === "Gotas") {
-        gotas = arredondar(ml * 20);
+        gotas = arredondar(ml_puro * 20); 
       }
+
+      // 3. AGORA, arredonda o ml para o inteiro mais próximo (como você pediu)
+      ml = arredondar(ml_puro); 
     }
 
     // 4. FORMAÇÃO DO TEXTO (com nome dinâmico)
@@ -91,10 +97,17 @@ function calcularPrescricao(medicamento, idadeAnos, pesoKg) {
     
     let texto = `${nomeCompleto} — 01 frasco`;
 
-    if (ml || gotas) {
+      if (ml || gotas) {
       texto += `\n   Uso: Administrar `;
-      if (ml) texto += `${ml} mL`;
-      if (gotas) texto += ` (${gotas} gotas)`;
+      
+      // Lógica de exibição: Se for gotas, mostrar SÓ gotas.
+      // Se não for gotas, mostrar SÓ mL.
+      if (gotas) {
+        texto += `${gotas} gotas`;
+      } else if (ml) {
+        texto += `${ml} mL`;
+      }
+      
       texto += ` via oral`;
       if (regra.frequencia) texto += ` ${regra.frequencia}`;
       if (regra.duracao) texto += `, ${regra.duracao}`;
