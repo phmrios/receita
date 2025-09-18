@@ -1,7 +1,7 @@
 async function carregarDados() {
   const [medicamentosResp, sintomasResp] = await Promise.all([
-    fetch("data/medicamentos.json"), 
-    fetch("data/sintomas.json")      
+    fetch("data/medicamentos.json"),
+    fetch("data/sintomas.json")
   ]);
   const medicamentos = await medicamentosResp.json();
   const sintomas = await sintomasResp.json();
@@ -12,12 +12,12 @@ function arredondar(valor) {
   return Math.round(valor);
 }
 
-// A função calcularPrescricao permanece a mesma
+// ATUALIZAÇÃO DA FUNÇÃO calcularPrescricao (com lógica de limite segura)
 function calcularPrescricao(medicamento, idadeAnos, pesoKg) {
   let prescricoes = [];
 
   medicamento.regras.forEach(regra => {
-    // 1. FILTRO de idade e peso
+    // 1. FILTRO de idade e peso (continua igual)
     if ((regra.idade_min && idadeAnos < regra.idade_min) ||
         (regra.idade_max && idadeAnos > regra.idade_max) ||
         (regra.peso_min && pesoKg < regra.peso_min) ||
@@ -26,16 +26,18 @@ function calcularPrescricao(medicamento, idadeAnos, pesoKg) {
     }
 
     let doseMg = null;
-    let dosesPorDia = 1;
+    let dosesPorDia = 1; // Default para caso não haja frequência
 
-    // 2. CÁLCULO BASE
+    // 2. CÁLCULO BASE (Lógica movida para cima)
     if (regra.faixa_mgkg) {
+      // Pega o primeiro número da frequência (ex: '6' de "a cada 6 ou 8 horas")
+      // Se não achar, assume '8' (para 'dia') ou '1' (para 'dose')
       let freqNum = parseInt(regra.frequencia?.match(/\d+/)?.[0]);
       
       if (regra.tipo_faixa_mgkg === "dia") {
-        dosesPorDia = 24 / (freqNum || 8);
+        dosesPorDia = 24 / (freqNum || 8); // Se for por dia, não pode ser 1
       } else if (regra.tipo_faixa_mgkg === "dose") {
-        dosesPorDia = freqNum ? (24 / freqNum) : 1;
+        dosesPorDia = freqNum ? (24 / freqNum) : 1; // Se for por dose, pode ser dose única
       }
       
       const [min, max] = regra.faixa_mgkg;
@@ -48,33 +50,46 @@ function calcularPrescricao(medicamento, idadeAnos, pesoKg) {
         doseMg = totalDia / dosesPorDia;
       }
 
-      // LÓGICA DE LIMITES
+      // --- INÍCIO DA NOVA LÓGICA DE LIMITES ---
+      // Aplica os limites de dose de forma segura, na ordem correta
+      
+      // 1. Limite de mg/kg/dia (Ex: 40 mg/kg/dia do Ibuprofeno)
       if (regra.dose_max_mgkg_dia) {
         let doseMgMax_calc_por_dia_kg = (pesoKg * regra.dose_max_mgkg_dia) / dosesPorDia;
         doseMg = Math.min(doseMg, doseMgMax_calc_por_dia_kg);
       }
+
+      // 2. Limite de mg por DOSE (Ex: 1000mg da Dipirona)
       if (regra.dose_max_mg_dose) {
         doseMg = Math.min(doseMg, regra.dose_max_mg_dose);
       }
+
+      // 3. Limite de mg por DIA (Ex: 4000mg do Paracetamol)
       if (regra.dose_max_mg_dia) {
         let doseMgMax_calc_por_dia_total = regra.dose_max_mg_dia / dosesPorDia;
         doseMg = Math.min(doseMg, doseMgMax_calc_por_dia_total);
       }
+      // --- FIM DA NOVA LÓGICA DE LIMITES ---
     }
 
-    // 3. CÁLCULO DE VOLUME
+    // 3. CÁLCULO DE VOLUME (mL e Gotas) (continua igual)
     let ml = null;
     let gotas = null;
 
     if (doseMg && regra.concentracao) {
+      // 1. Calcula o ml "puro", sem arredondar
       let ml_puro = doseMg / regra.concentracao; 
+
+      // 2. Calcula as gotas a partir do ml "puro" (máxima precisão)
       if (medicamento.forma === "Gotas") {
         gotas = arredondar(ml_puro * 20); 
       }
+
+      // 3. AGORA, arredonda o ml para o inteiro mais próximo (como você pediu)
       ml = arredondar(ml_puro); 
     }
 
-    // 4. FORMAÇÃO DO TEXTO
+    // 4. FORMAÇÃO DO TEXTO (com nome dinâmico)
     let nomeCompleto = `${medicamento.nome} ${medicamento.forma}`;
     if (medicamento.apresentacao) {
       nomeCompleto += ` (${medicamento.apresentacao})`;
@@ -82,13 +97,17 @@ function calcularPrescricao(medicamento, idadeAnos, pesoKg) {
     
     let texto = `${nomeCompleto} — 01 frasco`;
 
-    if (ml || gotas) {
+      if (ml || gotas) {
       texto += `\n   Uso: Administrar `;
+      
+      // Lógica de exibição: Se for gotas, mostrar SÓ gotas.
+      // Se não for gotas, mostrar SÓ mL.
       if (gotas) {
         texto += `${gotas} gotas`;
       } else if (ml) {
         texto += `${ml} mL`;
       }
+      
       texto += ` via oral`;
       if (regra.frequencia) texto += ` ${regra.frequencia}`;
       if (regra.duracao) texto += `, ${regra.duracao}`;
@@ -107,7 +126,6 @@ function calcularPrescricao(medicamento, idadeAnos, pesoKg) {
   return prescricoes.length > 0 ? [prescricoes[0]] : [];
 }
 
-// A função gerarPrescricao permanece a mesma
 function gerarPrescricao({ medicamentos, sintomas }, idade, peso, sintomasSelecionados) {
   let resultado = [];
   let usados = new Set();
@@ -130,6 +148,7 @@ function gerarPrescricao({ medicamentos, sintomas }, idade, peso, sintomasSeleci
 
       const prescricoes = calcularPrescricao(med, idade, peso);
       if (prescricoes.length === 0) {
+        // Usa o nome dinâmico aqui também, para consistência
         let nomeCompleto = med.nome ? `${med.nome} ${med.forma || ''}`.trim() : 'Medicamento desconhecido';
         if(med.apresentacao) nomeCompleto += ` (${med.apresentacao})`;
         resultado.push(`${nomeCompleto} — 01 frasco\n   Uso: ⚠️ Não há dose recomendada para este paciente.`);
@@ -142,63 +161,21 @@ function gerarPrescricao({ medicamentos, sintomas }, idade, peso, sintomasSeleci
   return resultado.join("\n\n");
 }
 
-
-// AQUI ESTÃO AS PRINCIPAIS MUDANÇAS
 document.addEventListener("DOMContentLoaded", async () => {
   const { medicamentos, sintomas } = await carregarDados();
-  
-  const sintomasContainer = document.getElementById("sintomas-container");
 
-  // --- 1. LÓGICA DE ORDENAÇÃO ---
-  // Pega todas as chaves (IDs) do objeto de sintomas
-  const sintomaIds = Object.keys(sintomas);
-
-  // Ordena as chaves de forma numérica
-  sintomaIds.sort((a, b) => {
-    // Converte '1.8' em 1.8 para comparação matemática
-    const numA = parseFloat(a.replace(',', '.')); 
-    const numB = parseFloat(b.replace(',', '.'));
-    return numA - numB;
+  const sintomasSelect = document.getElementById("sintomas");
+  Object.entries(sintomas).forEach(([id, s]) => {
+    let opt = document.createElement("option");
+    opt.value = id;
+    opt.textContent = s.nome;
+    sintomasSelect.appendChild(opt);
   });
 
-  // --- 2. CRIAÇÃO DOS CHECKBOXES ---
-  // Itera sobre a lista de IDs JÁ ORDENADA
-  sintomaIds.forEach(id => {
-    const sintoma = sintomas[id];
-
-    // Cria o contêiner para cada item
-    const itemDiv = document.createElement("div");
-    itemDiv.className = "checkbox-item";
-
-    // Cria o input (checkbox)
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = `sintoma-${id}`; // ID único para o label
-    checkbox.value = id;
-
-    // Cria o label (texto)
-    const label = document.createElement("label");
-    label.htmlFor = `sintoma-${id}`; // Associa o label ao checkbox
-    label.textContent = sintoma.nome;
-
-    // Adiciona o checkbox e o label ao contêiner do item
-    itemDiv.appendChild(checkbox);
-    itemDiv.appendChild(label);
-
-    // Adiciona o item completo ao contêiner principal
-    sintomasContainer.appendChild(itemDiv);
-  });
-
-
-  // --- 3. LÓGICA DE LEITURA DOS CHECKBOXES ---
   document.getElementById("gerar").addEventListener("click", () => {
     const idade = parseFloat(document.getElementById("idade").value);
     const peso = parseFloat(document.getElementById("peso").value);
-    
-    // Pega todos os checkboxes marcados dentro do contêiner
-    const selecionados = Array.from(
-      document.querySelectorAll('#sintomas-container input[type="checkbox"]:checked')
-    ).map(checkbox => checkbox.value); // Pega o 'value' de cada um
+    const selecionados = Array.from(sintomasSelect.selectedOptions).map(o => o.value);
 
     if (!idade || !peso || selecionados.length === 0) {
       alert("Preencha idade, peso e selecione pelo menos um sintoma.");

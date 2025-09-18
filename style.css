@@ -61,3 +61,23 @@ pre.resultado {
   white-space: pre-wrap;
   font-size: 0.95rem;
 }
+
+#sintomas-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cria colunas responsivas */
+  gap: 10px; /* Espaço entre os itens */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center; /* Alinha o checkbox com o texto */
+  gap: 8px; /* Espaço entre o checkbox e o texto */
+}
+
+.checkbox-item input {
+  width: auto; 
+}

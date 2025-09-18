@@ -2,6 +2,20 @@
   "1": {
     "nome": "Febre / Dor",
     "medicamentos_ids": [
+      "dipirona_500", 
+      "ibuprofeno_100_gotas"
+    ]
+  },
+  "1.8": {
+    "nome": "Febre / Dor (Alérgicos Dipirona)",
+    "medicamentos_ids": [
+      "paracetamol_200", 
+      "ibuprofeno_100_gotas"
+    ]
+  },
+  "1.C": {
+    "nome": "Febre / Dor (Completo)",
+    "medicamentos_ids": [
       "paracetamol_200", 
       "dipirona_500", 
       "ibuprofeno_100_gotas", 
@@ -9,7 +23,7 @@
     ]
   },
   "2": {
-    "nome": "Congestão nasal",
+    "nome": "Congestão nasal / Coriza",
     "medicamentos_ids": ["soro_fisiologico"]
   },
   "3": {
@@ -33,8 +47,16 @@
     "medicamentos_ids": ["lactulose_xarope"]
   },
   "8": {
-    "nome": "Diarreia aguda",
+    "nome": "Diarreia Viral",
     "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml"]
+  },
+  "8.8": {
+    "nome": "Diarreia Bacteriana MENOR DE (10ANOS OU 30KG)",
+    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml", "azitromicina_oral"]
+  },
+  "8.8": {
+    "nome": "Diarreia Bacteriana MAIOR DE (10ANOS OU 30KG)",
+    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml", "ciprofloxacino_500"]
   },
   "9": {
     "nome": "Amigdalite / Faringite bacteriana (Leve)",
@@ -43,11 +65,17 @@
       "azitromicina_oral"
     ]
   },
+  "9.8": {
+    "nome": "Pneumonia / Sinusite (Leve)",
+    "medicamentos_ids": [
+      "amoxicilina_250_5_dose_baixa", 
+      "azitromicina_oral"
+    ]
+  },
   "10": {
     "nome": "Pneumonia / Sinusite (Grave)",
     "medicamentos_ids": [
-      "amoxicilina_250_5_dose_alta", 
-      "amoxicilina_clav_400_57_grave", 
+      "amoxicilina_250_5_dose_alta",
       "azitromicina_oral", 
       "cefuroxima_250"
     ]
@@ -71,10 +99,7 @@
     "nome": "Cistite (Inf. Urinária Baixa)",
     "medicamentos_ids": [
       "cefalexina_250_leve",
-      "cefalexina_125_leve",
-      "amoxicilina_clav_400_57_leve", 
-      "cefuroxima_250", 
-      "sulfametoxazol_trimetoprima_200_40"
+      "cefalexina_125_leve"
     ]
   },
   "15": {
@@ -87,17 +112,16 @@
     ]
   },
   "16": {
-    "nome": "Otite Média Aguda (OMA)",
+    "nome": "Otite Média Aguda (OMA)PrimoTratamento",
     "medicamentos_ids": [
-      "amoxicilina_250_5_dose_alta", 
-      "amoxicilina_clav_400_57_grave",
-      "cefaclor_250", 
-      "cefuroxima_250"
+      "amoxicilina_250_5_duracao_alta"
     ]
   },
-  "17": {
-    "nome": "Otite Externa",
-    "medicamentos_ids": ["polimixina_neomicina_fluocinolona_lidocaina_otologico"]
+  "16.8": {
+    "nome": "Otite Média Aguda (OMA)Falha Terapeutica",
+    "medicamentos_ids": [
+      "amoxicilina_clav_400_57_grave"
+    ]
   },
   "18": {
     "nome": "Conjuntivite bacteriana",

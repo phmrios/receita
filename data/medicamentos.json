@@ -83,18 +83,18 @@
         "idade_min": 0,
         "idade_max": 12,
         "peso_max": 39.9,
-        "faixa_mgkg": [50, 50],
+        "faixa_mgkg": [40, 50],
         "tipo_faixa_mgkg": "dia",
         "concentracao": 50,
         "frequencia": "a cada 8 horas",
-        "duracao": "por 10 dias",
+        "duracao": "por 5 dias",
         "observacao": ""
       }
     ],
-    "observacao": "Reconstituir conforme fabricante e agitar antes de usar. Usar seringa dosadora."
+    "observacao": "Agitar antes de usar. Usar seringa dosadora."
   },
-  "amoxicilina_250_5_dose_alta": {
-    "nome": "Amoxicilina (Dose Alta)",
+  "amoxicilina_250_5_duracao_alta": {
+    "nome": "Amoxicilina (Duração Alta)",
     "forma": "Suspensão",
     "apresentacao": "250mg/5ml",
     "regras": [
@@ -102,15 +102,15 @@
         "idade_min": 0,
         "idade_max": 12,
         "peso_max": 39.9,
-        "faixa_mgkg": [80, 90],
+        "faixa_mgkg": [40, 50],
         "tipo_faixa_mgkg": "dia",
         "concentracao": 50,
-        "frequencia": "a cada 12 horas",
-        "duracao": "por 10 dias",
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 8 dias",
         "observacao": ""
       }
     ],
-    "observacao": "Reconstituir conforme fabricante e agitar antes de usar. Usar seringa dosadora."
+    "observacao": "Agitar antes de usar. Usar seringa dosadora."
   },
   "amoxicilina_250_5_adulto": {
     "nome": "Amoxicilina (Dose Adulto)",
@@ -144,6 +144,24 @@
       }
     ],
     "observacao": "Seguir esquema completo."
+  },
+  "ciprofloxacino_500": {
+    "nome": "Ciprofloxacino",
+    "forma": "Comprimido",
+    "apresentacao": "500 mg",
+    "regras": [
+      {
+        "idade_min": 0,
+        "idade_max": 18,
+        "faixa_mgkg": [15, 15],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 500,
+        "concentracao": 500,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 3 dias",
+        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
+      }
+    ]
   },
   "soro_fisiologico": {
     "nome": "Soro fisiológico 0,9%",
@@ -179,7 +197,7 @@
         "dose_max_mg_dose": 8,
         "concentracao": 0.8,
         "frequencia": "a cada 8 horas",
-        "observacao": "Usar em vômitos intensos."
+        "observacao": "Se vômitos"
       }
     ],
     "observacao": "."
@@ -228,7 +246,7 @@
         "tipo_faixa_mgkg": "dia",
         "concentracao": 80,
         "frequencia": "a cada 12 horas",
-        "duracao": "por 14 dias"
+        "duracao": "por 8 dias"
       }
     ]
   },
@@ -243,7 +261,7 @@
         "tipo_faixa_mgkg": "dia",
         "concentracao": 25,
         "frequencia": "a cada 8 horas",
-        "duracao": "por 10 dias",
+        "duracao": "por 5 dias",
         "observacao": ""
       }
     ]
@@ -275,7 +293,7 @@
         "tipo_faixa_mgkg": "dia",
         "concentracao": 50,
         "frequencia": "a cada 8 horas",
-        "duracao": "por 10 dias",
+        "duracao": "por 5 dias",
         "observacao": ""
       }
     ]
@@ -402,19 +420,19 @@
         "idade_min": 0,
         "idade_max": 1.99,
         "concentracao": 3,
-        "observacao": "Administrar 2,5 mL (7,5 mg) 2 vezes ao dia, por 5–7 dias."
+        "observacao": "Administrar 2,5 mL (7,5 mg) 2 vezes ao dia, por 5 dias."
       },
       {
         "idade_min": 2,
         "idade_max": 5.99,
         "concentracao": 3,
-        "observacao": "Administrar 2,5 mL (7,5 mg) 3 vezes ao dia, por 5–7 dias."
+        "observacao": "Administrar 2,5 mL (7,5 mg) 3 vezes ao dia, por 5 dias."
       },
       {
         "idade_min": 6,
         "idade_max": 12,
         "concentracao": 3,
-        "observacao": "Administrar 5 mL (15 mg) 3 vezes ao dia, por 5–7 dias."
+        "observacao": "Administrar 5 mL (15 mg) 3 vezes ao dia, por 5 dias."
       }
     ]
   },
