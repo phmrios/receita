@@ -127,23 +127,24 @@
     "observacao": "Reconstituir conforme fabricante e agitar antes de usar. Usar seringa dosadora."
   },
   "azitromicina_oral": {
-    "nome": "Azitromicina",
+    "nome": "Azitromicina (Dose Padrão)",
     "forma": "Suspensão",
-    "apresentacao": "200mg/5ml",
+    "apresentacao": "200 mg/5 mL",
     "regras": [
       {
         "idade_min": 0,
         "idade_max": 12,
-        "faixa_mgkg": [10, 10],
+        "peso_max": 39.9,
+        "faixa_mgkg": [12, 12],
         "tipo_faixa_mgkg": "dia",
         "dose_max_mg_dose": 500,
         "concentracao": 40,
-        "frequencia": "1 vez ao dia",
+        "frequencia": "a cada 8 horas",
         "duracao": "por 5 dias",
-        "observacao": "Agitar bem o frasco antes de usar. Não interromper antes do tempo prescrito."
+        "observacao": ""
       }
     ],
-    "observacao": "Seguir esquema completo."
+    "observacao": "Agitar antes de usar. Usar seringa dosadora."
   },
   "ciprofloxacino_500": {
     "nome": "Ciprofloxacino",
@@ -461,17 +462,17 @@
   },
   "aciclovir_oral": {
     "nome": "Aciclovir",
-    "forma": "Suspensão",
-    "apresentacao": "Suspensão Oral",
+    "forma": "Suspensão (frasco com 100 mL)",
+    "apresentacao": "200/5ml",
     "regras": [
       {
         "faixa_mgkg": [20, 20],
         "tipo_faixa_mgkg": "dose",
         "dose_max_mg_dose": 800,
-        "concentracao": null,
-        "frequencia": "5 vezes ao dia",
+        "concentracao": 40,
+        "frequencia": "5 vezes ao dia, café/lanche/amoço/lanche/jantar,",
         "duracao": "por 7 dias",
-        "observacao": ""
+        "observacao": "Tomar bastante água durante todo o tratamento, nao interromper antes do tempo prescrito"
       }
     ]
   },

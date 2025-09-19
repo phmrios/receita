@@ -54,7 +54,7 @@
     "nome": "Diarreia Bacteriana MENOR DE (10ANOS OU 30KG)",
     "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml", "azitromicina_oral"]
   },
-  "8.8": {
+  "8.C": {
     "nome": "Diarreia Bacteriana MAIOR DE (10ANOS OU 30KG)",
     "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml", "ciprofloxacino_500"]
   },
