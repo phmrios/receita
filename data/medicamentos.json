@@ -565,6 +565,73 @@
       }
     ]
   },
+  "hidratante_neutro": {
+    "nome": "Hidratante sem fragrância",
+    "forma": "Creme/Loção",
+    "apresentacao": "—",
+    "regras": [
+      {
+        "observacao": "Aplicar em toda a pele 2x/dia, sempre após o banho e antes do corticoide tópico nas áreas lesadas."
+      }
+    ],
+    "observacao": "Preferir produtos hipoalergênicos; uso contínuo."
+  },
+  "ureia_5": {
+    "nome": "Ureia 5%",
+    "forma": "Creme/Loção",
+    "apresentacao": "5%",
+    "regras": [
+      {
+        "observacao": "Aplicar 1–2x/dia nas áreas secas. Evitar fissuras/pele muito irritada."
+      }
+    ],
+    "observacao": "Adjuvante de hidratação em crianças maiores; evitar em lactentes com pele muito irritada."
+  },
+  "fluticasona_topica_005": {
+    "nome": "Fluticasona tópica",
+    "forma": "Creme",
+    "apresentacao": "0,05%",
+    "regras": [
+      {
+        "observacao": "Aplicar fina camada 2x/dia nas lesões por até 7–14 dias. Evitar face e dobras; nessas áreas preferir baixa potência."
+      }
+    ],
+    "observacao": "Potência média (pediatria)."
+  },
+  "betametasona_topica_1mgg": {
+    "nome": "Betametasona tópica",
+    "forma": "Creme",
+    "apresentacao": "1 mg/g",
+    "regras": [
+      {
+        "observacao": "Aplicar fina camada 1–2x/dia por curto período em áreas não faciais. Reduzir assim que controlar."
+      }
+    ],
+    "observacao": "Potência alta; evitar uso prolongado e evitar face/dobras em pediatria."
+  },
+  "tacrolimo_topico_003": {
+    "nome": "Tacrolimo tópico (pediátrico)",
+    "forma": "Pomada",
+    "apresentacao": "0,03%",
+    "regras": [
+      {
+        "observacao": "Aplicar 2x/dia nas lesões (especialmente face/dobras) até controle. Pode arder no início."
+      }
+    ],
+    "observacao": "Inibidor de calcineurina; útil para áreas sensíveis e manutenção."
+  },
+
+  "pimecrolimo_topico_1": {
+    "nome": "Pimecrolimo tópico",
+    "forma": "Creme",
+    "apresentacao": "1%",
+    "regras": [
+      {
+        "observacao": "Aplicar 2x/dia nas lesões (face/dobras) até melhora."
+      }
+    ],
+    "observacao": "Inibidor de calcineurina; opção esteroide-poupadora."
+  },
   "hipromelose_colirio": {
     "nome": "Hipromelose",
     "forma": "Colírio",
@@ -576,3 +643,4 @@
     ]
   }
 }
+
