@@ -641,6 +641,42 @@
         "observacao": "Instilar 2 gotas em cada olho várias vezes ao dia conforme sintomas."
       }
     ]
+  },
+  "colecalciferol_200_ui_gota": {
+    "nome": "Colecalciferol",
+    "forma": "Gotas",
+    "apresentacao": "200 UI/gota (solução oral)",
+    "concentracao_ui_por_gota": 200,
+    "observacao": "Vitamina D: profilaxia/suplementação em 0–18 anos. UI = Unidades Internacionais.",
+    "regras": [
+      {
+        "idade_min": 0,
+        "idade_max": 18,
+        "dose_ui_dia_lactente": 400,
+        "tabela_ui_por_idade": {
+          "1": 600.0,
+          "2": 635.29,
+          "3": 670.59,
+          "4": 705.88,
+          "5": 741.18,
+          "6": 776.47,
+          "7": 811.76,
+          "8": 847.06,
+          "9": 882.35,
+          "10": 917.65,
+          "11": 952.94,
+          "12": 988.24,
+          "13": 1023.53,
+          "14": 1058.82,
+          "15": 1094.12,
+          "16": 1129.41,
+          "17": 1164.71,
+          "18": 1200.0
+        },
+        "frequencia": "1 vez ao dia",
+        "duracao": "uso contínuo conforme orientação",
+        "observacao": "Aleitamento materno exclusivo/parcial: suplementar o bebê com 400 UI/dia; alternativa quando seguida e monitorada: suplementar a mãe com 6.400 UI/dia para enriquecer o leite."
+      }
+    ]
   }
 }
-
