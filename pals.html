@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ficha PALS Pediátrica</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Barra de navegação compartilhada -->
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="teste3.html">Hidratação OMS / Holiday–Segar</a></li>
+        <li><a href="pals.html" class="active">Ficha PALS</a></li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <div class="container">
+      <h1>Ficha de Parada Pediátrica (PALS)</h1>
+
+      <form id="palsForm">
+        <label>Nome: <input type="text" id="nome" required /></label>
+        <label
+          >Idade (anos):
+          <input type="number" id="idade" min="0" step="0.1" required
+        /></label>
+        <label
+          >Peso (kg):
+          <input type="number" id="peso" min="1" step="0.1" required
+        /></label>
+        <label
+          >Altura (cm): <input type="number" id="altura" max="200"
+        /></label>
+        <label>Sexo: <input type="text" id="sexo" /></label>
+        <button type="button" id="gerarFicha">Gerar Ficha ASCII</button>
+      </form>
+
+      <h2>Ficha ASCII Gerada</h2>
+      <pre id="saida" class="resultado" readonly></pre>
+    </div>
+
+    <script src="pals.js"></script>
+  </body>
+</html>
