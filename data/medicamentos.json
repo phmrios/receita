@@ -88,7 +88,7 @@
         "concentracao": 50,
         "frequencia": "a cada 8 horas",
         "duracao": "por 5 dias",
-        "observacao": ""
+        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
       }
     ],
     "observacao": "Agitar antes de usar. Usar seringa dosadora."
@@ -107,7 +107,7 @@
         "concentracao": 50,
         "frequencia": "a cada 8 horas",
         "duracao": "por 8 dias",
-        "observacao": ""
+        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
       }
     ],
     "observacao": "Agitar antes de usar. Usar seringa dosadora."
@@ -121,7 +121,7 @@
         "idade_min": 13,
         "idade_max": 18,
         "peso_min": 40,
-        "observacao": ""
+        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
       }
     ],
     "observacao": "Reconstituir conforme fabricante e agitar antes de usar. Usar seringa dosadora."
@@ -141,7 +141,7 @@
         "concentracao": 40,
         "frequencia": "a cada 8 horas",
         "duracao": "por 5 dias",
-        "observacao": ""
+        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
       }
     ],
     "observacao": "Agitar antes de usar. Usar seringa dosadora."
@@ -185,7 +185,7 @@
         "observacao": "Dar 5 mL antes de dormir."
       }
     ],
-    "observacao": "Não usar em menores de 1 ano (risco de botulismo)."
+    "observacao": "Não usar em menores de 1 ano."
   },
   "ondansetrona_4": {
     "nome": "Ondansetrona",

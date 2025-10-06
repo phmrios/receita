@@ -25,9 +25,29 @@ function formatarPrescricao(med, doseTexto, protocolo) {
   texto += ` — 01 frasco\n   Uso: ${doseTexto}`;
   if (protocolo.frequencia) texto += ` ${protocolo.frequencia}`;
   if (protocolo.duracao) texto += `, ${protocolo.duracao}`;
-  if (protocolo.observacao) texto += `\n   Obs: ${protocolo.observacao}`;
-  if (med.observacao && !texto.includes(med.observacao))
-    texto += `\n   Obs: ${med.observacao}`;
+
+  // Evita duplicações de observações
+  const obsSet = new Set();
+
+  const addObs = (obs) => {
+    if (!obs) return;
+    const normalizado = obs.trim().replace(/\s+/g, " ");
+    if (
+      !doseTexto.includes(normalizado) &&
+      !texto.includes(normalizado) &&
+      !obsSet.has(normalizado)
+    ) {
+      obsSet.add(normalizado);
+    }
+  };
+
+  addObs(protocolo?.observacao);
+  addObs(med?.observacao);
+
+  if (obsSet.size > 0) {
+    texto += `\n   Obs: ${Array.from(obsSet).join(" | ")}`;
+  }
+
   return texto;
 }
 
