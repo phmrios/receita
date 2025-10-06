@@ -42,7 +42,7 @@
   },
   "6": {
     "nome": "Crise asmática / Broncoespasmo",
-    "medicamentos_ids": ["salbutamol_mdi_100", "prednisolona_3"]
+    "medicamentos_ids": []
   },
   "7": {
     "nome": "Constipação intestinal",

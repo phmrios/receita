@@ -315,16 +315,6 @@
       }
     ]
   },
-  "salbutamol_mdi_100": {
-    "nome": "Salbutamol spray (MDI)",
-    "forma": "Inalador",
-    "apresentacao": "100mcg/jato",
-    "regras": [
-      {
-        "observacao": "2 jatos a cada 6h (pode usar a cada 4–6h se necessário). Usar com espaçador/máscara conforme idade."
-      }
-    ]
-  },
   "prednisolona_3": {
     "nome": "Prednisolona",
     "forma": "Solução",
