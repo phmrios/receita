@@ -1,75 +1,85 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora e Receita de Hidratação (OMS / Holiday–Segar)</title>
-
-    <!-- Estilos compartilhados -->
     <link rel="stylesheet" href="style.css" />
 
-    <!-- Estilos específicos desta página -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Calculadora de Reidratação Pediátrica v3.0</title>
+
     <style>
       :root {
         color-scheme: light dark;
-        --bg: #ffffff;
-        --fg: #000000;
-        --accent: #005a9c;
-        --border: #cccccc;
+        --fg: #000;
+        --bg: #fff;
+        --accent: #004080;
+        --border: #ccc;
+        --focus: #ffbf00;
       }
 
       body {
+        font-family: monospace, Consolas, "Courier New", monospace;
         background: var(--bg);
         color: var(--fg);
-        font-family: system-ui, sans-serif;
-        line-height: 1.5;
-        margin: 2rem auto;
-        max-width: 700px;
+        line-height: 1.6;
+        margin: 1rem auto;
+        max-width: 740px;
         padding: 1rem;
       }
 
+      label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: 700;
+      }
+
       input,
-      select {
-        padding: 0.5rem;
-        border: 1px solid var(--border);
-        border-radius: 0.25rem;
+      select,
+      button {
+        width: 100%;
+        padding: 0.6rem;
+        border: 2px solid var(--border);
+        border-radius: 4px;
+        font-size: 1rem;
       }
 
       button {
         background: var(--accent);
         color: #fff;
-        border: none;
-        padding: 0.75rem 1rem;
-        border-radius: 0.25rem;
-        font-size: 1rem;
+        font-weight: 700;
         cursor: pointer;
+        margin-top: 1rem;
       }
 
-      pre {
-        background: #f7f7f7;
-        border: 1px solid var(--border);
-        padding: 1rem;
-        border-radius: 0.25rem;
-        white-space: pre-wrap;
-        font-family: monospace;
-        font-size: 1rem;
+      button:focus,
+      input:focus,
+      select:focus {
+        outline: 3px solid var(--focus);
+        outline-offset: 2px;
       }
 
+      pre,
       output {
         display: block;
+        margin-top: 1.5rem;
         padding: 1rem;
-        border: 1px solid var(--border);
-        border-radius: 0.25rem;
-        background: #f7f7f7;
-        white-space: pre-line;
+        border: 2px solid var(--border);
+        border-radius: 4px;
+        background: #f9f9f9;
+        color: #000;
+        white-space: pre-wrap;
+      }
+
+      hr {
+        margin: 2rem 0;
       }
 
       @media print {
         body * {
           display: none !important;
         }
-        #recipeSection,
-        #recipe {
+        #soroSection,
+        #soroText {
           display: block !important;
           border: none;
           background: #fff;
@@ -80,28 +90,26 @@
   </head>
 
   <body>
-    <!-- Barra de navegação compartilhada -->
     <nav class="navbar">
       <ul>
         <li><a href="index.html">Início</a></li>
         <li>
-          <a href="teste3.html" class="active"
-            >Hidratação OMS / Holiday–Segar</a
-          >
+          <a href="teste3.html" class="active">Hidratação OMS / Nelson</a>
         </li>
         <li><a href="pals.html">Ficha PALS</a></li>
       </ul>
     </nav>
 
-    <!-- Conteúdo principal -->
-    <h1>Calculadora de Hidratação OMS / Holiday–Segar</h1>
+    <h1>Calculadora de Reidratação Pediátrica v3.0</h1>
 
-    <form id="hydrationForm" aria-describedby="instructions">
-      <p id="instructions">
-        Informe o peso corporal (kg) e o grau de desidratação.
-      </p>
+    <form id="calcForm">
+      <label for="method">Método de cálculo</label>
+      <select id="method" name="method" aria-required="true">
+        <option value="oms">OMS / Ministério da Saúde</option>
+        <option value="nelson">Nelson (déficit + manutenção)</option>
+      </select>
 
-      <label for="weight">Peso corporal (kg)</label>
+      <label for="weight">Peso (kg)</label>
       <input
         id="weight"
         name="weight"
@@ -112,147 +120,235 @@
         aria-required="true"
       />
 
-      <label for="dehydrationLevel">Grau de desidratação</label>
-      <select id="dehydrationLevel" name="dehydrationLevel">
-        <option value="none">Sem desidratação (Plano A)</option>
-        <option value="some">Alguma desidratação (Plano B)</option>
-        <option value="severe">Desidratação grave (Plano C)</option>
+      <label for="age">Idade (meses)</label>
+      <input
+        id="age"
+        name="age"
+        type="number"
+        min="0"
+        step="1"
+        placeholder="opcional"
+        aria-describedby="ageHelp"
+      />
+      <small id="ageHelp"
+        >Usado apenas para ajustar o tempo de infusão no Plano C (OMS).</small
+      >
+
+      <label for="status">Estado clínico</label>
+      <select id="status" name="status" aria-required="true">
+        <option value="none">Sem desidratação</option>
+        <option value="mild">Leve</option>
+        <option value="moderate">Moderada</option>
+        <option value="severe">Grave</option>
       </select>
 
-      <button type="button" id="calculateButton">Calcular</button>
+      <label for="shock">Choque?</label>
+      <select id="shock" name="shock">
+        <option value="no">Não</option>
+        <option value="yes">Sim</option>
+      </select>
+
+      <button type="button" id="calcButton">Calcular</button>
     </form>
 
-    <h2>Resultados</h2>
+    <button type="button" id="copyButton">📋 Copiar Resultado</button>
+
     <output id="result" role="status" aria-live="polite"></output>
 
     <hr />
 
-    <section id="recipeSection">
-      <button
-        type="button"
-        id="printButton"
-        aria-label="Imprimir apenas a receita"
-      >
-        🖨️ Imprimir Receita
-      </button>
+    <section id="soroSection">
+      <button type="button" id="printButton">🖨️ Imprimir Receita</button>
 
-      <h2>Receita Simples de Soro Caseiro (SRO)</h2>
+      <h2>Receita de Soro Caseiro (SRO)</h2>
 
-      <p>
-        Este é o <strong>soro caseiro</strong>. Ele salva vidas. Use quando
-        alguém estiver com <strong>diarreia</strong> ou
-        <strong>vômito</strong> e perdendo muita água.
-      </p>
-
-      <pre id="recipe">
-=============================
+      <pre id="soroText">
+==============================
  COMO FAZER SORO CASEIRO
-=============================
+==============================
 
-📦 O QUE VOCÊ PRECISA:
-- 1 litro de água limpa (ou filtrada e fervida)
+📦 INGREDIENTES:
+- 1 litro de água limpa (filtrada e fervida)
 - 1 colher de chá rasa de sal
 - 2 colheres de sopa rasas de açúcar
 
-🪣 COMO FAZER:
-1. Ferva a água e espere esfriar.
-2. Misture o sal e o açúcar.
-3. Mexa bem até tudo desaparecer na água.
-4. Prove: o gosto deve ser como uma lágrima — nem muito salgado, nem muito doce.
+🪣 MODO DE PREPARO:
+1. Ferva a água e deixe esfriar.
+2. Misture sal e açúcar até dissolver completamente.
+3. O gosto deve lembrar uma lágrima — nem muito doce nem muito salgado.
 
 🥤 COMO USAR:
-- Dê um gole de cada vez, várias vezes por hora.
-- Criança pequena: 1 colher de sopa a cada 1 ou 2 minutos.
-- Adulto: copos pequenos várias vezes por hora.
-- Continue até parar o vômito e a diarreia.
+- Crianças: 1 colher de sopa a cada 1–2 minutos.
+- Adultos: copos pequenos várias vezes por hora.
+- Continue até parar diarreia e vômitos.
 
 ⚠️ CUIDADO:
-- Faça soro novo a cada 24 horas.
-- Se a pessoa estiver muito fraca, com sede intensa ou não conseguir beber, vá ao posto de saúde.
-
-=============================
- FIM
-=============================
+- Faça soro novo a cada 24 h.
+- Se houver sede intensa, fraqueza ou recusa de líquidos, procure atendimento.
+==============================
       </pre>
-
-      <p>
-        <strong>Ajuda rápida:</strong>
-        O soro caseiro repõe água, açúcar e sal — o corpo precisa disso para
-        viver. Ensine essa receita a quem não sabe. Um litro de soro pode salvar
-        uma vida.
-      </p>
     </section>
 
     <script>
-      // ==== HOLIDAY–SEGAR (MANUTENÇÃO) ====
-      function calcularManutencao(pesoKg) {
-        if (pesoKg <= 10) return pesoKg * 100;
-        if (pesoKg <= 20) return 1000 + (pesoKg - 10) * 50;
-        return 1500 + (pesoKg - 20) * 20;
-      }
+      "use strict";
 
-      function calcularTaxaHoraria(pesoKg) {
-        if (pesoKg <= 10) return pesoKg * 4;
-        if (pesoKg <= 20) return 40 + (pesoKg - 10) * 2;
-        return 60 + (pesoKg - 20) * 1;
-      }
+      // ======= UTILITÁRIOS =======
+      const fmtMl = (v) => `(${Math.round(v)}) ${v.toFixed(2)} mL`;
+      const isPositive = (n) => Number(n) > 0 && isFinite(Number(n));
 
-      // ==== PLANOS OMS/MS ====
-      function calcularPlanoOMS(pesoKg, grau) {
-        switch (grau) {
+      const calcManutencao = (peso) => {
+        if (peso <= 10) return peso * 100;
+        if (peso <= 20) return 1000 + (peso - 10) * 50;
+        return 1500 + (peso - 20) * 20;
+      };
+
+      const calcTaxaHorario = (peso) => {
+        if (peso <= 10) return peso * 4;
+        if (peso <= 20) return 40 + (peso - 10) * 2;
+        return 60 + (peso - 20);
+      };
+
+      // ======= OMS / MS =======
+      function calcularOMS(peso, status, idadeMeses) {
+        switch (status) {
           case "none":
-            return `Plano A:
-Oferecer SRO após cada evacuação:
-<2 anos: 50–100 mL
-2–10 anos: 100–200 mL
->10 anos: livre demanda
+            return `Plano A - Sem desidratação
+Reidratar em casa com SRO após cada evacuação:
+<2a: 50–100 mL | ≥2a: 100–200 mL
 Manter alimentação e zinco por 10–14 dias.`;
-          case "some":
-            return `Plano B:
-SRO 75 mL/kg em 4h
-→ Total: ${(pesoKg * 75).toFixed(0)} mL em 4h`;
-          case "severe":
-            return `Plano C:
-Ringer Lactato 100 mL/kg
-→ Total: ${(pesoKg * 100).toFixed(0)} mL (dividir conforme idade)
-+ SRO 5 mL/kg/h assim que possível`;
+          case "mild":
+          case "moderate": {
+            const total = peso * 75;
+            const taxaHora = total / 4;
+            return `Plano B - Alguma desidratação
+SRO 75 mL/kg em 4 h
+→ Total: ${fmtMl(total)} em 4 h
+→ Taxa média: ${fmtMl(taxaHora)}/h`;
+          }
+          case "severe": {
+            const menor12 = idadeMeses && idadeMeses < 12;
+            const fase1 = peso * 30;
+            const fase2 = peso * 70;
+            const t1 = menor12 ? 1 : 0.5;
+            const t2 = menor12 ? 5 : 2.5;
+            const total = fase1 + fase2;
+            const taxa1 = fase1 / t1;
+            const taxa2 = fase2 / t2;
+            return `Plano C - Desidratação grave
+Ringer Lactato (ou SF 0,9%)
+→ Total: ${fmtMl(total)} (100 mL/kg)
+   Fase 1: ${fmtMl(fase1)} em ${t1} h — Taxa ≈ ${fmtMl(taxa1)}/h
+   Fase 2: ${fmtMl(fase2)} em ${t2} h — Taxa ≈ ${fmtMl(taxa2)}/h
+Iniciar SRO 5 mL/kg/h assim que possível.`;
+          }
           default:
-            return "";
+            return "Selecione o estado clínico.";
         }
       }
 
-      // ==== EVENTO DO BOTÃO DE CÁLCULO ====
-      document
-        .getElementById("calculateButton")
-        .addEventListener("click", () => {
-          const peso = parseFloat(document.getElementById("weight").value);
-          const grau = document.getElementById("dehydrationLevel").value;
+      // ======= NELSON =======
+      const getPercent = (s) => ({ mild: 5, moderate: 8, severe: 10 })[s] || 0;
 
-          if (!peso || peso <= 0) {
-            document.getElementById("result").textContent =
-              "Por favor, insira um peso válido.";
+      function calcularNelson(peso, status, choque) {
+        const perc = getPercent(status);
+        if (perc === 0)
+          return "Sem desidratação: apenas manutenção e alimentação.";
+
+        const deficit = peso * perc * 10;
+        const manut = calcManutencao(peso);
+        const fase1 = deficit * 0.5;
+        const fase2 = deficit * 0.5;
+        const taxa1 = fase1 / 8;
+        const taxa2 = fase2 / 16;
+        const total = deficit + manut;
+
+        let texto = "";
+        if (choque === "yes") {
+          const bolus = peso * 20;
+          texto += `Choque presente:
+→ Bolus inicial: ${fmtMl(bolus)} (20 mL/kg)
+Reavaliar perfusão; repetir se necessário.\n\n`;
+        }
+
+        texto += `Nelson - Déficit + Manutenção
+Estimativa de desidratação: ${perc}%
+Déficit: ${fmtMl(deficit)} (50% em 8 h, 50% em 16 h)
+  Fase 1: ${fmtMl(fase1)} em 8 h — Taxa ≈ ${fmtMl(taxa1)}/h
+  Fase 2: ${fmtMl(fase2)} em 16 h — Taxa ≈ ${fmtMl(taxa2)}/h
+Manutenção 24 h: ${fmtMl(manut)}
+Total 24 h (déficit + manutenção): ${fmtMl(total)}
+Iniciar SRO assim que possível e ajustar conforme resposta clínica.`;
+        return texto;
+      }
+
+      // ======= PRINCIPAL =======
+      document.getElementById("calcButton").addEventListener("click", () => {
+        try {
+          const metodo = document.getElementById("method").value;
+          const peso = parseFloat(document.getElementById("weight").value);
+          const status = document.getElementById("status").value;
+          const idade = parseFloat(document.getElementById("age").value);
+          const choque = document.getElementById("shock").value;
+          const res = document.getElementById("result");
+
+          if (!isPositive(peso)) {
+            res.textContent = "Peso inválido.";
             return;
           }
 
-          const volumeDia = calcularManutencao(peso);
-          const taxaHora = calcularTaxaHoraria(peso);
-          const plano = calcularPlanoOMS(peso, grau);
+          let textoPrincipal =
+            metodo === "oms"
+              ? calcularOMS(peso, status, idade)
+              : calcularNelson(peso, status, choque);
 
-          const texto = `Manutenção (Holiday–Segar)
-• Total diário: ${volumeDia.toFixed(0)} mL/dia
-• Taxa horária: ${taxaHora.toFixed(0)} mL/h
+          const manutTotal = calcManutencao(peso);
+          const taxaHr = calcTaxaHorario(peso);
 
-${plano}
+          const blocoManut = `
+=== MANUTENÇÃO BASAL (Holliday–Segar) ===
+Total 24 h: ${fmtMl(manutTotal)}
+Taxa horária (4-2-1): ${fmtMl(taxaHr)}/h
+Nota: o cálculo de manutenção é apenas referência para avaliação global da hidratação — não substitui o plano terapêutico selecionado.
+`;
 
-SRO padrão (OMS): Na⁺ 75 | Glicose 75 | K⁺ 20 | Cl⁻ 65 | Citrato 10 | Osmolaridade ≈ 245 mOsm/L`;
+          res.textContent = `=== RESULTADO PRINCIPAL ===
+${textoPrincipal}
 
-          document.getElementById("result").textContent = texto;
+${blocoManut}`;
+        } catch (err) {
+          console.error(err);
+          document.getElementById("result").textContent =
+            "Erro inesperado. Verifique os dados.";
+        }
+      });
+
+      // ======= COPIAR =======
+      document
+        .getElementById("copyButton")
+        .addEventListener("click", async () => {
+          const texto = document.getElementById("result").textContent.trim();
+          if (!texto) return;
+          try {
+            await navigator.clipboard.writeText(texto);
+            alert("Resultado copiado para a área de transferência!");
+          } catch {
+            alert("Falha ao copiar.");
+          }
         });
 
-      // ==== BOTÃO DE IMPRESSÃO ====
-      document.getElementById("printButton").addEventListener("click", () => {
-        window.print();
-      });
+      // ======= IMPRESSÃO =======
+      document
+        .getElementById("printButton")
+        .addEventListener("click", () => window.print());
+
+      // ======= TESTES =======
+      (function runTests() {
+        console.assert(calcManutencao(10) === 1000, "manut 10kg");
+        console.assert(calcManutencao(15) === 1250, "manut 15kg");
+        console.assert(getPercent("mild") === 5, "percent mild");
+        console.assert(getPercent("severe") === 10, "percent severe");
+        console.log("Testes básicos OK");
+      })();
     </script>
   </body>
 </html>
