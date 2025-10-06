@@ -12,7 +12,7 @@ body {
   background: #fff;
   padding: 20px 30px;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -30,7 +30,9 @@ label {
   margin-top: 10px;
 }
 
-input, select, button {
+input,
+select,
+button {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -64,7 +66,10 @@ pre.resultado {
 
 #sintomas-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cria colunas responsivas */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Cria colunas responsivas */
   gap: 10px; /* Espaço entre os itens */
   padding: 10px;
   border: 1px solid #ccc;
@@ -79,5 +84,105 @@ pre.resultado {
 }
 
 .checkbox-item input {
-  width: auto; 
+  width: auto;
+}
+
+/* ===== BARRA DE NAVEGAÇÃO ===== */
+.navbar {
+  background-color: #005a9c;
+  padding: 0.5rem 1rem;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.navbar a.active {
+  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* ===========================
+   ⚙️ Tokens e Base Compartilhada
+   (DRY: usados por várias páginas)
+   =========================== */
+:root {
+  --accent: #005a9c;
+  --border: #cccccc;
+}
+
+/* Títulos com identidade visual consistente */
+h1,
+h2 {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.25rem;
+  margin-top: 1rem;
+}
+
+/* Container padrão (index.html já usa .container) */
+.container {
+  max-width: 700px;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+/* Estados de foco para acessibilidade (WCAG) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 2px;
+}
+
+/* ===========================
+   🧭 Barra de Navegação Compartilhada
+   (use o mesmo <nav> em todas as páginas)
+   =========================== */
+.navbar {
+  background-color: var(--accent);
+  padding: 0.5rem 1rem;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Aba ativa (página atual) */
+.navbar a.active {
+  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
 }

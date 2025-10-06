@@ -82,7 +82,7 @@
   },
   "11": {
     "nome": "Erisipela / Celulite (Leve)",
-    "medicamentos_ids": ["cefalexina_250_leve", "cefalexina_125_leve"]
+    "medicamentos_ids": ["cefalexina_125_leve"]
   },
   "12": {
     "nome": "Herpes (Estomatite / Gengivoestomatite herpética)",
@@ -94,12 +94,11 @@
   },
   "14": {
     "nome": "Cistite (Inf. Urinária Baixa)",
-    "medicamentos_ids": ["cefalexina_250_leve", "cefalexina_125_leve"]
+    "medicamentos_ids": ["cefalexina_125_leve"]
   },
   "15": {
     "nome": "Pielonefrite (Inf. Urinária Alta)",
     "medicamentos_ids": [
-      "cefalexina_250_grave",
       "cefalexina_125_grave",
       "cefuroxima_250",
       "amoxicilina_clav_400_57_grave"

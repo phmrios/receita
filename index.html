@@ -1,44 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assistente de Prescrição Pediátrica</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Assistente de Prescrição Pediátrica</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assistente de Prescrição Pediátrica</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html" class="active">Início</a></li>
+        <li><a href="teste3.html">Hidratação OMS / Holiday–Segar</a></li>
+      </ul>
+    </nav>
 
-    <!-- Dados do paciente -->
-    <section>
-      <h2>1. Dados do Paciente</h2>
-      <label for="idade">Idade (anos):</label>
-      <input type="number" id="idade" min="0" step="0.1" placeholder="Ex: 3.5">
+    <div class="container">
+      <h1>Assistente de Prescrição Pediátrica</h1>
 
-      <label for="peso">Peso (kg):</label>
-      <input type="number" id="peso" min="1" step="0.1" placeholder="Ex: 14.2">
-    </section>
+      <!-- Dados do paciente -->
+      <section>
+        <h2>1. Dados do Paciente</h2>
+        <label for="idade">Idade (anos):</label>
+        <input
+          type="number"
+          id="idade"
+          min="0"
+          step="0.1"
+          placeholder="Ex: 3.5"
+        />
 
-    <!-- Sintomas -->
-    <section>
-      <h2>2. Sintomas</h2>
-      <label for="sintomas-container">Selecione um ou mais sintomas:</label>
-      <div id="sintomas-container"></div>
-    </section>
+        <label for="peso">Peso (kg):</label>
+        <input
+          type="number"
+          id="peso"
+          min="1"
+          step="0.1"
+          placeholder="Ex: 14.2"
+        />
+      </section>
 
-    <!-- Botão -->
-    <section>
-      <button id="gerar">Gerar Prescrição</button>
-    </section>
+      <!-- Sintomas -->
+      <section>
+        <h2>2. Sintomas</h2>
+        <label for="sintomas-container">Selecione um ou mais sintomas:</label>
+        <div id="sintomas-container"></div>
+      </section>
 
-    <!-- Resultado -->
-    <section>
-      <h2>📋 Prescrição</h2>
-      <pre id="resultado" class="resultado"></pre>
-    </section>
-  </div>
+      <!-- Botão -->
+      <section>
+        <button id="gerar">Gerar Prescrição</button>
+      </section>
 
-  <script src="app.js"></script>
-</body>
+      <!-- Resultado -->
+      <section>
+        <h2>📋 Prescrição</h2>
+        <pre id="resultado" class="resultado"></pre>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
 </html>
+

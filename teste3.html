@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora e Receita de Hidratação (OMS / Holiday–Segar)</title>
+
+    <!-- Estilos compartilhados -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Estilos específicos desta página -->
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #ffffff;
+        --fg: #000000;
+        --accent: #005a9c;
+        --border: #cccccc;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: system-ui, sans-serif;
+        line-height: 1.5;
+        margin: 2rem auto;
+        max-width: 700px;
+        padding: 1rem;
+      }
+
+      input,
+      select {
+        padding: 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: 0.25rem;
+      }
+
+      button {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      pre {
+        background: #f7f7f7;
+        border: 1px solid var(--border);
+        padding: 1rem;
+        border-radius: 0.25rem;
+        white-space: pre-wrap;
+        font-family: monospace;
+        font-size: 1rem;
+      }
+
+      output {
+        display: block;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 0.25rem;
+        background: #f7f7f7;
+        white-space: pre-line;
+      }
+
+      @media print {
+        body * {
+          display: none !important;
+        }
+        #recipeSection,
+        #recipe {
+          display: block !important;
+          border: none;
+          background: #fff;
+          color: #000;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Barra de navegação compartilhada -->
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li>
+          <a href="teste3.html" class="active"
+            >Hidratação OMS / Holiday–Segar</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <h1>Calculadora de Hidratação OMS / Holiday–Segar</h1>
+
+    <form id="hydrationForm" aria-describedby="instructions">
+      <p id="instructions">
+        Informe o peso corporal (kg) e o grau de desidratação.
+      </p>
+
+      <label for="weight">Peso corporal (kg)</label>
+      <input
+        id="weight"
+        name="weight"
+        type="number"
+        min="1"
+        step="0.1"
+        required
+        aria-required="true"
+      />
+
+      <label for="dehydrationLevel">Grau de desidratação</label>
+      <select id="dehydrationLevel" name="dehydrationLevel">
+        <option value="none">Sem desidratação (Plano A)</option>
+        <option value="some">Alguma desidratação (Plano B)</option>
+        <option value="severe">Desidratação grave (Plano C)</option>
+      </select>
+
+      <button type="button" id="calculateButton">Calcular</button>
+    </form>
+
+    <h2>Resultados</h2>
+    <output id="result" role="status" aria-live="polite"></output>
+
+    <hr />
+
+    <section id="recipeSection">
+      <button
+        type="button"
+        id="printButton"
+        aria-label="Imprimir apenas a receita"
+      >
+        🖨️ Imprimir Receita
+      </button>
+
+      <h2>Receita Simples de Soro Caseiro (SRO)</h2>
+
+      <p>
+        Este é o <strong>soro caseiro</strong>. Ele salva vidas. Use quando
+        alguém estiver com <strong>diarreia</strong> ou
+        <strong>vômito</strong> e perdendo muita água.
+      </p>
+
+      <pre id="recipe">
+=============================
+ COMO FAZER SORO CASEIRO
+=============================
+
+📦 O QUE VOCÊ PRECISA:
+- 1 litro de água limpa (ou filtrada e fervida)
+- 1 colher de chá rasa de sal
+- 2 colheres de sopa rasas de açúcar
+
+🪣 COMO FAZER:
+1. Ferva a água e espere esfriar.
+2. Misture o sal e o açúcar.
+3. Mexa bem até tudo desaparecer na água.
+4. Prove: o gosto deve ser como uma lágrima — nem muito salgado, nem muito doce.
+
+🥤 COMO USAR:
+- Dê um gole de cada vez, várias vezes por hora.
+- Criança pequena: 1 colher de sopa a cada 1 ou 2 minutos.
+- Adulto: copos pequenos várias vezes por hora.
+- Continue até parar o vômito e a diarreia.
+
+⚠️ CUIDADO:
+- Faça soro novo a cada 24 horas.
+- Se a pessoa estiver muito fraca, com sede intensa ou não conseguir beber, vá ao posto de saúde.
+
+=============================
+ FIM
+=============================
+      </pre>
+
+      <p>
+        <strong>Ajuda rápida:</strong>
+        O soro caseiro repõe água, açúcar e sal — o corpo precisa disso para
+        viver. Ensine essa receita a quem não sabe. Um litro de soro pode salvar
+        uma vida.
+      </p>
+    </section>
+
+    <script>
+      // ==== HOLIDAY–SEGAR (MANUTENÇÃO) ====
+      function calcularManutencao(pesoKg) {
+        if (pesoKg <= 10) return pesoKg * 100;
+        if (pesoKg <= 20) return 1000 + (pesoKg - 10) * 50;
+        return 1500 + (pesoKg - 20) * 20;
+      }
+
+      function calcularTaxaHoraria(pesoKg) {
+        if (pesoKg <= 10) return pesoKg * 4;
+        if (pesoKg <= 20) return 40 + (pesoKg - 10) * 2;
+        return 60 + (pesoKg - 20) * 1;
+      }
+
+      // ==== PLANOS OMS/MS ====
+      function calcularPlanoOMS(pesoKg, grau) {
+        switch (grau) {
+          case "none":
+            return `Plano A:
+Oferecer SRO após cada evacuação:
+<2 anos: 50–100 mL
+2–10 anos: 100–200 mL
+>10 anos: livre demanda
+Manter alimentação e zinco por 10–14 dias.`;
+          case "some":
+            return `Plano B:
+SRO 75 mL/kg em 4h
+→ Total: ${(pesoKg * 75).toFixed(0)} mL em 4h`;
+          case "severe":
+            return `Plano C:
+Ringer Lactato 100 mL/kg
+→ Total: ${(pesoKg * 100).toFixed(0)} mL (dividir conforme idade)
++ SRO 5 mL/kg/h assim que possível`;
+          default:
+            return "";
+        }
+      }
+
+      // ==== EVENTO DO BOTÃO DE CÁLCULO ====
+      document
+        .getElementById("calculateButton")
+        .addEventListener("click", () => {
+          const peso = parseFloat(document.getElementById("weight").value);
+          const grau = document.getElementById("dehydrationLevel").value;
+
+          if (!peso || peso <= 0) {
+            document.getElementById("result").textContent =
+              "Por favor, insira um peso válido.";
+            return;
+          }
+
+          const volumeDia = calcularManutencao(peso);
+          const taxaHora = calcularTaxaHoraria(peso);
+          const plano = calcularPlanoOMS(peso, grau);
+
+          const texto = `Manutenção (Holiday–Segar)
+• Total diário: ${volumeDia.toFixed(0)} mL/dia
+• Taxa horária: ${taxaHora.toFixed(0)} mL/h
+
+${plano}
+
+SRO padrão (OMS): Na⁺ 75 | Glicose 75 | K⁺ 20 | Cl⁻ 65 | Citrato 10 | Osmolaridade ≈ 245 mOsm/L`;
+
+          document.getElementById("result").textContent = texto;
+        });
+
+      // ==== BOTÃO DE IMPRESSÃO ====
+      document.getElementById("printButton").addEventListener("click", () => {
+        window.print();
+      });
+    </script>
+  </body>
+</html>
