@@ -5,27 +5,9 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Calculadora de Reidratação Pediátrica v3.0</title>
+    <title>CAD Pediátrica — Ficha ASCII</title>
 
     <style>
-      :root {
-        color-scheme: light dark;
-        --fg: #000;
-        --bg: #fff;
-        --accent: #004080;
-        --border: #ccc;
-        --focus: #ffbf00;
-      }
-
-      body {
-        font-family: monospace, Consolas, "Courier New", monospace;
-        background: var(--bg);
-        color: var(--fg);
-        line-height: 1.6;
-        margin: 1rem auto;
-        max-width: 740px;
-        padding: 1rem;
-      }
 
       label {
         display: block;
@@ -33,32 +15,8 @@
         font-weight: 700;
       }
 
-      input,
-      select,
-      button {
-        width: 100%;
-        padding: 0.6rem;
-        border: 2px solid var(--border);
-        border-radius: 4px;
-        font-size: 1rem;
-      }
 
-      button {
-        background: var(--accent);
-        color: #fff;
-        font-weight: 700;
-        cursor: pointer;
-        margin-top: 1rem;
-      }
 
-      button:focus,
-      input:focus,
-      select:focus {
-        outline: 3px solid var(--focus);
-        outline-offset: 2px;
-      }
-
-      pre,
       output {
         display: block;
         margin-top: 1.5rem;
@@ -73,19 +31,6 @@
       hr {
         margin: 2rem 0;
       }
-
-      @media print {
-        body * {
-          display: none !important;
-        }
-        #soroSection,
-        #soroText {
-          display: block !important;
-          border: none;
-          background: #fff;
-          color: #000;
-        }
-      }
     </style>
   </head>
 
@@ -93,22 +38,14 @@
     <nav class="navbar">
       <ul>
         <li><a href="index.html">Início</a></li>
-        <li>
-          <a href="teste3.html" class="active">Hidratação OMS / Nelson</a>
-        </li>
+        <li><a href="teste3.html" class="active">CAD</a></li>
         <li><a href="pals.html">Ficha PALS</a></li>
       </ul>
     </nav>
 
-    <h1>Calculadora de Reidratação Pediátrica v3.0</h1>
+    <h1>Calculadora — CAD Pediátrica (ASCII)</h1>
 
     <form id="calcForm">
-      <label for="method">Método de cálculo</label>
-      <select id="method" name="method" aria-required="true">
-        <option value="oms">OMS / Ministério da Saúde</option>
-        <option value="nelson">Nelson (déficit + manutenção)</option>
-      </select>
-
       <label for="weight">Peso (kg)</label>
       <input
         id="weight"
@@ -120,201 +57,218 @@
         aria-required="true"
       />
 
-      <label for="age">Idade (meses)</label>
+      <label for="ageYears">Idade (anos)</label>
       <input
-        id="age"
-        name="age"
+        id="ageYears"
+        name="ageYears"
         type="number"
         min="0"
         step="1"
         placeholder="opcional"
-        aria-describedby="ageHelp"
       />
-      <small id="ageHelp"
-        >Usado apenas para ajustar o tempo de infusão no Plano C (OMS).</small
-      >
-
-      <label for="status">Estado clínico</label>
-      <select id="status" name="status" aria-required="true">
-        <option value="none">Sem desidratação</option>
-        <option value="mild">Leve</option>
-        <option value="moderate">Moderada</option>
-        <option value="severe">Grave</option>
-      </select>
 
       <label for="shock">Choque?</label>
-      <select id="shock" name="shock">
+      <select id="shock" name="shock" aria-required="true">
         <option value="no">Não</option>
         <option value="yes">Sim</option>
+      </select>
+
+      <label for="dehydration">Déficit estimado</label>
+      <select id="dehydration" name="dehydration" aria-required="true">
+        <option value="5">5%</option>
+        <option value="7" selected>7% (padrão)</option>
+        <option value="10">10%</option>
+      </select>
+
+      <label for="initialRate">Volume inicial (1ª hora, mL/kg)</label>
+      <select id="initialRate" name="initialRate" aria-required="true">
+        <option value="10">10 mL/kg</option>
+        <option value="15" selected>15 mL/kg (padrão)</option>
+        <option value="20">20 mL/kg</option>
       </select>
 
       <button type="button" id="calcButton">Calcular</button>
     </form>
 
-    <button type="button" id="copyButton">📋 Copiar Resultado</button>
+    <button type="button" id="copyButton">Copiar Resultado</button>
 
     <output id="result" role="status" aria-live="polite"></output>
 
     <hr />
 
-    <section id="soroSection">
-      <button type="button" id="printButton">🖨️ Imprimir Receita</button>
-
-      <h2>Receita de Soro Caseiro (SRO)</h2>
-
-      <pre id="soroText">
-==============================
- COMO FAZER SORO CASEIRO
-==============================
-
-📦 INGREDIENTES:
-- 1 litro de água limpa (filtrada e fervida)
-- 1 colher de chá rasa de sal
-- 2 colheres de sopa rasas de açúcar
-
-🪣 MODO DE PREPARO:
-1. Ferva a água e deixe esfriar.
-2. Misture sal e açúcar até dissolver completamente.
-3. O gosto deve lembrar uma lágrima — nem muito doce nem muito salgado.
-
-🥤 COMO USAR:
-- Crianças: 1 colher de sopa a cada 1–2 minutos.
-- Adultos: copos pequenos várias vezes por hora.
-- Continue até parar diarreia e vômitos.
-
-⚠️ CUIDADO:
-- Faça soro novo a cada 24 h.
-- Se houver sede intensa, fraqueza ou recusa de líquidos, procure atendimento.
-==============================
-      </pre>
-    </section>
-
     <script>
       "use strict";
 
-      // ======= UTILITÁRIOS =======
-      const fmtMl = (v) => `(${Math.round(v)}) ${v.toFixed(2)} mL`;
+      // ======= UTILITÁRIOS (KISS + SRP) =======
       const isPositive = (n) => Number(n) > 0 && isFinite(Number(n));
 
-      const calcManutencao = (peso) => {
+      // Holliday–Segar (mL/24h)
+      function calcManutencao24h(peso) {
         if (peso <= 10) return peso * 100;
         if (peso <= 20) return 1000 + (peso - 10) * 50;
         return 1500 + (peso - 20) * 20;
-      };
-
-      const calcTaxaHorario = (peso) => {
-        if (peso <= 10) return peso * 4;
-        if (peso <= 20) return 40 + (peso - 10) * 2;
-        return 60 + (peso - 20);
-      };
-
-      // ======= OMS / MS =======
-      function calcularOMS(peso, status, idadeMeses) {
-        switch (status) {
-          case "none":
-            return `Plano A - Sem desidratação
-Reidratar em casa com SRO após cada evacuação:
-<2a: 50–100 mL | ≥2a: 100–200 mL
-Manter alimentação e zinco por 10–14 dias.`;
-          case "mild":
-          case "moderate": {
-            const total = peso * 75;
-            const taxaHora = total / 4;
-            return `Plano B - Alguma desidratação
-SRO 75 mL/kg em 4 h
-→ Total: ${fmtMl(total)} em 4 h
-→ Taxa média: ${fmtMl(taxaHora)}/h`;
-          }
-          case "severe": {
-            const menor12 = idadeMeses && idadeMeses < 12;
-            const fase1 = peso * 30;
-            const fase2 = peso * 70;
-            const t1 = menor12 ? 1 : 0.5;
-            const t2 = menor12 ? 5 : 2.5;
-            const total = fase1 + fase2;
-            const taxa1 = fase1 / t1;
-            const taxa2 = fase2 / t2;
-            return `Plano C - Desidratação grave
-Ringer Lactato (ou SF 0,9%)
-→ Total: ${fmtMl(total)} (100 mL/kg)
-   Fase 1: ${fmtMl(fase1)} em ${t1} h — Taxa ≈ ${fmtMl(taxa1)}/h
-   Fase 2: ${fmtMl(fase2)} em ${t2} h — Taxa ≈ ${fmtMl(taxa2)}/h
-Iniciar SRO 5 mL/kg/h assim que possível.`;
-          }
-          default:
-            return "Selecione o estado clínico.";
-        }
       }
 
-      // ======= NELSON =======
-      const getPercent = (s) => ({ mild: 5, moderate: 8, severe: 10 })[s] || 0;
+      function arredondaMl(v) {
+        return Math.round(v);
+      }
 
-      function calcularNelson(peso, status, choque) {
-        const perc = getPercent(status);
-        if (perc === 0)
-          return "Sem desidratação: apenas manutenção e alimentação.";
+      function fmtMl(v) {
+        const r = arredondaMl(v);
+        return `(${r}) ${v.toFixed(2)} mL`;
+      }
 
-        const deficit = peso * perc * 10;
-        const manut = calcManutencao(peso);
-        const fase1 = deficit * 0.5;
-        const fase2 = deficit * 0.5;
-        const taxa1 = fase1 / 8;
-        const taxa2 = fase2 / 16;
-        const total = deficit + manut;
+      function calcInsulinaHora(peso, taxa = 0.1) {
+        // 0,05–0,1 U/kg/h (sem bolus). Mantemos 0,1 como cálculo principal, exibindo a faixa.
+        return peso * taxa;
+      }
 
-        let texto = "";
-        if (choque === "yes") {
-          const bolus = peso * 20;
-          texto += `Choque presente:
-→ Bolus inicial: ${fmtMl(bolus)} (20 mL/kg)
-Reavaliar perfusão; repetir se necessário.\n\n`;
-        }
-
-        texto += `Nelson - Déficit + Manutenção
-Estimativa de desidratação: ${perc}%
-Déficit: ${fmtMl(deficit)} (50% em 8 h, 50% em 16 h)
-  Fase 1: ${fmtMl(fase1)} em 8 h — Taxa ≈ ${fmtMl(taxa1)}/h
-  Fase 2: ${fmtMl(fase2)} em 16 h — Taxa ≈ ${fmtMl(taxa2)}/h
-Manutenção 24 h: ${fmtMl(manut)}
-Total 24 h (déficit + manutenção): ${fmtMl(total)}
-Iniciar SRO assim que possível e ajustar conforme resposta clínica.`;
-        return texto;
+      function calcOsmoterapiaDoses(peso) {
+        // Valores exibidos como referência rápida na ficha ASCII
+        const salina3Min = peso * 3; // mL de NaCl 3%
+        const salina3Max = peso * 5;
+        const manitolGrMin = peso * 0.5; // g
+        const manitolGrMax = peso * 1.0; // g
+        return { salina3Min, salina3Max, manitolGrMin, manitolGrMax };
       }
 
       // ======= PRINCIPAL =======
       document.getElementById("calcButton").addEventListener("click", () => {
         try {
-          const metodo = document.getElementById("method").value;
           const peso = parseFloat(document.getElementById("weight").value);
-          const status = document.getElementById("status").value;
-          const idade = parseFloat(document.getElementById("age").value);
+          const idade = document.getElementById("ageYears").value || "____";
           const choque = document.getElementById("shock").value;
-          const res = document.getElementById("result");
+          const deficitPerc = parseFloat(
+            document.getElementById("dehydration").value,
+          );
+          const volInicialMlKg = parseFloat(
+            document.getElementById("initialRate").value,
+          );
+
+          const out = document.getElementById("result");
 
           if (!isPositive(peso)) {
-            res.textContent = "Peso inválido.";
+            out.textContent = "Peso inválido.";
             return;
           }
 
-          let textoPrincipal =
-            metodo === "oms"
-              ? calcularOMS(peso, status, idade)
-              : calcularNelson(peso, status, choque);
+          // Cálculos centrais (DRY)
+          const manut24 = calcManutencao24h(peso); // mL/24h
+          const deficit = peso * (deficitPerc / 100) * 1000; // mL
+          const total48 = manut24 * 2 + deficit; // mL
+          const taxaHora = total48 / 48; // mL/h
+          const volInicial = peso * volInicialMlKg; // mL na 1ª hora
+          const bolusChoque = peso * 20; // mL (se choque)
+          const insulinaHoraAlta = calcInsulinaHora(peso, 0.1); // U/h
+          const insulinaHoraBaixa = calcInsulinaHora(peso, 0.05); // U/h
+          const { salina3Min, salina3Max, manitolGrMin, manitolGrMax } =
+            calcOsmoterapiaDoses(peso);
 
-          const manutTotal = calcManutencao(peso);
-          const taxaHr = calcTaxaHorario(peso);
+          // Montagem ASCII (sem PDF, sem impressão)
+          const texto = `
+=====================================================================
+FICHA ASCII – CETOACIDOSE DIABÉTICA PEDIÁTRICA (CAD)
+=====================================================================
+Idade: ${idade} anos
+Peso: ${peso.toFixed(1)} kg
+Data/Hora: _____________________
 
-          const blocoManut = `
-=== MANUTENÇÃO BASAL (Holliday–Segar) ===
-Total 24 h: ${fmtMl(manutTotal)}
-Taxa horária (4-2-1): ${fmtMl(taxaHr)}/h
-Nota: o cálculo de manutenção é apenas referência para avaliação global da hidratação — não substitui o plano terapêutico selecionado.
+SUSPEITA CLÍNICA
+---------------------------------------------------------------------
+[ ] poliúria  [ ] polidipsia  [ ] perda ponderal  [ ] vômitos
+[ ] dor abdominal  [ ] respiração de Kussmaul  [ ] hálito cetônico
+[ ] desidratação  [ ] alteração do sensório: _______________________
+
+CONDUTA INICIAL (PRIMEIRA HORA)
+---------------------------------------------------------------------
+- Avaliar ABCDE e perfusão.
+- Coletar gaso, eletrólitos, glicemia, ureia/creatinina, cetonas.
+- Iniciar hidratação com SF 0,9% ${fmtMl(volInicial)} em 1 h. Cálculo feito com ((~${volInicialMlKg} mL/kg))
+  Reavaliar perfusão e repetir 10–20 mL/kg/1 h se necessário.
+${
+  choque === "yes"
+    ? `- Choque: bolus ${fmtMl(bolusChoque)} (20 mL/kg), reavaliar e repetir se necessário.`
+    : `- Choque: ausente.`
+}
+
+CÁLCULOS DE LÍQUIDOS
+---------------------------------------------------------------------
+Manutenção 24 h (Holliday–Segar): ${fmtMl(manut24)}
+Déficit (${deficitPerc}%):         ${fmtMl(deficit)}
+Total 48 h:                        ${fmtMl(total48)}
+Taxa horária alvo:                 ${fmtMl(taxaHora)}/h
+* Repor déficit em 36–48 h, ajustando por Na⁺ corrigido e osmolalidade.
+
+INSULINA IV (após 1–2 h de líquidos e K⁺ ≥ 3,3) – SEM BOLUS
+---------------------------------------------------------------------
+Regular 0,05–0,1 U/kg/h
+Faixa de dose: ${insulinaHoraBaixa.toFixed(1)} a ${insulinaHoraAlta
+            .toFixed(1)
+            .padStart(4, " ")} U/h
+Meta: queda da glicose 50–100 mg/dL/h e fechamento da cetose.
+Quando glicose ≤ 250–300 mg/dL → ADICIONAR dextrose (SG 5–10%) mantendo a insulina.
+
+POTÁSSIO (APÓS LABORATÓRIO)
+---------------------------------------------------------------------
+K⁺ sérico: ______ mEq/L   Diurese: [ ] sim  [ ] não
+Conduta:
+  - Se < 3,3: adiar insulina e repor até ≥ 3,3.
+  - Se 3,3–5,5 e com diurese: iniciar 40 mEq/L (20 KCl + 20 K-fosfato/acetato).
+  - Se > 5,5: não repor; monitorar seriado e reavaliar.
+
+MONITORIZAÇÃO
+---------------------------------------------------------------------
+- Glicemia: 1/1 h
+- Gaso/eletrólitos/ureia: 2–4/4 h
+- Estado neurológico e sinais vitais: 1/1 h
+- Balanço hídrico e diurese horária (anotar volumes)
+
+EDEMA CEREBRAL – TRATAR IMEDIATAMENTE SE SUSPEITO (NÃO ESPERAR TC)
+---------------------------------------------------------------------
+Sinais: cefaleia, vômitos, rebaixamento do sensório, pupilas alteradas,
+bradicardia/hipertensão, convulsões.
+Conduta:
+  - Salina hipertônica 3%: ${fmtMl(salina3Min)} a ${fmtMl(
+    salina3Max,
+  )} (3–5 mL/kg) IV em 10–15 min
+    ou
+  - Manitol: ${manitolGrMin.toFixed(1)} a ${manitolGrMax.toFixed(
+    1,
+  )} g (0,5–1 g/kg) IV em 10–15 min
+  - Reduzir velocidade de líquidos (~ −1/3), elevar cabeceira, evitar hipocapnia.
+
+CRITÉRIOS DE RESOLUÇÃO E TRANSIÇÃO
+---------------------------------------------------------------------
+Clínico: estável, alerta, tolerando VO.
+Laboratorial: HCO3- ≥ 15, pH > 7,30, anion gap fechado, cetonemia ↓.
+Transição: aplicar insulina SC 30–60 min antes de parar infusão IV.
+
+=====================================================================
+ANOTAÇÕES RÁPIDAS
+---------------------------------------------------------------------
+Glicemias (horárias): __ __ __ __ __ __ __ __ __ __
+Na: ____  K: ____  Cl: ____  HCO3-: ____  Ureia/Cr: ____/____
+Observações: _________________________________________________
+
+---------------------------------------------------------------------
+PEARLS & PITFALLS
+---------------------------------------------------------------------
+- Corrija devagar: quedas rápidas de osmolalidade → edema cerebral.
+- K⁺ comanda o início da insulina: se K⁺ < 3,3, segure insulina e reponha K⁺.
+- Sem bolus de insulina; o objetivo é resolver a cetose/acidose.
+- Na⁺ corrigido deve subir enquanto a glicose cai; se não, revise a tonicidade.
+
+---------------------------------------------------------------------
+TL;DR
+---------------------------------------------------------------------
+- 1ª hora: SF 0,9% ${volInicialMlKg} mL/kg em 1 h; repetir 10–20 mL/kg/1 h conforme perfusão.
+- Insulina IV 0,05–0,1 U/kg/h **sem bolus** após 1–2 h de líquidos e K⁺ ≥ 3,3.
+- Dextrose quando glicose ≤ 250–300 mg/dL, mantendo a insulina.
+- Monitorar glicemia 1/1 h; eletrólitos/gaso 2–4/4 h; vigiar neurologia.
+- Edema cerebral: Salina 3% 3–5 mL/kg ou Manitol 0,5–1 g/kg imediatamente.
 `;
 
-          res.textContent = `=== RESULTADO PRINCIPAL ===
-${textoPrincipal}
-
-${blocoManut}`;
+          out.textContent = texto;
         } catch (err) {
           console.error(err);
           document.getElementById("result").textContent =
@@ -336,17 +290,11 @@ ${blocoManut}`;
           }
         });
 
-      // ======= IMPRESSÃO =======
-      document
-        .getElementById("printButton")
-        .addEventListener("click", () => window.print());
-
-      // ======= TESTES =======
+      // ======= TESTES BÁSICOS (sanidade) =======
       (function runTests() {
-        console.assert(calcManutencao(10) === 1000, "manut 10kg");
-        console.assert(calcManutencao(15) === 1250, "manut 15kg");
-        console.assert(getPercent("mild") === 5, "percent mild");
-        console.assert(getPercent("severe") === 10, "percent severe");
+        console.assert(calcManutencao24h(10) === 1000, "manut 10 kg");
+        console.assert(calcManutencao24h(15) === 1250, "manut 15 kg");
+        console.assert(calcManutencao24h(25) === 1700, "manut 25 kg");
         console.log("Testes básicos OK");
       })();
     </script>
