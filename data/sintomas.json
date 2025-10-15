@@ -160,5 +160,9 @@
   "21": {
     "nome": "Suplementação de vitamina D (0–18 anos)",
     "medicamentos_ids": ["colecalciferol_200_ui_gota"]
+  },
+  "22": {
+    "nome": "Encaminhamento para APS",
+    "medicamentos_ids": ["dipironaecasa"]
   }
 }

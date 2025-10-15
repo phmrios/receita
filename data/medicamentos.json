@@ -637,7 +637,7 @@
     "forma": "Gotas",
     "apresentacao": "200 UI/gota (solução oral)",
     "concentracao_ui_por_gota": 200,
-    "observacao": "Vitamina D: profilaxia/suplementação em 0–18 anos. UI = Unidades Internacionais.",
+    "observacao": "",
     "regras": [
       {
         "idade_min": 0,
@@ -665,8 +665,19 @@
         },
         "frequencia": "1 vez ao dia",
         "duracao": "uso contínuo conforme orientação",
-        "observacao": "Aleitamento materno exclusivo/parcial: suplementar o bebê com 400 UI/dia; alternativa quando seguida e monitorada: suplementar a mãe com 6.400 UI/dia para enriquecer o leite."
+        "observacao": ""
       }
     ]
-  }
+  },
+  "dipironaecasa": {
+    "nome": "Ao colega médico,",
+    "forma": "encaminho o seguinte paciente:",
+    "apresentacao": "",
+    "regras": [
+      {
+        "observacao": "Entregar relatório ao médico da APS"
+      }
+    ],
+    "observacao": "Paciente atendido nesta UPA por quadro clínico sem critérios de urgência ou emergência, encontrando-se em bom estado geral, estável e sem sinais de gravidade. O caso é de acompanhamento adequado em nível de Atenção Primária, motivo pelo qual oriento seguimento com o pediatra da unidade de referência para continuidade do cuidado, observação evolutiva e eventuais ajustes terapêuticos conforme necessidade clínica."
+   }
 }

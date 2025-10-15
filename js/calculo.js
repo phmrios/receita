@@ -20,9 +20,17 @@ function calcularDoseVitaminaD_UIporDia(protocolo, idadeAnos) {
 
 // ===== FORMATAÇÃO CENTRALIZADA =====
 function formatarPrescricao(med, doseTexto, protocolo) {
+  const isRelatorio = med?.id === "dipironaecasa";
+
   let texto = `${med.nome} ${med.forma}`;
   if (med.apresentacao) texto += ` (${med.apresentacao})`;
-  texto += ` — 01 frasco\n   Uso: ${doseTexto}`;
+
+  // Só adiciona "— 01 frasco" se NÃO for o relatório
+  if (!isRelatorio) {
+    texto += ` — 01 frasco`;
+  }
+
+  texto += `\n   Uso: ${doseTexto}`;
   if (protocolo.frequencia) texto += ` ${protocolo.frequencia}`;
   if (protocolo.duracao) texto += `, ${protocolo.duracao}`;
 
@@ -162,7 +170,10 @@ export function gerarPrescricao(
       const med = medicamentos[medId];
       if (!med) continue;
 
-      const prescricoes = calcularPrescricao(med, idade, peso);
+      // injeta o id no objeto do medicamento (permite lógica condicional na formatação)
+      const medComId = { ...med, id: medId };
+
+      const prescricoes = calcularPrescricao(medComId, idade, peso);
       resultado.push(prescricoes[0]);
     }
   }
