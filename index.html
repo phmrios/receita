@@ -3,61 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#005a9c" />
     <title>Assistente de Prescrição Pediátrica</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav class="navbar">
       <ul>
-        <li><a href="index.html" class="active">Início</a></li>
-        <li><a href="teste3.html">CAD</a></li>
-        <li><a href="pals.html">Ficha PALS</a></li>
+        <li><a href="index.html" class="active">Prescrição</a></li>
+        <li><a href="pals.html">PALS</a></li>
+        <li><a href="cad.html">CAD</a></li>
+        <li><a href="hidratacao.html">Hidratação</a></li>
       </ul>
     </nav>
 
-    <div class="container">
+    <main class="container">
       <h1>Assistente de Prescrição Pediátrica</h1>
 
-      <!-- Dados do paciente -->
-      <section>
-        <h2>1. Dados do Paciente</h2>
-        <label for="idade">Idade (anos):</label>
-        <input
-          type="number"
-          id="idade"
-          min="0"
-          step="0.1"
-          placeholder="Ex: 3.5"
-        />
+      <div id="erro-cadastro" class="mensagem" hidden></div>
 
-        <label for="peso">Peso (kg):</label>
-        <input
-          type="number"
-          id="peso"
-          min="1"
-          step="0.1"
-          placeholder="Ex: 14.2"
-        />
+      <section>
+        <h2>1. Dados do paciente</h2>
+        <div class="linha">
+          <div class="campo">
+            <label for="idade">Idade</label>
+            <div class="campo-com-unidade">
+              <input type="number" id="idade" min="0" step="0.1" inputmode="decimal" placeholder="Ex: 3" />
+              <select id="idade-unidade" aria-label="Unidade da idade">
+                <option value="anos">anos</option>
+                <option value="meses">meses</option>
+              </select>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="peso">Peso (kg)</label>
+            <input type="number" id="peso" min="0.5" step="0.1" inputmode="decimal" placeholder="Ex: 14,2" />
+          </div>
+        </div>
       </section>
 
-      <!-- Sintomas -->
       <section>
         <h2>2. Sintomas</h2>
-        <label for="sintomas-container">Selecione um ou mais sintomas:</label>
+        <label for="busca-sintoma">Buscar</label>
+        <input type="search" id="busca-sintoma" placeholder="Ex: otite, febre, diarreia…" autocomplete="off" />
         <div id="sintomas-container"></div>
       </section>
 
-      <!-- Botão -->
       <section>
-        <button id="gerar">Gerar Prescrição</button>
+        <button id="gerar" type="button">Gerar prescrição</button>
+        <div id="mensagem-form" class="mensagem" role="alert" hidden></div>
       </section>
 
-      <!-- Resultado -->
       <section>
         <h2>📋 Prescrição</h2>
+        <div id="avisos" class="mensagem" role="status" hidden></div>
         <pre id="resultado" class="resultado"></pre>
+        <div class="acoes">
+          <button type="button" class="secundario" data-copiar="#resultado">Copiar</button>
+          <button type="button" class="secundario" data-imprimir="#resultado">Imprimir</button>
+          <span class="mensagem" hidden></span>
+        </div>
+
+        <details id="conferencia-bloco" class="conferencia" hidden>
+          <summary>Conferência do cálculo</summary>
+          <ul id="conferencia"></ul>
+        </details>
       </section>
-    </div>
+
+      <section>
+        <h2>🏥 Encaminhamento para APS</h2>
+        <label for="enc-paciente">Nome do paciente (opcional)</label>
+        <input type="text" id="enc-paciente" autocomplete="off" />
+        <label for="enc-diagnostico">Hipótese diagnóstica / queixa</label>
+        <input type="text" id="enc-diagnostico" placeholder="Ex: IVAS, febre há 2 dias" autocomplete="off" />
+        <label for="enc-conduta">Conduta realizada</label>
+        <textarea id="enc-conduta" rows="3" placeholder="Ex: Avaliado, sem sinais de gravidade, prescrito sintomático."></textarea>
+        <button type="button" id="gerar-encaminhamento">Gerar encaminhamento</button>
+        <pre id="encaminhamento" class="resultado"></pre>
+        <div class="acoes">
+          <button type="button" class="secundario" data-copiar="#encaminhamento">Copiar</button>
+          <button type="button" class="secundario" data-imprimir="#encaminhamento">Imprimir</button>
+          <span class="mensagem" hidden></span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      Ferramenta de apoio. <strong>Sempre confira as doses antes de prescrever.</strong>
+      Doses baseadas em referências pediátricas usuais (SBP, Ministério da Saúde, bulas). Última revisão das doses: 10/2026.
+    </footer>
 
     <script type="module" src="js/main.js"></script>
   </body>

@@ -1,188 +1,376 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f9;
-  margin: 0;
-  padding: 20px;
-  color: #333;
+/* ===========================
+   Tokens (claro / escuro)
+   =========================== */
+:root {
+  color-scheme: light dark;
+  --accent: #005a9c;
+  --accent-hover: #00467a;
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-2: #f6f7f9;
+  --fg: #1f2933;
+  --fg-muted: #5b6573;
+  --border: #d0d5dc;
+  --focus: #ffbf47;
+  --erro-bg: #fdecea;
+  --erro-fg: #8a1c12;
+  --aviso-bg: #fff6e0;
+  --aviso-fg: #6b4a00;
+  --ok-bg: #e7f6ec;
+  --ok-fg: #1d5e33;
 }
 
-.container {
-  max-width: 700px;
-  margin: auto;
-  background: #fff;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  text-align: center;
-  color: #2c3e50;
-}
-
-h2 {
-  margin-top: 20px;
-  color: #34495e;
-}
-
-label {
-  display: block;
-  margin-top: 10px;
-}
-
-input,
-select,
-button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-button {
-  background: #e67e22;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s;
-  margin-top: 15px;
-}
-
-button:hover {
-  background: #d35400;
-}
-
-pre.resultado {
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  white-space: pre-wrap;
-  font-size: 0.95rem;
-}
-
-#sintomas-container {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(250px, 1fr)
-  ); /* Cria colunas responsivas */
-  gap: 10px; /* Espaço entre os itens */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 5px;
-}
-
-.checkbox-item {
-  display: flex;
-  align-items: center; /* Alinha o checkbox com o texto */
-  gap: 8px; /* Espaço entre o checkbox e o texto */
-}
-
-.checkbox-item input {
-  width: auto;
-}
-
-/* ===== BARRA DE NAVEGAÇÃO ===== */
-.navbar {
-  background-color: #005a9c;
-  padding: 0.5rem 1rem;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.navbar a:hover {
-  text-decoration: underline;
-}
-
-.navbar a.active {
-  text-decoration: underline;
-  background-color: rgba(255, 255, 255, 0.15);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #4da3e0;
+    --accent-hover: #74b8ea;
+    --bg: #12161b;
+    --surface: #1b2128;
+    --surface-2: #232a33;
+    --fg: #e6e9ed;
+    --fg-muted: #a0a9b4;
+    --border: #36404b;
+    --erro-bg: #3d1a17;
+    --erro-fg: #ffb4ab;
+    --aviso-bg: #3a2f12;
+    --aviso-fg: #ffd98a;
+    --ok-bg: #173323;
+    --ok-fg: #9fe0b5;
+  }
 }
 
 /* ===========================
-   ⚙️ Tokens e Base Compartilhada
-   (DRY: usados por várias páginas)
+   Base
    =========================== */
-:root {
-  --accent: #005a9c;
-  --border: #cccccc;
+* {
+  box-sizing: border-box;
 }
 
-/* Títulos com identidade visual consistente */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 760px;
+  margin: 1rem auto;
+  background: var(--surface);
+  padding: 1rem 1.5rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
 h1,
 h2 {
   color: var(--accent);
   border-bottom: 2px solid var(--accent);
   padding-bottom: 0.25rem;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
-/* Container padrão (index.html já usa .container) */
-.container {
-  max-width: 700px;
-  margin-inline: auto;
-  padding: 1rem;
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-/* Estados de foco para acessibilidade (WCAG) */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
-  outline: 3px solid #ffbf47;
-  outline-offset: 2px;
+h2 {
+  font-size: 1.15rem;
 }
 
 /* ===========================
-   🧭 Barra de Navegação Compartilhada
-   (use o mesmo <nav> em todas as páginas)
+   Formulários
+   =========================== */
+label {
+  display: block;
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea,
+button {
+  width: 100%;
+  padding: 0.65rem;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font: inherit;
+  background: var(--surface);
+  color: var(--fg);
+}
+
+button {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+button.secundario {
+  background: var(--surface-2);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  width: auto;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+}
+
+button.secundario:hover {
+  background: var(--border);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.linha {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.campo {
+  flex: 1 1 200px;
+}
+
+.campo-com-unidade {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.campo-com-unidade select {
+  width: auto;
+}
+
+/* ===========================
+   Sintomas
+   =========================== */
+#sintomas-container {
+  margin-top: 0.5rem;
+}
+
+.grupo-sintomas {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0.75rem 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.25rem 1rem;
+}
+
+.grupo-sintomas legend {
+  font-weight: 700;
+  color: var(--accent);
+  padding: 0 0.25rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-item[hidden],
+.grupo-sintomas[hidden] {
+  display: none;
+}
+
+.checkbox-item input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.checkbox-item label {
+  margin: 0;
+  font-weight: normal;
+  padding: 0.3rem 0;
+  cursor: pointer;
+}
+
+/* ===========================
+   Resultados e mensagens
+   =========================== */
+pre.resultado {
+  background: var(--surface-2);
+  color: var(--fg);
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.92rem;
+  min-height: 3rem;
+  margin: 0.75rem 0 0;
+}
+
+.acoes {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.acoes .mensagem {
+  margin: 0.5rem 0 0;
+  padding: 0.35rem 0.75rem;
+}
+
+.mensagem {
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  margin-top: 0.75rem;
+}
+
+.mensagem[hidden] {
+  display: none;
+}
+
+.mensagem ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.mensagem-erro {
+  background: var(--erro-bg);
+  color: var(--erro-fg);
+}
+
+.mensagem-aviso {
+  background: var(--aviso-bg);
+  color: var(--aviso-fg);
+}
+
+.mensagem-ok {
+  background: var(--ok-bg);
+  color: var(--ok-fg);
+}
+
+.conferencia {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+
+.conferencia summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.conferencia li {
+  margin: 0.3rem 0;
+}
+
+/* ===========================
+   Navegação e rodapé
    =========================== */
 .navbar {
-  background-color: var(--accent);
+  background-color: #005a9c;
   padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
-  gap: 1rem;
-  margin: 0;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0 auto;
   padding: 0;
+  max-width: 760px;
 }
 
 .navbar a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
 }
 
 .navbar a:hover {
   text-decoration: underline;
 }
 
-/* Aba ativa (página atual) */
 .navbar a.active {
-  text-decoration: underline;
-  background-color: rgba(255, 255, 255, 0.15);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.rodape {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+  font-size: 0.82rem;
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+/* ===========================
+   Celular
+   =========================== */
+@media (max-width: 600px) {
+  .container {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0.5rem 1rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  .grupo-sintomas {
+    grid-template-columns: 1fr;
+  }
+
+  pre.resultado {
+    font-size: 0.85rem;
+  }
+}
+
+/* ===========================
+   Impressão: só o bloco escolhido
+   =========================== */
+@media print {
+  body.imprimindo * {
+    visibility: hidden;
+  }
+
+  body.imprimindo .area-impressao,
+  body.imprimindo .area-impressao * {
+    visibility: visible;
+  }
+
+  body.imprimindo .area-impressao {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    border: none;
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
 }
