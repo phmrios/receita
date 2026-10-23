@@ -3,58 +3,80 @@
     "nome": "Paracetamol",
     "forma": "Gotas",
     "apresentacao": "200 mg/mL",
+    "gotas_por_ml": 15,
     "regras": [
       {
+        "publico": "adulto",
+        "nome": "Paracetamol",
+        "forma": "Comprimido",
+        "apresentacao": "750 mg",
+        "quantidade": "01 caixa",
+        "posologia": "1 comprimido a cada 6 horas se dor ou febre > 37,5, por até 5 dias"
+      },
+      {
         "idade_min": 0.25,
-        "idade_max": 12,
         "faixa_mgkg": [10, 15],
         "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 750,
         "dose_max_mgkg_dia": 60,
-        "dose_max_mg_dia": 4000,
         "concentracao": 200,
         "frequencia": "a cada 6 horas",
-        "duracao": "por 5 dias se dor ou febre > 37,5",
-        "observacao": ""
+        "duracao": "por até 5 dias se dor ou febre > 37,5"
       }
-    ],
-    "observacao": ""
+    ]
   },
   "dipirona_500": {
     "nome": "Dipirona",
     "forma": "Gotas",
-    "apresentacao": "500mg/mL",
+    "apresentacao": "500 mg/mL",
+    "gotas_por_ml": 20,
     "regras": [
       {
-        "idade_min": 0,
-        "idade_max": 12,
+        "publico": "adulto",
+        "nome": "Dipirona",
+        "forma": "Comprimido",
+        "apresentacao": "500 mg",
+        "quantidade": "01 caixa",
+        "posologia": "1 a 2 comprimidos a cada 6 horas se dor ou febre > 37,5, por até 5 dias"
+      },
+      {
+        "idade_min": 0.25,
+        "peso_min": 5,
         "faixa_mgkg": [10, 20],
         "tipo_faixa_mgkg": "dose",
         "dose_max_mg_dose": 1000,
         "concentracao": 500,
         "frequencia": "a cada 6 horas",
-        "duracao": "por 5 dias se dor ou febre > 37,5",
-        "observacao": ""
+        "duracao": "por até 5 dias se dor ou febre > 37,5"
       }
-    ],
-    "observacao": ""
+    ]
   },
   "ibuprofeno_100_gotas": {
     "nome": "Ibuprofeno",
     "forma": "Gotas",
     "apresentacao": "100 mg/mL",
+    "gotas_por_ml": 10,
     "regras": [
+      {
+        "publico": "adulto",
+        "nome": "Ibuprofeno",
+        "forma": "Comprimido",
+        "apresentacao": "400 mg",
+        "quantidade": "01 caixa",
+        "posologia": "1 comprimido a cada 8 horas se dor ou febre > 37,5, por até 5 dias. Tomar após alimentação"
+      },
       {
         "idade_min": 0.5,
         "faixa_mgkg": [5, 10],
+        "alvo_mgkg": 10,
         "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 400,
         "dose_max_mgkg_dia": 40,
         "concentracao": 100,
-        "frequencia": "a cada 6 ou 8 horas",
-        "duracao": "por 5 dias se dor ou febre > 37,5",
-        "observacao": ""
+        "frequencia": "a cada 8 horas",
+        "duracao": "por até 5 dias se dor ou febre > 37,5"
       }
-    ],
-    "observacao": ""
+    ]
   },
   "ibuprofeno_100_susp": {
     "nome": "Ibuprofeno",
@@ -62,622 +84,815 @@
     "apresentacao": "100 mg/5 mL",
     "regras": [
       {
+        "publico": "adulto",
+        "nome": "Ibuprofeno",
+        "forma": "Comprimido",
+        "apresentacao": "400 mg",
+        "quantidade": "01 caixa",
+        "posologia": "1 comprimido a cada 8 horas se dor ou febre > 37,5, por até 5 dias. Tomar após alimentação"
+      },
+      {
         "idade_min": 0.5,
         "faixa_mgkg": [5, 10],
+        "alvo_mgkg": 10,
         "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 400,
         "dose_max_mgkg_dia": 40,
         "concentracao": 20,
-        "frequencia": "a cada 6 ou 8 horas",
-        "duracao": "por 5 dias se dor ou febre > 37,5",
-        "observacao": ""
-      }
-    ],
-    "observacao": ""
-  },
-  "amoxicilina_250_5_dose_baixa": {
-    "nome": "Amoxicilina (Dose Padrão)",
-    "forma": "Suspensão",
-    "apresentacao": "250mg/5ml",
-    "regras": [
-      {
-        "idade_min": 0,
-        "idade_max": 12,
-        "peso_max": 39.9,
-        "faixa_mgkg": [40, 50],
-        "tipo_faixa_mgkg": "dia",
-        "concentracao": 50,
         "frequencia": "a cada 8 horas",
-        "duracao": "por 5 dias",
-        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
-      }
-    ],
-    "observacao": "Agitar antes de usar. Usar seringa dosadora."
-  },
-  "amoxicilina_250_5_duracao_alta": {
-    "nome": "Amoxicilina (Duração Alta)",
-    "forma": "Suspensão",
-    "apresentacao": "250mg/5ml",
-    "regras": [
-      {
-        "idade_min": 0,
-        "idade_max": 12,
-        "peso_max": 39.9,
-        "faixa_mgkg": [40, 50],
-        "tipo_faixa_mgkg": "dia",
-        "concentracao": 50,
-        "frequencia": "a cada 8 horas",
-        "duracao": "por 8 dias",
-        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
-      }
-    ],
-    "observacao": "Agitar antes de usar. Usar seringa dosadora."
-  },
-  "amoxicilina_250_5_adulto": {
-    "nome": "Amoxicilina (Dose Adulto)",
-    "forma": "Suspensão",
-    "apresentacao": "250mg/5ml",
-    "regras": [
-      {
-        "idade_min": 13,
-        "idade_max": 18,
-        "peso_min": 40,
-        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
-      }
-    ],
-    "observacao": "Reconstituir conforme fabricante e agitar antes de usar. Usar seringa dosadora."
-  },
-  "azitromicina_oral": {
-    "nome": "Azitromicina (Dose Padrão)",
-    "forma": "Suspensão",
-    "apresentacao": "200 mg/5 mL",
-    "regras": [
-      {
-        "idade_min": 0,
-        "idade_max": 12,
-        "peso_max": 39.9,
-        "faixa_mgkg": [12, 12],
-        "tipo_faixa_mgkg": "dia",
-        "dose_max_mg_dose": 500,
-        "concentracao": 40,
-        "frequencia": "a cada 8 horas",
-        "duracao": "por 5 dias",
-        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
-      }
-    ],
-    "observacao": "Agitar antes de usar. Usar seringa dosadora."
-  },
-  "ciprofloxacino_500": {
-    "nome": "Ciprofloxacino",
-    "forma": "Comprimido",
-    "apresentacao": "500 mg",
-    "regras": [
-      {
-        "idade_min": 0,
-        "idade_max": 18,
-        "faixa_mgkg": [15, 15],
-        "tipo_faixa_mgkg": "dose",
-        "dose_max_mg_dose": 500,
-        "concentracao": 500,
-        "frequencia": "a cada 12 horas",
-        "duracao": "por 3 dias",
-        "observacao": "Não interromper antes do tempo prescrito. Retornar para reavaliação pos finalizado tratamento ou se piora/manutenção dos sintomas."
+        "duracao": "por até 5 dias se dor ou febre > 37,5"
       }
     ]
   },
-  "soro_fisiologico": {
-    "nome": "Soro fisiológico 0,9%",
-    "forma": "Solução",
-    "apresentacao": "0,9%",
+
+  "amoxicilina_padrao": {
+    "nome": "Amoxicilina",
+    "forma": "Suspensão",
+    "apresentacao": "250 mg/5 mL",
+    "volume_frasco_ml": 150,
+    "observacao": "Agitar antes de usar. Usar seringa dosadora. Não interromper antes do tempo prescrito. Retornar se piora ou manutenção dos sintomas.",
     "regras": [
       {
-        "observacao": "Instilar 5 mL em cada narina, várias vezes ao dia."
-      }
-    ],
-    "observacao": "Uso em congestão nasal."
-  },
-  "mel_frasco": {
-    "nome": "Mel",
-    "forma": "Xarope",
-    "apresentacao": null,
-    "regras": [
-      {
-        "idade_min": 1,
-        "observacao": "Dar 5 mL antes de dormir."
-      }
-    ],
-    "observacao": "Não usar em menores de 1 ano."
-  },
-  "ondansetrona_4": {
-    "nome": "Ondansetrona",
-    "forma": "Solução",
-    "apresentacao": "4mg/5ml",
-    "regras": [
-      {
-        "faixa_mgkg": [0.2, 0.2],
-        "tipo_faixa_mgkg": "dose",
-        "dose_max_mg_dose": 8,
-        "concentracao": 0.8,
+        "publico": "adulto",
+        "forma": "Cápsula",
+        "apresentacao": "500 mg",
+        "mg_por_unidade": 500,
+        "unidade_solida": "cápsula",
+        "fracionavel": false,
+        "dose_fixa_mg": 500,
         "frequencia": "a cada 8 horas",
-        "observacao": "Se vômitos"
-      }
-    ],
-    "observacao": "."
-  },
-  "loratadina_1": {
-    "nome": "Loratadina",
-    "forma": "Solução",
-    "apresentacao": "1mg/ml",
-    "regras": [
+        "duracao": "por 7 dias"
+      },
       {
-        "faixa_mgkg": [0.2, 0.2],
-        "tipo_faixa_mgkg": "dose",
-        "dose_max_mg_dose": 10,
-        "concentracao": 1,
-        "frequencia": "1 vez ao dia",
-        "duracao": "por 5 dias",
-        "observacao": ""
+        "faixa_mgkg": [40, 50],
+        "alvo_mgkg": 50,
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 500,
+        "concentracao": 50,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 7 dias"
       }
     ]
   },
-  "amoxicilina_clav_400_57_leve": {
-    "nome": "Amoxicilina + Clavulanato (Leve)",
+  "amoxicilina_faringite": {
+    "nome": "Amoxicilina",
     "forma": "Suspensão",
-    "apresentacao": "400mg/57mg por 5ml",
-    "observacao": "",
+    "apresentacao": "250 mg/5 mL",
+    "volume_frasco_ml": 150,
+    "observacao": "Agitar antes de usar. Usar seringa dosadora. Faringite estreptocócica: completar os 10 dias mesmo com melhora.",
     "regras": [
       {
-        "idade_min": 0.25,
-        "faixa_mgkg": [20, 40],
+        "publico": "adulto",
+        "forma": "Cápsula",
+        "apresentacao": "500 mg",
+        "mg_por_unidade": 500,
+        "unidade_solida": "cápsula",
+        "fracionavel": false,
+        "dose_fixa_mg": 500,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias"
+      },
+      {
+        "faixa_mgkg": [40, 50],
+        "alvo_mgkg": 50,
         "tipo_faixa_mgkg": "dia",
-        "concentracao": 80,
+        "dose_max_mg_dose": 500,
+        "concentracao": 50,
         "frequencia": "a cada 8 horas",
         "duracao": "por 10 dias"
       }
     ]
   },
-  "amoxicilina_clav_400_57_grave": {
-    "nome": "Amoxicilina + Clavulanato (Otite)",
+  "amoxicilina_dose_alta": {
+    "nome": "Amoxicilina (dose alta)",
     "forma": "Suspensão",
-    "apresentacao": "400mg/57mg por 5ml",
-    "observacao": "OMA",
+    "apresentacao": "250 mg/5 mL",
+    "volume_frasco_ml": 150,
+    "observacao": "Agitar antes de usar. Usar seringa dosadora. Não interromper antes do tempo prescrito. Retornar se piora ou manutenção dos sintomas.",
     "regras": [
+      {
+        "publico": "adulto",
+        "nome": "Amoxicilina",
+        "forma": "Cápsula",
+        "apresentacao": "500 mg",
+        "mg_por_unidade": 500,
+        "unidade_solida": "cápsula",
+        "fracionavel": false,
+        "dose_fixa_mg": 1000,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias"
+      },
+      {
+        "faixa_mgkg": [80, 90],
+        "alvo_mgkg": 90,
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 1000,
+        "concentracao": 50,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias"
+      }
+    ]
+  },
+  "amoxicilina_oma": {
+    "nome": "Amoxicilina",
+    "forma": "Suspensão",
+    "apresentacao": "250 mg/5 mL",
+    "volume_frasco_ml": 150,
+    "observacao": "Agitar antes de usar. Usar seringa dosadora. Não interromper antes do tempo prescrito. Retornar se piora ou manutenção dos sintomas.",
+    "regras": [
+      {
+        "publico": "adulto",
+        "forma": "Cápsula",
+        "apresentacao": "500 mg",
+        "mg_por_unidade": 500,
+        "unidade_solida": "cápsula",
+        "fracionavel": false,
+        "dose_fixa_mg": 500,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias"
+      },
+      {
+        "faixa_mgkg": [40, 50],
+        "alvo_mgkg": 50,
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 500,
+        "concentracao": 50,
+        "frequencia": "a cada 8 horas",
+        "duracao": "por 10 dias"
+      }
+    ]
+  },
+
+  "amoxicilina_clav_oma": {
+    "nome": "Amoxicilina + Clavulanato",
+    "forma": "Suspensão",
+    "apresentacao": "400 mg + 57 mg/5 mL",
+    "volume_frasco_ml": 70,
+    "observacao": "Agitar antes de usar. Tomar no início das refeições. Não interromper antes do tempo prescrito.",
+    "regras": [
+      {
+        "publico": "adulto",
+        "forma": "Comprimido",
+        "apresentacao": "875 mg + 125 mg",
+        "mg_por_unidade": 875,
+        "fracionavel": false,
+        "dose_fixa_mg": 875,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 10 dias"
+      },
       {
         "idade_min": 0.25,
-        "faixa_mgkg": [40, 90],
+        "faixa_mgkg": [80, 90],
+        "alvo_mgkg": 90,
         "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 1750,
         "concentracao": 80,
         "frequencia": "a cada 12 horas",
-        "duracao": "por 8 dias"
+        "duracao": "por 10 dias"
       }
     ]
   },
-  "cefalexina_125_leve": {
-    "nome": "Cefalexina (Dose Padrão)",
+  "amoxicilina_clav_itu": {
+    "nome": "Amoxicilina + Clavulanato",
     "forma": "Suspensão",
-    "apresentacao": "125mg/5mL",
+    "apresentacao": "400 mg + 57 mg/5 mL",
+    "volume_frasco_ml": 70,
+    "observacao": "Agitar antes de usar. Tomar no início das refeições. Não interromper antes do tempo prescrito.",
     "regras": [
       {
-        "idade_min": 1,
-        "faixa_mgkg": [25, 50],
-        "tipo_faixa_mgkg": "dia",
-        "concentracao": 25,
-        "frequencia": "a cada 8 horas",
-        "duracao": "por 5 dias",
-        "observacao": ""
-      }
-    ]
-  },
-  "cefalexina_125_grave": {
-    "nome": "Cefalexina (Dose Alta)",
-    "forma": "Suspensão",
-    "apresentacao": "125mg/5mL",
-    "regras": [
-      {
-        "idade_min": 1,
-        "faixa_mgkg": [50, 100],
-        "tipo_faixa_mgkg": "dia",
-        "concentracao": 25,
-        "frequencia": "a cada 8 horas",
-        "duracao": "por 14 dias",
-        "observacao": ""
-      }
-    ]
-  },
-  "cefalexina_250_leve": {
-    "nome": "Cefalexina (Dose Padrão)",
-    "forma": "Suspensão",
-    "apresentacao": "250mg/5ml",
-    "regras": [
-      {
-        "idade_min": 1,
-        "faixa_mgkg": [25, 50],
-        "tipo_faixa_mgkg": "dia",
-        "concentracao": 50,
-        "frequencia": "a cada 8 horas",
-        "duracao": "por 5 dias",
-        "observacao": ""
-      }
-    ]
-  },
-  "cefalexina_250_grave": {
-    "nome": "Cefalexina (Dose Alta)",
-    "forma": "Suspensão",
-    "apresentacao": "250mg/5ml",
-    "regras": [
-      {
-        "idade_min": 1,
-        "faixa_mgkg": [50, 100],
-        "tipo_faixa_mgkg": "dia",
-        "concentracao": 50,
-        "frequencia": "a cada 8 horas",
-        "duracao": "por 10 dias",
-        "observacao": ""
-      }
-    ]
-  },
-  "prednisolona_3": {
-    "nome": "Prednisolona",
-    "forma": "Solução",
-    "apresentacao": "3mg/ml",
-    "regras": [
-      {
-        "faixa_mgkg": [1, 2],
-        "tipo_faixa_mgkg": "dia",
-        "dose_max_mg_dia": 40,
-        "concentracao": 3,
-        "frequencia": "2 vezes ao dia",
-        "duracao": "por 5 dias",
-        "observacao": "Preferir pela manhã em dose única quando possível."
-      }
-    ]
-  },
-  "dexclorfeniramina_0_4": {
-    "nome": "Dexclorfeniramina",
-    "forma": "Xarope",
-    "apresentacao": "0,4mg/ml",
-    "regras": [
-      {
-        "faixa_mgkg": [0.3, 0.35],
-        "tipo_faixa_mgkg": "dia",
-        "dose_max_mg_dose": 2,
-        "concentracao": 0.4,
-        "frequencia": "a cada 8 horas",
-        "duracao": "por 5 dias",
-        "observacao": ""
-      }
-    ]
-  },
-  "prometazina_1": {
-    "nome": "Prometazina",
-    "forma": "Xarope",
-    "apresentacao": "1mg/ml",
-    "regras": [
-      {
-        "faixa_mgkg": [0.25, 0.5],
-        "tipo_faixa_mgkg": "dose",
-        "dose_max_mg_dose": 25,
-        "concentracao": 1,
+        "publico": "adulto",
+        "forma": "Comprimido",
+        "apresentacao": "875 mg + 125 mg",
+        "mg_por_unidade": 875,
+        "fracionavel": false,
+        "dose_fixa_mg": 875,
         "frequencia": "a cada 12 horas",
-        "duracao": "por 5 dias",
-        "observacao": ""
-      }
-    ]
-  },
-  "lactulose_xarope": {
-    "nome": "Lactulose",
-    "forma": "Xarope",
-    "apresentacao": "667mg/ml",
-    "regras": [
-      {
-        "observacao": "3 ml/kg/dia em 2 doses. Ajustar para 2 evacuações/dia. Pode causar flatulência."
-      }
-    ]
-  },
-  "zinco_10mg_5ml": {
-    "nome": "Zinco",
-    "forma": "Solução",
-    "apresentacao": "10mg/5ml",
-    "regras": [
-      {
-        "idade_min": 0,
-        "idade_max": 0.49,
-        "concentracao": 2,
-        "observacao": "Administrar 2,5 mL (10 mg) 1 vez ao dia por 10–14 dias."
+        "duracao": "por 10 dias"
       },
       {
-        "idade_min": 0.5,
-        "idade_max": 18,
-        "concentracao": 2,
-        "observacao": "Administrar 5 mL (20 mg) 1 vez ao dia por 10–14 dias."
-      }
-    ]
-  },
-  "hidrocortisona_topica_1": {
-    "nome": "Hidrocortisona 1%",
-    "forma": "Creme",
-    "apresentacao": "1%",
-    "regras": [
-      {
-        "observacao": "Aplicar fina camada 2x/dia por 5 dias. Evitar áreas extensas, face e dobras."
-      }
-    ]
-  },
-  "ambroxol_15_5": {
-    "nome": "Ambroxol",
-    "forma": "Xarope",
-    "apresentacao": "15mg/5ml",
-    "regras": [
-      {
-        "idade_min": 0,
-        "idade_max": 1.99,
-        "concentracao": 3,
-        "observacao": "Administrar 2,5 mL (7,5 mg) 2 vezes ao dia, por 5 dias."
-      },
-      {
-        "idade_min": 2,
-        "idade_max": 5.99,
-        "concentracao": 3,
-        "observacao": "Administrar 2,5 mL (7,5 mg) 3 vezes ao dia, por 5 dias."
-      },
-      {
-        "idade_min": 6,
-        "idade_max": 12,
-        "concentracao": 3,
-        "observacao": "Administrar 5 mL (15 mg) 3 vezes ao dia, por 5 dias."
-      }
-    ]
-  },
-  "sro_envelope": {
-    "nome": "Soro de Reidratação Oral",
-    "forma": "Envelope",
-    "apresentacao": "Pó",
-    "regras": [
-      {
-        "idade_min": 0,
-        "idade_max": 0.99,
-        "observacao": "Reidratação: 75–100 mL/kg em 4–6h. Manutenção: 50–100 mL após cada evacuação."
-      },
-      {
-        "idade_min": 1,
-        "idade_max": 10.99,
-        "observacao": "Reidratação: 75–100 mL/kg em 4–6h. Manutenção: 100–200 mL após cada evacuação."
-      },
-      {
-        "idade_min": 11,
-        "idade_max": 200,
-        "observacao": "Reidratação: 2–3 L em 4–6h. Manutenção: até 400 mL ou à vontade após cada evacuação."
-      }
-    ],
-    "observacao": "Dissolver 1 envelope em 1 litro de água potável. Usar em até 24h após preparo."
-  },
-  "aciclovir_oral": {
-    "nome": "Aciclovir",
-    "forma": "Suspensão (frasco com 100 mL)",
-    "apresentacao": "200/5ml",
-    "regras": [
-      {
-        "faixa_mgkg": [20, 20],
-        "tipo_faixa_mgkg": "dose",
-        "dose_max_mg_dose": 800,
-        "concentracao": 40,
-        "frequencia": "5 vezes ao dia, café/lanche/amoço/lanche/jantar,",
-        "duracao": "por 7 dias",
-        "observacao": "Tomar bastante água durante todo o tratamento, nao interromper antes do tempo prescrito"
-      }
-    ]
-  },
-  "itraconazol_oral": {
-    "nome": "Itraconazol",
-    "forma": "Suspensão",
-    "apresentacao": "Suspensão Oral",
-    "regras": [
-      {
-        "faixa_mgkg": [5, 10],
+        "idade_min": 0.25,
+        "faixa_mgkg": [40, 50],
+        "alvo_mgkg": 50,
         "tipo_faixa_mgkg": "dia",
-        "concentracao": null,
+        "dose_max_mg_dose": 875,
+        "concentracao": 80,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 10 dias"
+      }
+    ]
+  },
+
+  "azitromicina_oral": {
+    "nome": "Azitromicina",
+    "forma": "Suspensão",
+    "apresentacao": "200 mg/5 mL",
+    "observacao": "Agitar antes de usar. Usar seringa dosadora. Tomar 1 vez ao dia, sempre no mesmo horário.",
+    "regras": [
+      {
+        "publico": "adulto",
+        "forma": "Comprimido",
+        "apresentacao": "500 mg",
+        "mg_por_unidade": 500,
+        "dose_fixa_mg": 500,
         "frequencia": "1 vez ao dia",
-        "observacao": ""
+        "duracao": "por 3 dias"
+      },
+      {
+        "faixa_mgkg": [10, 10],
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 500,
+        "concentracao": 40,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 3 dias"
+      }
+    ]
+  },
+  "azitromicina_faringite": {
+    "nome": "Azitromicina",
+    "forma": "Suspensão",
+    "apresentacao": "200 mg/5 mL",
+    "observacao": "Alternativa para alérgicos à penicilina. Agitar antes de usar. Tomar 1 vez ao dia, sempre no mesmo horário.",
+    "regras": [
+      {
+        "publico": "adulto",
+        "forma": "Comprimido",
+        "apresentacao": "500 mg",
+        "quantidade": "01 caixa (3 comprimidos)",
+        "posologia": "1 comprimido (500 mg) no 1º dia; depois 1/2 comprimido (250 mg) 1 vez ao dia do 2º ao 5º dia"
+      },
+      {
+        "faixa_mgkg": [12, 12],
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 500,
+        "concentracao": 40,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 5 dias"
+      }
+    ]
+  },
+
+  "ciprofloxacino_500": {
+    "nome": "Ciprofloxacino",
+    "forma": "Comprimido",
+    "apresentacao": "500 mg",
+    "mg_por_unidade": 500,
+    "observacao": "Não interromper antes do tempo prescrito. Retornar se piora ou manutenção dos sintomas.",
+    "regras": [
+      {
+        "faixa_mgkg": [15, 15],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 500,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 3 dias"
+      }
+    ]
+  },
+
+  "cefalexina_leve": {
+    "nome": "Cefalexina",
+    "forma": "Suspensão",
+    "apresentacao": "250 mg/5 mL",
+    "volume_frasco_ml": 100,
+    "observacao": "Agitar antes de usar. Não interromper antes do tempo prescrito. Retornar se piora ou manutenção dos sintomas.",
+    "regras": [
+      {
+        "publico": "adulto",
+        "forma": "Cápsula",
+        "apresentacao": "500 mg",
+        "mg_por_unidade": 500,
+        "unidade_solida": "cápsula",
+        "fracionavel": false,
+        "dose_fixa_mg": 500,
+        "frequencia": "a cada 6 horas",
+        "duracao": "por 7 dias"
+      },
+      {
+        "faixa_mgkg": [25, 50],
+        "alvo_mgkg": 50,
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 500,
+        "concentracao": 50,
+        "frequencia": "a cada 6 horas",
+        "duracao": "por 7 dias"
+      }
+    ]
+  },
+  "cefalexina_grave": {
+    "nome": "Cefalexina (dose alta)",
+    "forma": "Suspensão",
+    "apresentacao": "250 mg/5 mL",
+    "volume_frasco_ml": 100,
+    "observacao": "Agitar antes de usar. Não interromper antes do tempo prescrito. Retornar se piora ou manutenção dos sintomas.",
+    "regras": [
+      {
+        "publico": "adulto",
+        "nome": "Cefalexina",
+        "forma": "Cápsula",
+        "apresentacao": "500 mg",
+        "mg_por_unidade": 500,
+        "unidade_solida": "cápsula",
+        "fracionavel": false,
+        "dose_fixa_mg": 1000,
+        "frequencia": "a cada 6 horas",
+        "duracao": "por 10 dias"
+      },
+      {
+        "faixa_mgkg": [50, 100],
+        "alvo_mgkg": 100,
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 1000,
+        "concentracao": 50,
+        "frequencia": "a cada 6 horas",
+        "duracao": "por 10 dias"
       }
     ]
   },
   "cefuroxima_250": {
     "nome": "Cefuroxima",
     "forma": "Suspensão",
-    "apresentacao": "250mg/5ml",
+    "apresentacao": "250 mg/5 mL",
+    "observacao": "Agitar antes de usar. Tomar junto com alimentos. Não interromper antes do tempo prescrito.",
     "regras": [
       {
+        "publico": "adulto",
+        "forma": "Comprimido",
+        "apresentacao": "500 mg",
+        "mg_por_unidade": 500,
+        "dose_fixa_mg": 500,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 10 dias"
+      },
+      {
+        "idade_min": 0.25,
         "faixa_mgkg": [30, 30],
         "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 500,
         "concentracao": 50,
         "frequencia": "a cada 12 horas",
-        "duracao": "por 14 dias",
-        "observacao": ""
+        "duracao": "por 10 dias"
       }
     ]
   },
-  "sulfametoxazol_trimetoprima_200_40": {
-    "nome": "Sulfametoxazol + Trimetoprima",
+
+  "aciclovir_oral": {
+    "nome": "Aciclovir",
     "forma": "Suspensão",
-    "apresentacao": "200mg/40mg por 5ml",
+    "apresentacao": "200 mg/5 mL",
+    "volume_frasco_ml": 100,
+    "observacao": "Beber bastante água durante o tratamento. Não interromper antes do tempo prescrito.",
     "regras": [
       {
-        "faixa_mgkg": [40, 40],
-        "tipo_faixa_mgkg": "dia",
+        "publico": "adulto",
+        "forma": "Comprimido",
+        "apresentacao": "200 mg",
+        "mg_por_unidade": 200,
+        "dose_fixa_mg": 200,
+        "frequencia": "5 vezes ao dia (café, lanche, almoço, lanche, jantar)",
+        "duracao": "por 7 dias"
+      },
+      {
+        "faixa_mgkg": [15, 15],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 200,
         "concentracao": 40,
-        "frequencia": "a cada 12 horas",
-        "observacao": ""
+        "frequencia": "5 vezes ao dia (café, lanche, almoço, lanche, jantar)",
+        "duracao": "por 7 dias"
       }
     ]
   },
-  "cefaclor_250": {
-    "nome": "Cefaclor",
-    "forma": "Suspensão",
-    "apresentacao": "250mg/5ml",
+  "itraconazol_100": {
+    "nome": "Itraconazol",
+    "forma": "Cápsula",
+    "apresentacao": "100 mg",
+    "mg_por_unidade": 100,
+    "unidade_solida": "cápsula",
+    "fracionavel": false,
+    "observacao": "Tomar junto com alimento. Tratamento longo: manter até 2–4 semanas após a cura clínica (em geral 3 a 6 meses). Reavaliar mensalmente.",
     "regras": [
       {
-        "faixa_mgkg": [40, 40],
+        "publico": "adulto",
+        "dose_fixa_mg": 200,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 30 dias (renovar conforme evolução)"
+      },
+      {
+        "faixa_mgkg": [5, 10],
         "tipo_faixa_mgkg": "dia",
-        "concentracao": 50,
-        "frequencia": "a cada 8 horas",
-        "duracao": "por 10 dias",
-        "observacao": ""
+        "dose_max_mg_dose": 200,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 30 dias (renovar conforme evolução)"
       }
     ]
   },
+
+  "soro_fisiologico": {
+    "nome": "Soro fisiológico",
+    "forma": "Solução nasal",
+    "apresentacao": "0,9%",
+    "regras": [
+      {
+        "posologia": "Instilar 1 a 5 mL em cada narina, várias vezes ao dia (antes das mamadas e ao dormir)"
+      }
+    ]
+  },
+  "mel": {
+    "nome": "Mel",
+    "forma": null,
+    "apresentacao": null,
+    "quantidade": "uso caseiro",
+    "observacao": "Não usar em menores de 1 ano (risco de botulismo).",
+    "regras": [
+      {
+        "idade_min": 1,
+        "idade_max": 5.99,
+        "posologia": "2,5 mL (1/2 colher de chá) antes de dormir, enquanto houver tosse"
+      },
+      {
+        "idade_min": 6,
+        "idade_max": 11.99,
+        "posologia": "5 mL (1 colher de chá) antes de dormir, enquanto houver tosse"
+      },
+      {
+        "idade_min": 12,
+        "posologia": "10 mL (2 colheres de chá) antes de dormir, enquanto houver tosse"
+      }
+    ]
+  },
+  "ambroxol_15_5": {
+    "nome": "Ambroxol",
+    "forma": "Xarope pediátrico",
+    "apresentacao": "15 mg/5 mL",
+    "observacao": "Contraindicado em menores de 2 anos.",
+    "regras": [
+      {
+        "idade_min": 2,
+        "idade_max": 5.99,
+        "posologia": "2,5 mL (7,5 mg) 3 vezes ao dia, por 5 dias"
+      },
+      {
+        "idade_min": 6,
+        "idade_max": 11.99,
+        "posologia": "5 mL (15 mg) 3 vezes ao dia, por 5 dias"
+      },
+      {
+        "idade_min": 12,
+        "posologia": "10 mL (30 mg) 3 vezes ao dia, por 5 dias"
+      }
+    ]
+  },
+  "salbutamol_spray": {
+    "nome": "Salbutamol",
+    "forma": "Aerossol (spray)",
+    "apresentacao": "100 mcg/jato",
+    "quantidade": "01 frasco + espaçador",
+    "observacao": "Usar sempre com espaçador (com máscara em menores de 4 anos). Agitar o frasco antes de cada jato. Se precisar antes de 4 horas ou não melhorar, retornar imediatamente.",
+    "regras": [
+      {
+        "peso_max": 19.9,
+        "posologia": "4 jatos a cada 4 a 6 horas se tosse, chiado ou falta de ar, por 5 dias"
+      },
+      {
+        "peso_min": 20,
+        "posologia": "6 jatos a cada 4 a 6 horas se tosse, chiado ou falta de ar, por 5 dias"
+      }
+    ]
+  },
+  "ondansetrona_4": {
+    "nome": "Ondansetrona",
+    "forma": "Solução oral",
+    "apresentacao": "4 mg/5 mL",
+    "regras": [
+      {
+        "publico": "adulto",
+        "forma": "Comprimido orodispersível",
+        "apresentacao": "4 mg",
+        "mg_por_unidade": 4,
+        "dose_fixa_mg": 4,
+        "frequencia": "a cada 8 horas se vômitos",
+        "duracao": "por até 3 dias"
+      },
+      {
+        "idade_min": 0.5,
+        "faixa_mgkg": [0.15, 0.15],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 4,
+        "concentracao": 0.8,
+        "frequencia": "a cada 8 horas se vômitos",
+        "duracao": "por até 3 dias"
+      }
+    ]
+  },
+  "loratadina_1": {
+    "nome": "Loratadina",
+    "forma": "Xarope",
+    "apresentacao": "1 mg/mL",
+    "observacao": "Não indicada em menores de 2 anos.",
+    "regras": [
+      {
+        "publico": "adulto",
+        "forma": "Comprimido",
+        "apresentacao": "10 mg",
+        "mg_por_unidade": 10,
+        "dose_fixa_mg": 10,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 5 dias"
+      },
+      {
+        "idade_min": 2,
+        "peso_max": 29.9,
+        "dose_fixa_mg": 5,
+        "concentracao": 1,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 5 dias"
+      },
+      {
+        "idade_min": 2,
+        "peso_min": 30,
+        "dose_fixa_mg": 10,
+        "concentracao": 1,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 5 dias"
+      }
+    ]
+  },
+  "dexclorfeniramina_0_4": {
+    "nome": "Dexclorfeniramina",
+    "forma": "Solução oral",
+    "apresentacao": "2 mg/5 mL",
+    "observacao": "Pode causar sonolência. Contraindicada em menores de 2 anos.",
+    "regras": [
+      {
+        "publico": "adulto",
+        "posologia": "5 mL (2 mg) a cada 8 horas, por 5 dias"
+      },
+      {
+        "idade_min": 2,
+        "idade_max": 5.99,
+        "posologia": "1,25 mL (0,5 mg) a cada 8 horas, por 5 dias"
+      },
+      {
+        "idade_min": 6,
+        "posologia": "2,5 mL (1 mg) a cada 8 horas, por 5 dias"
+      }
+    ]
+  },
+  "prometazina_1": {
+    "nome": "Prometazina",
+    "forma": "Xarope",
+    "apresentacao": "5 mg/5 mL",
+    "observacao": "Pode causar sonolência. Contraindicada em menores de 2 anos (risco de depressão respiratória).",
+    "regras": [
+      {
+        "publico": "adulto",
+        "forma": "Comprimido",
+        "apresentacao": "25 mg",
+        "mg_por_unidade": 25,
+        "dose_fixa_mg": 25,
+        "frequencia": "à noite",
+        "duracao": "por 5 dias"
+      },
+      {
+        "idade_min": 2,
+        "faixa_mgkg": [0.25, 0.5],
+        "tipo_faixa_mgkg": "dose",
+        "dose_max_mg_dose": 25,
+        "concentracao": 1,
+        "frequencia": "a cada 12 horas",
+        "duracao": "por 5 dias"
+      }
+    ]
+  },
+  "prednisolona_3": {
+    "nome": "Prednisolona",
+    "forma": "Solução oral",
+    "apresentacao": "3 mg/mL",
+    "observacao": "Tomar pela manhã, após o café.",
+    "regras": [
+      {
+        "publico": "adulto",
+        "nome": "Prednisona",
+        "forma": "Comprimido",
+        "apresentacao": "20 mg",
+        "mg_por_unidade": 20,
+        "dose_fixa_mg": 40,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 5 dias"
+      },
+      {
+        "faixa_mgkg": [1, 2],
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dia": 40,
+        "concentracao": 3,
+        "frequencia": "1 vez ao dia",
+        "duracao": "por 5 dias"
+      }
+    ]
+  },
+  "lactulose": {
+    "nome": "Lactulose",
+    "forma": "Xarope",
+    "apresentacao": "667 mg/mL",
+    "observacao": "Ajustar a dose para 1 a 2 evacuações pastosas por dia. Pode causar gases e cólica no início.",
+    "regras": [
+      {
+        "idade_min": 0.08,
+        "faixa_mgkg": [667, 667],
+        "tipo_faixa_mgkg": "dia",
+        "dose_max_mg_dose": 10005,
+        "concentracao": 667,
+        "frequencia": "a cada 12 horas",
+        "duracao": "uso contínuo até reavaliação"
+      }
+    ]
+  },
+  "sro_envelope": {
+    "nome": "Sais para reidratação oral",
+    "forma": "Pó para solução",
+    "apresentacao": "envelope",
+    "quantidade": "05 envelopes",
+    "observacao": "Dissolver 1 envelope em 1 litro de água filtrada ou fervida (fria). Usar em até 24 h após o preparo.",
+    "regras": [
+      {
+        "idade_max": 1.99,
+        "posologia": "50 a 100 mL após cada evacuação líquida ou vômito"
+      },
+      {
+        "idade_min": 2,
+        "idade_max": 9.99,
+        "posologia": "100 a 200 mL após cada evacuação líquida ou vômito"
+      },
+      {
+        "idade_min": 10,
+        "posologia": "À vontade (até 400 mL) após cada evacuação líquida ou vômito"
+      }
+    ]
+  },
+  "zinco_10mg_5ml": {
+    "nome": "Sulfato de zinco",
+    "forma": "Solução oral",
+    "apresentacao": "10 mg/5 mL",
+    "regras": [
+      {
+        "idade_max": 0.49,
+        "posologia": "5 mL (10 mg) 1 vez ao dia, por 10 dias"
+      },
+      {
+        "idade_min": 0.5,
+        "posologia": "10 mL (20 mg) 1 vez ao dia, por 10 dias"
+      }
+    ]
+  },
+
+  "hidratante_neutro": {
+    "nome": "Hidratante sem fragrância",
+    "forma": "Creme/Loção",
+    "apresentacao": null,
+    "quantidade": "01 unidade",
+    "observacao": "Preferir produtos hipoalergênicos; uso contínuo.",
+    "regras": [
+      {
+        "posologia": "Aplicar em toda a pele 2 vezes ao dia, sempre após o banho e antes do corticoide nas áreas com lesão"
+      }
+    ]
+  },
+  "ureia_5": {
+    "nome": "Ureia 5%",
+    "forma": "Creme",
+    "apresentacao": null,
+    "quantidade": "01 bisnaga",
+    "observacao": "Evitar em lactentes e em pele muito irritada ou com fissuras.",
+    "regras": [
+      {
+        "idade_min": 1,
+        "posologia": "Aplicar 1 a 2 vezes ao dia nas áreas secas"
+      }
+    ]
+  },
+  "hidrocortisona_topica_1": {
+    "nome": "Hidrocortisona 1%",
+    "forma": "Creme",
+    "apresentacao": null,
+    "quantidade": "01 bisnaga",
+    "regras": [
+      {
+        "posologia": "Aplicar fina camada nas lesões 2 vezes ao dia, por 5 a 7 dias. Evitar áreas extensas"
+      }
+    ]
+  },
+  "fluticasona_topica_005": {
+    "nome": "Fluticasona 0,05%",
+    "forma": "Creme",
+    "apresentacao": null,
+    "quantidade": "01 bisnaga",
+    "observacao": "Corticoide de média potência. Evitar face e dobras.",
+    "regras": [
+      {
+        "idade_min": 0.25,
+        "posologia": "Aplicar fina camada nas lesões 1 a 2 vezes ao dia, por até 7 a 14 dias"
+      }
+    ]
+  },
+  "betametasona_topica_1mgg": {
+    "nome": "Betametasona 1 mg/g",
+    "forma": "Creme",
+    "apresentacao": null,
+    "quantidade": "01 bisnaga",
+    "observacao": "Corticoide de alta potência: uso curto, evitar face e dobras.",
+    "regras": [
+      {
+        "posologia": "Aplicar fina camada nas lesões (exceto face e dobras) 1 a 2 vezes ao dia, por até 7 dias. Reduzir assim que melhorar"
+      }
+    ]
+  },
+  "tacrolimo_topico_003": {
+    "nome": "Tacrolimo 0,03%",
+    "forma": "Pomada",
+    "apresentacao": null,
+    "quantidade": "01 bisnaga",
+    "observacao": "Útil em face e dobras. Pode arder nos primeiros dias. Evitar exposição solar.",
+    "regras": [
+      {
+        "idade_min": 2,
+        "posologia": "Aplicar fina camada nas lesões 2 vezes ao dia até melhora"
+      }
+    ]
+  },
+  "pimecrolimo_topico_1": {
+    "nome": "Pimecrolimo 1%",
+    "forma": "Creme",
+    "apresentacao": null,
+    "quantidade": "01 bisnaga",
+    "observacao": "Alternativa poupadora de corticoide para face e dobras.",
+    "regras": [
+      {
+        "idade_min": 0.25,
+        "posologia": "Aplicar fina camada nas lesões 2 vezes ao dia até melhora"
+      }
+    ]
+  },
+
   "gentamicina_colirio": {
     "nome": "Gentamicina",
     "forma": "Colírio",
     "apresentacao": "5 mg/mL",
     "regras": [
       {
-        "concentracao": 5,
-        "observacao": "Instilar 2 gotas em cada olho 4x/dia por 7 dias."
+        "posologia": "Pingar 1 a 2 gotas em cada olho afetado a cada 6 horas, por 7 dias"
       }
     ]
   },
   "gentamicina_pomada": {
     "nome": "Gentamicina",
-    "forma": "Pomada Oftálmica",
+    "forma": "Pomada oftálmica",
     "apresentacao": "5 mg/g",
+    "quantidade": "01 bisnaga",
     "regras": [
       {
-        "observacao": "Aplicar 1,5 cm na conjuntiva inferior 4x/dia por 7 dias."
+        "posologia": "Aplicar 1 cm na pálpebra inferior de cada olho afetado a cada 6 horas, por 7 dias"
       }
     ]
   },
   "tetraciclina_pomada": {
     "nome": "Tetraciclina",
-    "forma": "Pomada Oftálmica",
-    "apresentacao": "5 mg/g (0,5%)",
+    "forma": "Pomada oftálmica",
+    "apresentacao": "5 mg/g",
+    "quantidade": "01 bisnaga",
     "regras": [
       {
-        "observacao": "Aplicar 1 cm na conjuntiva inferior 4x/dia por 7 dias."
+        "posologia": "Aplicar 1 cm na pálpebra inferior de cada olho afetado a cada 6 horas, por 7 dias"
       }
     ]
-  },
-  "hidratante_neutro": {
-    "nome": "Hidratante sem fragrância",
-    "forma": "Creme/Loção",
-    "apresentacao": "—",
-    "regras": [
-      {
-        "observacao": "Aplicar em toda a pele 2x/dia, sempre após o banho e antes do corticoide tópico nas áreas lesadas."
-      }
-    ],
-    "observacao": "Preferir produtos hipoalergênicos; uso contínuo."
-  },
-  "ureia_5": {
-    "nome": "Ureia 5%",
-    "forma": "Creme/Loção",
-    "apresentacao": "5%",
-    "regras": [
-      {
-        "observacao": "Aplicar 1–2x/dia nas áreas secas. Evitar fissuras/pele muito irritada."
-      }
-    ],
-    "observacao": "Adjuvante de hidratação em crianças maiores; evitar em lactentes com pele muito irritada."
-  },
-  "fluticasona_topica_005": {
-    "nome": "Fluticasona tópica",
-    "forma": "Creme",
-    "apresentacao": "0,05%",
-    "regras": [
-      {
-        "observacao": "Aplicar fina camada 2x/dia nas lesões por até 7–14 dias. Evitar face e dobras; nessas áreas preferir baixa potência."
-      }
-    ],
-    "observacao": "Potência média (pediatria)."
-  },
-  "betametasona_topica_1mgg": {
-    "nome": "Betametasona tópica",
-    "forma": "Creme",
-    "apresentacao": "1 mg/g",
-    "regras": [
-      {
-        "observacao": "Aplicar fina camada 1–2x/dia por curto período em áreas não faciais. Reduzir assim que controlar."
-      }
-    ],
-    "observacao": "Potência alta; evitar uso prolongado e evitar face/dobras em pediatria."
-  },
-  "tacrolimo_topico_003": {
-    "nome": "Tacrolimo tópico (pediátrico)",
-    "forma": "Pomada",
-    "apresentacao": "0,03%",
-    "regras": [
-      {
-        "observacao": "Aplicar 2x/dia nas lesões (especialmente face/dobras) até controle. Pode arder no início."
-      }
-    ],
-    "observacao": "Inibidor de calcineurina; útil para áreas sensíveis e manutenção."
-  },
-
-  "pimecrolimo_topico_1": {
-    "nome": "Pimecrolimo tópico",
-    "forma": "Creme",
-    "apresentacao": "1%",
-    "regras": [
-      {
-        "observacao": "Aplicar 2x/dia nas lesões (face/dobras) até melhora."
-      }
-    ],
-    "observacao": "Inibidor de calcineurina; opção esteroide-poupadora."
   },
   "hipromelose_colirio": {
     "nome": "Hipromelose",
-    "forma": "Colírio",
-    "apresentacao": "0,3–0,5%",
+    "forma": "Colírio lubrificante",
+    "apresentacao": "0,5%",
+    "observacao": "Lavar os olhos com soro fisiológico e usar compressas frias.",
     "regras": [
       {
-        "observacao": "Instilar 2 gotas em cada olho várias vezes ao dia conforme sintomas."
+        "posologia": "Pingar 1 a 2 gotas em cada olho até 4 vezes ao dia, conforme o incômodo"
       }
     ]
   },
+
   "colecalciferol_200_ui_gota": {
-    "nome": "Colecalciferol",
+    "nome": "Colecalciferol (vitamina D)",
     "forma": "Gotas",
-    "apresentacao": "200 UI/gota (solução oral)",
-    "concentracao_ui_por_gota": 200,
-    "observacao": "",
+    "apresentacao": "200 UI/gota",
+    "ui_por_gota": 200,
     "regras": [
       {
-        "idade_min": 0,
-        "idade_max": 18,
-        "dose_ui_dia_lactente": 400,
-        "tabela_ui_por_idade": {
-          "1": 600.0,
-          "2": 635.29,
-          "3": 670.59,
-          "4": 705.88,
-          "5": 741.18,
-          "6": 776.47,
-          "7": 811.76,
-          "8": 847.06,
-          "9": 882.35,
-          "10": 917.65,
-          "11": 952.94,
-          "12": 988.24,
-          "13": 1023.53,
-          "14": 1058.82,
-          "15": 1094.12,
-          "16": 1129.41,
-          "17": 1164.71,
-          "18": 1200.0
-        },
+        "idade_max": 0.99,
+        "dose_ui_dia": 400,
         "frequencia": "1 vez ao dia",
-        "duracao": "uso contínuo conforme orientação",
-        "observacao": ""
+        "duracao": "uso contínuo"
+      },
+      {
+        "idade_min": 1,
+        "dose_ui_dia": 600,
+        "frequencia": "1 vez ao dia",
+        "duracao": "uso contínuo"
       }
     ]
-  },
-  "dipironaecasa": {
-    "nome": "Ao colega médico,",
-    "forma": "encaminho o seguinte paciente:",
-    "apresentacao": "",
-    "regras": [
-      {
-        "observacao": "Entregar relatório ao médico da APS"
-      }
-    ],
-    "observacao": "Paciente atendido nesta UPA por quadro clínico sem critérios de urgência ou emergência, encontrando-se em bom estado geral, estável e sem sinais de gravidade. O caso é de acompanhamento adequado em nível de Atenção Primária, motivo pelo qual oriento seguimento com o pediatra da unidade de referência para continuidade do cuidado, observação evolutiva e eventuais ajustes terapêuticos conforme necessidade clínica."
-   }
+  }
 }

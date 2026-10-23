@@ -1,14 +1,20 @@
-{
-  "1": {
+[
+  {
+    "id": "febre_dor",
+    "grupo": "Febre e dor",
     "nome": "Febre / Dor",
     "medicamentos_ids": ["dipirona_500", "ibuprofeno_100_gotas"]
   },
-  "1.8": {
-    "nome": "Febre / Dor (Alérgicos Dipirona)",
+  {
+    "id": "febre_dor_alergico_dipirona",
+    "grupo": "Febre e dor",
+    "nome": "Febre / Dor (alérgico à dipirona)",
     "medicamentos_ids": ["paracetamol_200", "ibuprofeno_100_gotas"]
   },
-  "1.C": {
-    "nome": "Febre / Dor (Completo)",
+  {
+    "id": "febre_dor_completo",
+    "grupo": "Febre e dor",
+    "nome": "Febre / Dor (completo)",
     "medicamentos_ids": [
       "paracetamol_200",
       "dipirona_500",
@@ -16,23 +22,40 @@
       "ibuprofeno_100_susp"
     ]
   },
-  "2": {
+
+  {
+    "id": "congestao_nasal",
+    "grupo": "Respiratório",
     "nome": "Congestão nasal / Coriza",
     "medicamentos_ids": ["soro_fisiologico"]
   },
-  "3": {
+  {
+    "id": "tosse_seca",
+    "grupo": "Respiratório",
     "nome": "Tosse seca",
-    "medicamentos_ids": ["mel_frasco"]
+    "medicamentos_ids": ["mel"]
   },
-  "3.8": {
+  {
+    "id": "tosse_produtiva",
+    "grupo": "Respiratório",
     "nome": "Tosse produtiva",
-    "medicamentos_ids": ["mel_frasco", "ambroxol_15_5"]
+    "medicamentos_ids": ["mel", "ambroxol_15_5"]
   },
-  "4": {
-    "nome": "Vômitos",
-    "medicamentos_ids": ["ondansetrona_4"]
+  {
+    "id": "bronquiolite_leve",
+    "grupo": "Respiratório",
+    "nome": "Bronquiolite (leve)",
+    "medicamentos_ids": ["paracetamol_200", "dipirona_500", "soro_fisiologico"]
   },
-  "5": {
+  {
+    "id": "crise_asmatica",
+    "grupo": "Respiratório",
+    "nome": "Crise asmática / Broncoespasmo (leve, alta para casa)",
+    "medicamentos_ids": ["salbutamol_spray", "prednisolona_3"]
+  },
+  {
+    "id": "alergia_rinite",
+    "grupo": "Respiratório",
     "nome": "Alergia / Rinite",
     "medicamentos_ids": [
       "loratadina_1",
@@ -40,92 +63,94 @@
       "prometazina_1"
     ]
   },
-  "6": {
-    "nome": "Crise asmática / Broncoespasmo",
-    "medicamentos_ids": []
+  {
+    "id": "amigdalite",
+    "grupo": "Respiratório",
+    "nome": "Amigdalite / Faringite bacteriana",
+    "medicamentos_ids": ["amoxicilina_faringite", "azitromicina_faringite"]
   },
-  "7": {
-    "nome": "Constipação intestinal",
-    "medicamentos_ids": ["lactulose_xarope"]
+  {
+    "id": "pneumonia_sinusite_leve",
+    "grupo": "Respiratório",
+    "nome": "Pneumonia / Sinusite (leve)",
+    "medicamentos_ids": ["amoxicilina_padrao", "azitromicina_oral"]
   },
-  "8": {
-    "nome": "Diarreia Viral",
-    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml"]
-  },
-  "8.8": {
-    "nome": "Diarreia Bacteriana MENOR DE (10ANOS OU 30KG)",
-    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml", "azitromicina_oral"]
-  },
-  "8.C": {
-    "nome": "Diarreia Bacteriana MAIOR DE (10ANOS OU 30KG)",
-    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml", "ciprofloxacino_500"]
-  },
-  "9": {
-    "nome": "Amigdalite / Faringite bacteriana (Leve)",
-    "medicamentos_ids": ["amoxicilina_250_5_dose_baixa", "azitromicina_oral"]
-  },
-  "9.4": {
-    "nome": "Broquiolite (Leve)",
-    "medicamentos_ids": ["paracetamol_200", "dipirona_500", "soro_fisiologico"]
-  },
-  "9.8": {
-    "nome": "Pneumonia / Sinusite (Leve)",
-    "medicamentos_ids": ["amoxicilina_250_5_dose_baixa", "azitromicina_oral"]
-  },
-  "10": {
-    "nome": "Pneumonia / Sinusite (Grave)",
+  {
+    "id": "pneumonia_sinusite_grave",
+    "grupo": "Respiratório",
+    "nome": "Pneumonia / Sinusite (grave)",
     "medicamentos_ids": [
-      "amoxicilina_250_5_dose_alta",
+      "amoxicilina_dose_alta",
       "azitromicina_oral",
       "cefuroxima_250"
     ]
   },
-  "11": {
-    "nome": "Erisipela / Celulite (Leve)",
-    "medicamentos_ids": ["cefalexina_125_leve"]
+  {
+    "id": "oma_primeiro",
+    "grupo": "Respiratório",
+    "nome": "Otite média aguda (OMA) – 1º tratamento",
+    "medicamentos_ids": ["amoxicilina_oma"]
   },
-  "12": {
-    "nome": "Herpes (Estomatite / Gengivoestomatite herpética)",
+  {
+    "id": "oma_falha",
+    "grupo": "Respiratório",
+    "nome": "Otite média aguda (OMA) – falha terapêutica",
+    "medicamentos_ids": ["amoxicilina_clav_oma"]
+  },
+
+  {
+    "id": "vomitos",
+    "grupo": "Gastrointestinal",
+    "nome": "Vômitos",
+    "medicamentos_ids": ["ondansetrona_4"]
+  },
+  {
+    "id": "constipacao",
+    "grupo": "Gastrointestinal",
+    "nome": "Constipação intestinal",
+    "medicamentos_ids": ["lactulose"]
+  },
+  {
+    "id": "diarreia_viral",
+    "grupo": "Gastrointestinal",
+    "nome": "Diarreia viral",
+    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml"]
+  },
+  {
+    "id": "diarreia_bacteriana_menor",
+    "grupo": "Gastrointestinal",
+    "nome": "Diarreia bacteriana (< 10 anos ou < 30 kg)",
+    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml", "azitromicina_oral"]
+  },
+  {
+    "id": "diarreia_bacteriana_maior",
+    "grupo": "Gastrointestinal",
+    "nome": "Diarreia bacteriana (≥ 10 anos ou ≥ 30 kg)",
+    "medicamentos_ids": ["sro_envelope", "zinco_10mg_5ml", "ciprofloxacino_500"]
+  },
+
+  {
+    "id": "erisipela_celulite",
+    "grupo": "Pele",
+    "nome": "Erisipela / Celulite (leve)",
+    "medicamentos_ids": ["cefalexina_leve"]
+  },
+  {
+    "id": "herpes_gengivoestomatite",
+    "grupo": "Pele",
+    "nome": "Herpes (estomatite / gengivoestomatite herpética)",
     "medicamentos_ids": ["aciclovir_oral"]
   },
-  "13": {
+  {
+    "id": "esporotricose",
+    "grupo": "Pele",
     "nome": "Esporotricose",
-    "medicamentos_ids": ["itraconazol_oral"]
+    "medicamentos_ids": ["itraconazol_100"]
   },
-  "14": {
-    "nome": "Cistite (Inf. Urinária Baixa)",
-    "medicamentos_ids": ["cefalexina_125_leve"]
-  },
-  "15": {
-    "nome": "Pielonefrite (Inf. Urinária Alta)",
-    "medicamentos_ids": [
-      "cefalexina_125_grave",
-      "cefuroxima_250",
-      "amoxicilina_clav_400_57_grave"
-    ]
-  },
-  "16": {
-    "nome": "Otite Média Aguda (OMA)PrimoTratamento",
-    "medicamentos_ids": ["amoxicilina_250_5_duracao_alta"]
-  },
-  "16.8": {
-    "nome": "Otite Média Aguda (OMA)Falha Terapeutica",
-    "medicamentos_ids": ["amoxicilina_clav_400_57_grave"]
-  },
-  "18": {
-    "nome": "Conjuntivite bacteriana",
-    "medicamentos_ids": [
-      "gentamicina_colirio",
-      "gentamicina_pomada",
-      "tetraciclina_pomada"
-    ]
-  },
-  "19": {
-    "nome": "Conjuntivite viral",
-    "medicamentos_ids": ["hipromelose_colirio"]
-  },
-  "20": {
-    "nome": "Dermatite alérgica / Eczema Leve",
+  {
+    "id": "dermatite_leve",
+    "grupo": "Pele",
+    "nome": "Dermatite alérgica / Eczema (leve)",
     "medicamentos_ids": [
       "hidratante_neutro",
       "ureia_5",
@@ -133,8 +158,10 @@
       "loratadina_1"
     ]
   },
-  "20.8": {
-    "nome": "Dermatite alérgica / Eczema Moderada",
+  {
+    "id": "dermatite_moderada",
+    "grupo": "Pele",
+    "nome": "Dermatite alérgica / Eczema (moderada)",
     "medicamentos_ids": [
       "hidratante_neutro",
       "ureia_5",
@@ -144,8 +171,10 @@
       "dexclorfeniramina_0_4"
     ]
   },
-  "20.C": {
-    "nome": "Dermatite alérgica / Eczema Grave",
+  {
+    "id": "dermatite_grave",
+    "grupo": "Pele",
+    "nome": "Dermatite alérgica / Eczema (grave)",
     "medicamentos_ids": [
       "hidratante_neutro",
       "ureia_5",
@@ -157,12 +186,45 @@
       "prednisolona_3"
     ]
   },
-  "21": {
+
+  {
+    "id": "cistite",
+    "grupo": "Urinário",
+    "nome": "Cistite (infecção urinária baixa)",
+    "medicamentos_ids": ["cefalexina_leve"]
+  },
+  {
+    "id": "pielonefrite",
+    "grupo": "Urinário",
+    "nome": "Pielonefrite (infecção urinária alta)",
+    "medicamentos_ids": [
+      "cefalexina_grave",
+      "cefuroxima_250",
+      "amoxicilina_clav_itu"
+    ]
+  },
+
+  {
+    "id": "conjuntivite_bacteriana",
+    "grupo": "Olhos",
+    "nome": "Conjuntivite bacteriana",
+    "medicamentos_ids": [
+      "gentamicina_colirio",
+      "gentamicina_pomada",
+      "tetraciclina_pomada"
+    ]
+  },
+  {
+    "id": "conjuntivite_viral",
+    "grupo": "Olhos",
+    "nome": "Conjuntivite viral",
+    "medicamentos_ids": ["hipromelose_colirio"]
+  },
+
+  {
+    "id": "vitamina_d",
+    "grupo": "Prevenção",
     "nome": "Suplementação de vitamina D (0–18 anos)",
     "medicamentos_ids": ["colecalciferol_200_ui_gota"]
-  },
-  "22": {
-    "nome": "Encaminhamento para APS",
-    "medicamentos_ids": ["dipironaecasa"]
   }
-}
+]
