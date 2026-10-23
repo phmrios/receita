@@ -1,106 +1,27 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#005a9c" />
+    <title>Calculadora de Reidratação Pediátrica</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Calculadora de Reidratação Pediátrica v3.0</title>
-
-    <style>
-      :root {
-        color-scheme: light dark;
-        --fg: #000;
-        --bg: #fff;
-        --accent: #004080;
-        --border: #ccc;
-        --focus: #ffbf00;
-      }
-
-      body {
-        font-family: monospace, Consolas, "Courier New", monospace;
-        background: var(--bg);
-        color: var(--fg);
-        line-height: 1.6;
-        margin: 1rem auto;
-        max-width: 740px;
-        padding: 1rem;
-      }
-
-      label {
-        display: block;
-        margin-top: 1rem;
-        font-weight: 700;
-      }
-
-      input,
-      select,
-      button {
-        width: 100%;
-        padding: 0.6rem;
-        border: 2px solid var(--border);
-        border-radius: 4px;
-        font-size: 1rem;
-      }
-
-      button {
-        background: var(--accent);
-        color: #fff;
-        font-weight: 700;
-        cursor: pointer;
-        margin-top: 1rem;
-      }
-
-      button:focus,
-      input:focus,
-      select:focus {
-        outline: 3px solid var(--focus);
-        outline-offset: 2px;
-      }
-
-      pre,
-      output {
-        display: block;
-        margin-top: 1.5rem;
-        padding: 1rem;
-        border: 2px solid var(--border);
-        border-radius: 4px;
-        background: #f9f9f9;
-        color: #000;
-        white-space: pre-wrap;
-      }
-
-      hr {
-        margin: 2rem 0;
-      }
-
-      @media print {
-        body * {
-          display: none !important;
-        }
-        #soroSection,
-        #soroText {
-          display: block !important;
-          border: none;
-          background: #fff;
-          color: #000;
-        }
-      }
-    </style>
   </head>
 
   <body>
     <nav class="navbar">
       <ul>
-        <li><a href="index.html">Início</a></li>
-        <li>
-          <a href="teste3.html" class="active">Hidratação OMS / Nelson</a>
-        </li>
-        <li><a href="pals.html">Ficha PALS</a></li>
+        <li><a href="index.html">Prescrição</a></li>
+        <li><a href="pals.html">PALS</a></li>
+        <li><a href="cad.html">CAD</a></li>
+        <li><a href="hidratacao.html" class="active">Hidratação</a></li>
       </ul>
     </nav>
 
-    <h1>Calculadora de Reidratação Pediátrica v3.0</h1>
+    <main class="container">
+    <h1>Calculadora de Reidratação Pediátrica</h1>
 
     <form id="calcForm">
       <label for="method">Método de cálculo</label>
@@ -149,20 +70,20 @@
       </select>
 
       <button type="button" id="calcButton">Calcular</button>
+      <div id="mensagem-form" class="mensagem" role="alert" hidden></div>
     </form>
 
-    <button type="button" id="copyButton">📋 Copiar Resultado</button>
-
-    <output id="result" role="status" aria-live="polite"></output>
-
-    <hr />
+    <pre id="result" class="resultado" role="status" aria-live="polite"></pre>
+    <div class="acoes">
+      <button type="button" class="secundario" data-copiar="#result">Copiar</button>
+      <button type="button" class="secundario" data-imprimir="#result">Imprimir</button>
+      <span class="mensagem" hidden></span>
+    </div>
 
     <section id="soroSection">
-      <button type="button" id="printButton">🖨️ Imprimir Receita</button>
-
       <h2>Receita de Soro Caseiro (SRO)</h2>
 
-      <pre id="soroText">
+      <pre id="soroText" class="resultado">
 ==============================
  COMO FAZER SORO CASEIRO
 ==============================
@@ -187,10 +108,17 @@
 - Se houver sede intensa, fraqueza ou recusa de líquidos, procure atendimento.
 ==============================
       </pre>
+      <div class="acoes">
+        <button type="button" class="secundario" data-copiar="#soroText">Copiar</button>
+        <button type="button" class="secundario" data-imprimir="#soroText">Imprimir receita do soro</button>
+        <span class="mensagem" hidden></span>
+      </div>
     </section>
 
-    <script>
-      "use strict";
+    <script type="module">
+      import { mostrarMensagem, ligarBotoesDeSaida } from "./js/comum.js";
+
+      ligarBotoesDeSaida();
 
       // ======= UTILITÁRIOS =======
       const fmtMl = (v) => `(${Math.round(v)}) ${v.toFixed(2)} mL`;
@@ -290,9 +218,11 @@ Iniciar SRO assim que possível e ajustar conforme resposta clínica.`;
           const idade = parseFloat(document.getElementById("age").value);
           const choque = document.getElementById("shock").value;
           const res = document.getElementById("result");
+          const msg = document.getElementById("mensagem-form");
+          mostrarMensagem(msg, "");
 
           if (!isPositive(peso)) {
-            res.textContent = "Peso inválido.";
+            mostrarMensagem(msg, "Informe o peso em kg.", "erro");
             return;
           }
 
@@ -317,29 +247,10 @@ ${textoPrincipal}
 ${blocoManut}`;
         } catch (err) {
           console.error(err);
-          document.getElementById("result").textContent =
-            "Erro inesperado. Verifique os dados.";
+          mostrarMensagem(document.getElementById("mensagem-form"), "Erro inesperado. Verifique os dados.", "erro");
         }
       });
 
-      // ======= COPIAR =======
-      document
-        .getElementById("copyButton")
-        .addEventListener("click", async () => {
-          const texto = document.getElementById("result").textContent.trim();
-          if (!texto) return;
-          try {
-            await navigator.clipboard.writeText(texto);
-            alert("Resultado copiado para a área de transferência!");
-          } catch {
-            alert("Falha ao copiar.");
-          }
-        });
-
-      // ======= IMPRESSÃO =======
-      document
-        .getElementById("printButton")
-        .addEventListener("click", () => window.print());
 
       // ======= TESTES =======
       (function runTests() {
@@ -350,5 +261,11 @@ ${blocoManut}`;
         console.log("Testes básicos OK");
       })();
     </script>
+    </main>
+
+    <footer class="rodape">
+      Ferramenta de apoio. <strong>Sempre confira os cálculos.</strong>
+      Referências: OMS / Ministério da Saúde e Nelson. Última revisão: 10/2026.
+    </footer>
   </body>
 </html>

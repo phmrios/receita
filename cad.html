@@ -1,48 +1,26 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <link rel="stylesheet" href="style.css" />
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#005a9c" />
     <title>CAD Pediátrica — Ficha ASCII</title>
-
-    <style>
-
-      label {
-        display: block;
-        margin-top: 1rem;
-        font-weight: 700;
-      }
-
-
-
-      output {
-        display: block;
-        margin-top: 1.5rem;
-        padding: 1rem;
-        border: 2px solid var(--border);
-        border-radius: 4px;
-        background: #f9f9f9;
-        color: #000;
-        white-space: pre-wrap;
-      }
-
-      hr {
-        margin: 2rem 0;
-      }
-    </style>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <nav class="navbar">
       <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="teste3.html" class="active">CAD</a></li>
-        <li><a href="pals.html">Ficha PALS</a></li>
+        <li><a href="index.html">Prescrição</a></li>
+        <li><a href="pals.html">PALS</a></li>
+        <li><a href="cad.html" class="active">CAD</a></li>
+        <li><a href="hidratacao.html">Hidratação</a></li>
       </ul>
     </nav>
 
+    <main class="container">
     <h1>Calculadora — CAD Pediátrica (ASCII)</h1>
 
     <form id="calcForm">
@@ -63,7 +41,7 @@
         name="ageYears"
         type="number"
         min="0"
-        step="1"
+        step="0.1"
         placeholder="opcional"
       />
 
@@ -88,16 +66,20 @@
       </select>
 
       <button type="button" id="calcButton">Calcular</button>
+      <div id="mensagem-form" class="mensagem" role="alert" hidden></div>
     </form>
 
-    <button type="button" id="copyButton">Copiar Resultado</button>
+    <pre id="result" class="resultado" role="status" aria-live="polite"></pre>
+    <div class="acoes">
+      <button type="button" class="secundario" data-copiar="#result">Copiar</button>
+      <button type="button" class="secundario" data-imprimir="#result">Imprimir</button>
+      <span class="mensagem" hidden></span>
+    </div>
 
-    <output id="result" role="status" aria-live="polite"></output>
+    <script type="module">
+      import { mostrarMensagem, ligarBotoesDeSaida } from "./js/comum.js";
 
-    <hr />
-
-    <script>
-      "use strict";
+      ligarBotoesDeSaida();
 
       // ======= UTILITÁRIOS (KISS + SRP) =======
       const isPositive = (n) => Number(n) > 0 && isFinite(Number(n));
@@ -146,9 +128,11 @@
           );
 
           const out = document.getElementById("result");
+          const msg = document.getElementById("mensagem-form");
+          mostrarMensagem(msg, "");
 
           if (!isPositive(peso)) {
-            out.textContent = "Peso inválido.";
+            mostrarMensagem(msg, "Informe o peso em kg.", "erro");
             return;
           }
 
@@ -271,24 +255,10 @@ TL;DR
           out.textContent = texto;
         } catch (err) {
           console.error(err);
-          document.getElementById("result").textContent =
-            "Erro inesperado. Verifique os dados.";
+          mostrarMensagem(document.getElementById("mensagem-form"), "Erro inesperado. Verifique os dados.", "erro");
         }
       });
 
-      // ======= COPIAR =======
-      document
-        .getElementById("copyButton")
-        .addEventListener("click", async () => {
-          const texto = document.getElementById("result").textContent.trim();
-          if (!texto) return;
-          try {
-            await navigator.clipboard.writeText(texto);
-            alert("Resultado copiado para a área de transferência!");
-          } catch {
-            alert("Falha ao copiar.");
-          }
-        });
 
       // ======= TESTES BÁSICOS (sanidade) =======
       (function runTests() {
@@ -298,5 +268,11 @@ TL;DR
         console.log("Testes básicos OK");
       })();
     </script>
+    </main>
+
+    <footer class="rodape">
+      Ferramenta de apoio. <strong>Sempre confira os cálculos.</strong>
+      Referência: ISPAD 2022. Última revisão: 10/2026.
+    </footer>
   </body>
 </html>
