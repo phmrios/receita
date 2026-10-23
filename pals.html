@@ -3,45 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#005a9c" />
     <title>Ficha PALS Pediátrica</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <!-- Barra de navegação compartilhada -->
     <nav class="navbar">
       <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="teste3.html">CAD</a></li>
-        <li><a href="pals.html" class="active">Ficha PALS</a></li>
+        <li><a href="index.html">Prescrição</a></li>
+        <li><a href="pals.html" class="active">PALS</a></li>
+        <li><a href="cad.html">CAD</a></li>
+        <li><a href="hidratacao.html">Hidratação</a></li>
       </ul>
     </nav>
 
-    <!-- Conteúdo principal -->
-    <div class="container">
+    <main class="container">
       <h1>Ficha de Parada Pediátrica (PALS)</h1>
 
-      <form id="palsForm">
-        <label>Nome: <input type="text" id="nome" required /></label>
-        <label
-          >Idade (anos):
-          <input type="number" id="idade" min="0" step="0.1" required
-        /></label>
-        <label
-          >Peso (kg):
-          <input type="number" id="peso" min="1" step="0.1" required
-        /></label>
-        <label
-          >Altura (cm): <input type="number" id="altura" max="200"
-        /></label>
-        <label>Sexo: <input type="text" id="sexo" /></label>
-        <button type="button" id="gerarFicha">Gerar Ficha ASCII</button>
+      <form id="palsForm" novalidate>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" autocomplete="off" />
+
+        <div class="linha">
+          <div class="campo">
+            <label for="idade">Idade (anos)</label>
+            <input type="number" id="idade" min="0" step="0.1" inputmode="decimal" required />
+          </div>
+          <div class="campo">
+            <label for="peso">Peso (kg)</label>
+            <input type="number" id="peso" min="0.5" step="0.1" inputmode="decimal" required />
+          </div>
+        </div>
+        <div class="linha">
+          <div class="campo">
+            <label for="altura">Altura (cm)</label>
+            <input type="number" id="altura" min="30" max="200" inputmode="numeric" placeholder="opcional" />
+          </div>
+          <div class="campo">
+            <label for="sexo">Sexo</label>
+            <select id="sexo">
+              <option value="">-</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Masculino">Masculino</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" id="gerarFicha">Gerar ficha</button>
+        <div id="mensagem-form" class="mensagem" role="alert" hidden></div>
       </form>
 
-      <h2>Ficha ASCII Gerada</h2>
-      <pre id="saida" class="resultado" readonly></pre>
-    </div>
+      <h2>Ficha gerada</h2>
+      <pre id="saida" class="resultado"></pre>
+      <div class="acoes">
+        <button type="button" class="secundario" data-copiar="#saida">Copiar</button>
+        <button type="button" class="secundario" data-imprimir="#saida">Imprimir</button>
+        <span class="mensagem" hidden></span>
+      </div>
+    </main>
 
-    <script src="pals.js"></script>
+    <footer class="rodape">
+      Ferramenta de apoio. <strong>Sempre confira as doses.</strong>
+      Referência: AHA PALS 2020. Última revisão: 10/2026.
+    </footer>
+
+    <script type="module" src="js/pals.js"></script>
   </body>
 </html>
